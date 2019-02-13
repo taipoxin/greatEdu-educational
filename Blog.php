@@ -59,7 +59,7 @@
 					$query = "";
 					if ( isset($_GET['search'])) {
 						if ( empty($_GET['search'])) {
-							Redirect_To('blog.php');
+							Redirect_To('Blog.php');
 						}else {
 							$search = $_GET['search'];
 							$query = "SELECT * FROM cms_post WHERE post_date_time LIKE '%$search%' OR title LIKE '%$search%' OR category LIKE '$search%' ";

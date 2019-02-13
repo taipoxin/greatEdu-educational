@@ -23,9 +23,30 @@ function Query ($query) {
 	return false;
 }
 
+function QueryNew ($query) {
+	global $con2;
+
+	try {
+
+		$exec = mysqli_query($con2,$query) or die(mysqli_error($con2));
+		if($exec) {
+			return $exec;
+		}
+	
+	}catch (Exception $e) {
+		echo $e->getMessage();
+	}
+
+	return false;
+}
+
 function LoginAttempt($username, $password) {
-	$query = "SELECT * FROM cms_admin WHERE username = '$username'  AND password = '$password'";
-	$exec = Query($query);
+	// $query = "SHOW TABLES";
+	// $query = "SELECT * FROM cms_admin WHERE username = '$username'  AND password = '$password'";
+	$query = "SELECT * FROM `Пользователи` WHERE `никнейм` = '$username'  AND `хэш_пароля` = '$password'";
+	$exec = QueryNew($query); 
+	// Tables_in_great_edu
+	// return $exec;
 	if ($admin = mysqli_fetch_assoc($exec)) {
 		return $admin;
 	}else {

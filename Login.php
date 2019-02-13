@@ -9,6 +9,12 @@ if ( isset($_POST['submit'])) {
 	}else {
 		$foundAccount = LoginAttempt($username, $password);
 		if ($foundAccount) {
+			// $foundAccount['Tables_in_great_edu'] = 'kek';
+			// echo '<pre>'; print_r($foundAccount); echo '</pre>';
+			// echo '<pre>'; echo $foundAccount['Tables_in_great_edu']; echo '</pre>';
+
+			// echo $foundAccount;
+			$_SESSION['errorMessage'] = $foundAccount;
 			$_SESSION['successMessage'] = 'Login Successfully Welcome ' . $foundAccount['username'];
 			$_SESSION['user_id'] = $foundAccount['id'];
 			$_SESSION['username'] = $foundAccount['username'];
