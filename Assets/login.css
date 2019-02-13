@@ -1,0 +1,14 @@
+.login-area {
+	height: 500px;
+	margin-top: 5%;
+
+}
+
+legend {
+	color: black;
+}
+
+form {
+	padding: 30px;
+	border:solid 1px silver;
+}

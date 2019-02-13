@@ -1,0 +1,126 @@
+body {
+	background: #041627;
+	overflow-x: hidden;
+}
+
+.heading {
+	height: 50px;
+	padding: 5px;
+	background: black;
+	padding-left: 25px;
+	color: silver;
+
+}
+.col-sm-2 {
+	background: #041627;
+	padding-top: 10px;
+}
+
+.col-xs-10 {
+	background: white !important;
+	min-height: 650px;
+	overflow: hidden;
+}
+
+#side-menu li a {
+	color: white;
+}
+
+#side-menu li a:hover {
+	background: blue;
+}
+
+#footer {
+	text-align: center;
+	color: white;
+}
+
+hr {
+	border-color: silver;
+}
+
+.center-col {
+	margin: 0 auto;	
+	position: absolute;
+}
+
+.page-title {
+	border-bottom: solid 2px silver;
+	margin-bottom: 15px;
+}
+
+.blog {
+	background: white;
+	min-height: 662px;
+}
+
+.navbar-nav li a  {
+	padding: 20px;
+}
+
+.navbar {
+	font-size: 16px;
+	border-bottom: solid 1px silver;
+	border-radius: 0;
+}
+
+.navbar-right {
+	padding: 3px 0;
+}
+
+.navbar-brand {
+	padding: 20px;
+}
+
+#latest-post {
+	padding: 10px 5px;
+}
+
+#blog-footer {
+	text-align: center;
+	color: white;
+}
+
+.footer-wrapper {
+	padding:20px;
+}
+
+.post-info {
+	color: orange;
+}
+
+.post {
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#read_more_btn {
+	float: right;
+}
+
+.main {
+	margin-top : -20px;
+}
+
+#dashboard-nav {
+	border : 0;
+}
+
+.imageicon {
+	margin: 0 auto;
+	max-height: 150px;
+	max-width: 150px;
+}
+
+.widget {
+	padding: 10px;
+}
+
+.title {
+	background: silver;
+	padding: 5px;
+	font-weight: bold;
+	color: white;
+}
+
+
