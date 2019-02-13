@@ -106,32 +106,6 @@ LOCK TABLES `Группы_пользователей` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Данные регистрации`
---
-
-DROP TABLE IF EXISTS `Данные регистрации`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Данные регистрации` (
-  `id` int(11) NOT NULL,
-  `почта` varchar(45) NOT NULL,
-  `хэш_пароля` varchar(100) NOT NULL,
-  `статус` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fk_Данные регистрации_1` FOREIGN KEY (`id`) REFERENCES `Пользователи` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Данные регистрации`
---
-
-LOCK TABLES `Данные регистрации` WRITE;
-/*!40000 ALTER TABLE `Данные регистрации` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Данные регистрации` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Жанры`
 --
 
@@ -216,11 +190,16 @@ DROP TABLE IF EXISTS `Пользователи`;
 CREATE TABLE `Пользователи` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `никнейм` varchar(50) COLLATE utf8_bin NOT NULL,
-  `группа` int(11) NOT NULL,
+  `почта` varchar(45) COLLATE utf8_bin NOT NULL,
+  `хэш_пароля` varchar(100) COLLATE utf8_bin NOT NULL,
+  `статус` int(11) NOT NULL,
+  `группа` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Пользователи_fk1` (`группа`),
-  CONSTRAINT `Пользователи_fk1` FOREIGN KEY (`группа`) REFERENCES `Группы_пользователей` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  KEY `fk_Пользователи_1_idx` (`статус`),
+  CONSTRAINT `fk_Пользователи_1` FOREIGN KEY (`статус`) REFERENCES `Статусы` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Пользователи_fk1` FOREIGN KEY (`группа`) REFERENCES `Группы_пользователей` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,6 +208,7 @@ CREATE TABLE `Пользователи` (
 
 LOCK TABLES `Пользователи` WRITE;
 /*!40000 ALTER TABLE `Пользователи` DISABLE KEYS */;
+INSERT INTO `Пользователи` VALUES (1,'test','test@test.ru','test',1,NULL),(2,'test2','test2@test.ru','test',1,NULL);
 /*!40000 ALTER TABLE `Пользователи` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -414,6 +394,30 @@ LOCK TABLES `Статьи` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Статусы`
+--
+
+DROP TABLE IF EXISTS `Статусы`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Статусы` (
+  `id` int(11) NOT NULL,
+  `название` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Статусы`
+--
+
+LOCK TABLES `Статусы` WRITE;
+/*!40000 ALTER TABLE `Статусы` DISABLE KEYS */;
+INSERT INTO `Статусы` VALUES (1,'registered');
+/*!40000 ALTER TABLE `Статусы` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Теги`
 --
 
@@ -468,4 +472,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-14  0:48:22
+-- Dump completed on 2019-02-14  2:58:25
