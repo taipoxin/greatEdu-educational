@@ -44,6 +44,14 @@ function deleteCategory () {
 	}
 }
 
+function IsLogin() {
+	$login = false;
+	if ( isset($_SESSION['user_id'])) {
+		$login = true;
+	}
+	return $login;
+}
+
 function ConfirmLogin () {
 	$login = false;
 	if ( isset($_SESSION['user_id'])) {

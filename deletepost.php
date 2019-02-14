@@ -134,7 +134,7 @@ if ( isset( $_POST['post-delete'])) {
 	<div class="row" id="footer">
 		<div class="col-sm-12">
 		<hr>
-			<p>All Rights Reserved 2017 | Theme By :  Alger Makiputin</p>
+			<p>All Rights Reserved 2017 | Theme By :  Dmitry Ermakovich</p>
 		<hr>
 		</div>
 	</div>

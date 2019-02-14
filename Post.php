@@ -23,7 +23,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a href="Blog.php" class="navbar-brand">
-					ALGER MAKIPUTIN
+					DMITRY ERMAKOVICH
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="nav-header">
@@ -95,12 +95,13 @@
 					}
 				?>
 				<div class="comment-section">
+				<?php if(isLogin()) : ?>
 					<form method="POST" action="comment.php?>'"> 
 						<legend>Your Thoughts About This Post</legend>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label>Email</label>
 							<input type="email" name="email" placeholder="Your Email Address" class="form-control">
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label>Comment</label>
 							<textarea name="comment" placeholder="Your Comment Here" class="form-control" rows="10"></textarea>
@@ -108,18 +109,25 @@
 						<div class="form-group">
 							<input type="submit" name="submit" class="btn btn-primary" value="Send Comment">
 						</div>
+						<input type="hidden" name="author" value="<?php echo $_SESSION['user_id']; ?>">
 						<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
 					</form>
+				<?php endif; ?>
+				
 				</div>
 				<div class="page-header">Comments</div>
 				<?php
-					$sql = "SELECT * FROM comment WHERE post_id = '$_GET[id]'";
-					$exec = Query($sql);
+					// $sql = "SELECT * FROM comment WHERE post_id = '$_GET[id]'";
+					$sql = "SELECT * FROM Комментарии WHERE статья = '$_GET[id]'";
+					$exec = QueryNew($sql);
 					if (mysqli_num_rows($exec) > 0) {
 						while ($comments = mysqli_fetch_assoc($exec)) {
-							$c_email = $comments['email'];
-							$c_dateTime = $comments['date_time'];
-							$c_comment = $comments['comment'];
+							// $c_email = $comments['email'];
+							$c_email = 'комментатор';
+							// $c_dateTime = $comments['date_time'];
+							$c_dateTime = '14-02-19 21:00';
+							// $c_comment = $comments['comment'];
+							$c_comment = $comments['сообщение'];
 							?>
 							
 							<div class="comment-block" style="margin-bottom: 20px; ">
@@ -161,14 +169,17 @@
 					</div>
 					<div class="panel-body">
 						<?php
-							$sql = "SELECT * FROM cms_post ORDER BY post_date_time LIMIT 5";
-							$exec = Query($sql);
+							// $sql = "SELECT * FROM cms_post ORDER BY post_date_time LIMIT 5";
+							$sql = "SELECT * FROM Статьи LIMIT 5";
+							$exec = QueryNew($sql);
 							while ($recentPost = mysqli_fetch_assoc($exec)) {
-								$postID = $recentPost['post_id'];
-								?>
+								$postID = $recentPost['id'];
+						?>
 								<nav>
 									<ul>
-										<li><a href="Post.php?id=<?php echo $postID; ?>"><?php echo $recentPost['title'] ?></a></li>
+										<li><a href="Post.php?id=<?php echo $postID; ?>">
+											<?php echo $recentPost['заголовок'] ?>
+										</a></li>
 									</ul>
 								</nav>
 								<?php
@@ -176,7 +187,7 @@
 						?>
 					</div>
 				</div>
-
+				<?php if(false): ?>
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h2 class="panel-title">Categories</h2>
@@ -201,13 +212,14 @@
 						</nav>
 					</div>
 				</div>
+				<?php endif; ?>
 			</div> <!--END OF COL-MD-4  -->
 		</div> <!--END OF ROW  -->
 	</div>
 </div>
 <div class="row navbar-inverse" id="blog-footer">
 	<div class="footer-wrapper">
-		<p>All Rights Reserved 2017 | Theme By :  Alger Makiputin</p>
+		<p>All Rights Reserved 2019 | Theme By :  Dmitry Ermakovich</p>
 	</div>
 </div>
 </body>

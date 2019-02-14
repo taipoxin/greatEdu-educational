@@ -23,7 +23,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a href="Blog.php" class="navbar-brand">
-					ALGER MAKIPUTIN
+					DMITRY ERMAKOVICH
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="nav-header">
@@ -205,7 +205,7 @@
 </div>
 <div class="row navbar-inverse" id="blog-footer">
 	<div class="footer-wrapper">
-		<p>All Rights Reserved 2017 | Theme By :  Alger Makiputin</p>
+		<p>All Rights Reserved 2017 | Theme By :  Dmitry Ermakovich</p>
 	</div>
 </div>
 </body>
