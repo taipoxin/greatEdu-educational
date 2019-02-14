@@ -51,19 +51,18 @@
 				<?php echo Message(); ?>
 				<?php
 					if( isset($_GET['id'])) {
-						$query = "SELECT * FROM Статьи WHERE id = '$_GET[id]'";
-						$exec = QueryNew($query);
+						$query = "SELECT * FROM cms_post WHERE post_id = '$_GET[id]'";
+						$exec = Query($query);
 						$post_from_db = NULL;
 						if (mysqli_num_rows($exec) > 0) {
 							while ($post = mysqli_fetch_assoc($exec) ) {
-								$post_id = $post['id'];
-								$post_date = '00 00 date';
-								$post_title = $post['заголовок'];
-								$post_category = 'категория';
-								$post_author = 'автор';
-								$post_image = $post['изображение'];
-								// $post_content = $post['post']; 
-								$post_from_db = $post['файл_контент'];
+								$post_id = $post['post_id'];
+								$post_date = $post['post_date_time'];
+								$post_title = $post['title'];
+								$post_category = $post['category'];
+								$post_author = $post['author'];
+								$post_image = $post['image'];
+								$post_from_db = $post['post']; 
 							}
 							if (is_null($post_from_db)) {
 								$post_content = 'error load';
@@ -71,12 +70,11 @@
 							else {
 								$post_content = file_get_contents('Upload/contents/' . $post_from_db);
 							}
-
 							?>
 							<div class="post">
 								<div class="post-title"><h1><?php echo htmlentities($post_title); ?></h1></div>
 								<div class="thumbnail">
-									<img class="img-responsive img-rounded" style="max-height: 500px;" src="Upload/Image/<?php echo $post_image; ?>">
+									<img class="img-responsive img-rounded" src="Upload/Image/<?php echo $post_image; ?>">
 								</div>
 								<div class="post-info">
 									<p class="lead">
