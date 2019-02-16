@@ -114,16 +114,16 @@ DROP TABLE IF EXISTS `Комментарии`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Комментарии` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `автор` int(11) NOT NULL,
+  `автор` int(11) DEFAULT NULL,
   `сообщение` text COLLATE utf8_bin NOT NULL,
   `статья` int(11) NOT NULL,
-  `дата_публикации` datetime NOT NULL,
+  `дата_публикации` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Комментарии_fk0` (`автор`),
   KEY `fk_Комментарии_1_idx` (`статья`),
   CONSTRAINT `fk_Комментарии_1` FOREIGN KEY (`статья`) REFERENCES `Статьи` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Комментарии_fk0` FOREIGN KEY (`автор`) REFERENCES `Пользователи` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,6 +132,7 @@ CREATE TABLE `Комментарии` (
 
 LOCK TABLES `Комментарии` WRITE;
 /*!40000 ALTER TABLE `Комментарии` DISABLE KEYS */;
+INSERT INTO `Комментарии` VALUES (1,NULL,'тестовый месседж',3,NULL);
 /*!40000 ALTER TABLE `Комментарии` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,7 +400,7 @@ CREATE TABLE `Статьи` (
 
 LOCK TABLES `Статьи` WRITE;
 /*!40000 ALTER TABLE `Статьи` DISABLE KEYS */;
-INSERT INTO `Статьи` VALUES (1,NULL,NULL,NULL,NULL,'Тестовый заголовок','post_1.txt','19222724_1555772291131415_6272807584274196775_o.jpg'),(2,NULL,NULL,NULL,NULL,'Тест2','post_2.txt','html5.jpg'),(3,NULL,NULL,NULL,NULL,'Артур Шпопенгогер сказал','post_3.txt','shpopengoger.jpg');
+INSERT INTO `Статьи` VALUES (1,NULL,NULL,NULL,'2019-02-16 00:00:00','Тестовый заголовок','текст_поста','Снимок экрана в 2018-08-27 14-49-20.png'),(2,NULL,NULL,NULL,'2019-02-16 16:32:48','Тест2','текст_поста','Снимок экрана в 2018-08-27 14-49-20.png'),(3,NULL,NULL,NULL,NULL,'Артур Шпопенгогер сказал','post_3.txt','shpopengoger.jpg');
 /*!40000 ALTER TABLE `Статьи` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,4 +506,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-14 16:43:49
+-- Dump completed on 2019-02-16 16:36:24

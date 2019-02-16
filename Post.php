@@ -1,10 +1,19 @@
 <?php require_once('Include/Sessions.php'); ?>
 <?php require_once('Include/functions.php') ?>
-
+<?php 
+	$query = "SELECT заголовок FROM Статьи WHERE id = '$_GET[id]'";
+	$exec = QueryNew($query);
+	if (mysqli_num_rows($exec) > 0) {
+		while ($post = mysqli_fetch_assoc($exec) ) {
+			$title_title = $post['заголовок'];
+		}
+	}
+	
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $post_title; ?></title>
+	<title><?php echo $title_title; ?></title>
 	<script src="jquery-3.2.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">

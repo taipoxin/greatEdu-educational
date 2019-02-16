@@ -50,7 +50,7 @@
 					<?php echo Message(); ?>
 					<div class="table-responsive">
 						
-							<?php 	// TODO: add editpost and switch dashboard; also upload image get image only from Upload/image
+							<?php 
 							// echo implode(',', $_SESSION['img']) . '<br>';
 							// echo $_SESSION['imgDir'];
 							$sql = "SELECT * FROM Статьи ORDER BY дата_публикации";
