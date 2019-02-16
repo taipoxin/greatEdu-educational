@@ -3,15 +3,14 @@
 <?php ConfirmLogin(); ?>
 <?php
 if ( isset( $_POST['post-update'])) {
-	ini_set("safe_mode",false);
-	// date_default_timezone_set('Asia/Manila');
+	date_default_timezone_set('Asia/Manila');
 	$time = time();
 	$title = mysqli_real_escape_string($con, $_POST['post-title']);
-	// $category = mysqli_real_escape_string($con, $_POST['post-category']);
+	$category = mysqli_real_escape_string($con, $_POST['post-category']);
 	$content = mysqli_real_escape_string($con, $_POST['post-content']);
 	$image = $_FILES['post-image']['name'];
 	$author = $_SESSION['username'];
-	$dateTime = strftime('%Y-%m-%d %T',$time);
+	$dateTime = strftime('%Y-%m-%d',$time);
 	$title_length = strlen($title);
 	$content_lenght = strlen($content);
 	$updatedImage = $image;
@@ -20,41 +19,30 @@ if ( isset( $_POST['post-update'])) {
 		$newImage = false;
 	}
 	$imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
-	// echo $imageDirectory;
-	// echo $_FILES['post-image'];
-	$sql = "UPDATE Статьи SET дата_публикации ='$dateTime', заголовок = '$title',  изображение = '$updatedImage', файл_контент = '$content' WHERE id = '$_POST[idFromUrl]' ";
-	$exec = QueryNew($sql);
+	$sql = "UPDATE cms_post SET post_date_time ='$dateTime', title = '$title', category = '$category', author ='$author', image = '$updatedImage', post = '$content' WHERE post_id = '$_POST[idFromUrl]' ";
+	$exec = Query($sql);
 	if($exec) {
-		if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
-			$_SESSION['successMessage'] = 'Post Edit Successfully';
-		}
-		else {
-			$_SESSION['errorMessage'] = 'Something Went Wrong With saving file Please Try Again Later';
-		}
-		// $_SESSION['imgDir'] = $imageDirectory;
-		// $_SESSION['img'] = $_FILES['post-image'];
-		// echo $_FILES['post-image']['tmp_name'];
-		// echo $imageDirectory;
+		move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory);
+		$_SESSION['successMessage'] = 'Post Edit Successfully';
 		Redirect_To('Dashboard.php');
 	}else {
-		$_SESSION['errorMessage'] = 'Something Went Wrong With db write. Please Try Again Later';
+		$_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
 		Redirect_To('Dashboard.php');
 	}
 
 }else if( isset($_GET['post_id'])) {
 	if (!empty($_GET['post_id'])) {
-		$sql = "SELECT * FROM Статьи WHERE id = '$_GET[post_id]'";
-		$exec = QueryNew($sql);
+		$sql = "SELECT * FROM cms_post WHERE post_id = '$_GET[post_id]'";
+		$exec = Query($sql);
 		if (mysqli_num_rows($exec) > 0 ) {
 			if ($post = mysqli_fetch_assoc($exec)) {
-				$post_id = $post['id'];
-				$post_date = $post['дата_публикации'];
-				$post_title = $post['заголовок'];
-				// $post_category = $post['category'];
-				$post_category = 'категория';
-				$post_author = $post['автор'];
-				$post_image = $post['изображение'];
-				$post_content = 'текст_поста';
+				$post_id = $post['post_id'];
+				$post_date = $post['post_date_time'];
+				$post_title = $post['title'];
+				$post_category = $post['category'];
+				$post_author = $post['author'];
+				$post_image = $post['image'];
+				$post_content = $post['post'];
 			}
 		} 
 	}
@@ -117,7 +105,7 @@ if ( isset( $_POST['post-update'])) {
 							</div>
 							<div class="form-group">
 								<label>Existing Category : <?php echo htmlentities($post_category); ?></label><br>
-								<!-- <label for="post-category">Change Category</label>
+								<labal for="post-category">Change Category</labal>
 								<select class="form-control" name="post-category" id="post-category" value="<?php echo $post_category ?>">
 									<?php
 										$sql = "SELECT cat_name FROM cms_category";
@@ -138,9 +126,8 @@ if ( isset( $_POST['post-update'])) {
 											}
 										}
 									?>
-								</select> -->
+								</select>
 							</div>
-							<input type="hidden" name="MAX_FILE_SIZE" value="300000" />
 							<label>Existing Image: <img src="Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'> </label>
 							<div class="form-group">
 								<labal for="post-image">Change Image</labal>
@@ -164,7 +151,7 @@ if ( isset( $_POST['post-update'])) {
 	<div class="row" id="footer">
 		<div class="col-sm-12">
 		<hr>
-			<p>All Rights Reserved 2019 | Theme By :  Dmitry Ermakovich</p>
+			<p>All Rights Reserved 2017 | Theme By :  Dmitry Ermakovich</p>
 		<hr>
 		</div>
 	</div>

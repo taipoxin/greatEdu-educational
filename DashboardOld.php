@@ -50,11 +50,9 @@
 					<?php echo Message(); ?>
 					<div class="table-responsive">
 						
-							<?php 	// TODO: add editpost and switch dashboard; also upload image get image only from Upload/image
-							// echo implode(',', $_SESSION['img']) . '<br>';
-							// echo $_SESSION['imgDir'];
-							$sql = "SELECT * FROM Статьи ORDER BY дата_публикации";
-							$exec = QueryNew($sql);
+							<?php
+							$sql = "SELECT * FROM cms_post ORDER BY post_date_time";
+							$exec = Query($sql);
 							$postNo = 1;
 							if(mysqli_num_rows($exec) < 1	) {
 								?>
@@ -64,9 +62,9 @@
 							}else{ ?>
 							<table class="table table-hover">
 							<tr>
-								<th>Id</th>
+								<th>Post No.</th>
 								<th>Post Date</th>
-								<th>Title</th>
+								<th>Date Title</th>
 								<th>Author</th>
 								<th>Category</th>
 								<th>Feature Image</th>
@@ -76,20 +74,19 @@
 							</tr>
 							<?php
 								while ($post = mysqli_fetch_assoc($exec)) {
-									$post_id = $post['id'];
-									$post_date = $post['дата_публикации'];
-									$post_title = $post['заголовок'];
-									// $category = $post['category'];
-									$category = 'категория';
-									$author = "автор";
-									$image = $post['изображение'];
+									$post_id = $post['post_id'];
+									$post_date = $post['post_date_time'];
+									$post_title = $post['title'];
+									$category = $post['category'];
+									$author = "Admin";
+									$image = $post['image'];
 									?>
 									<tr>
-									<td><?php echo $post_id; ?></td>
+									<td><?php echo $postNo; ?></td>
 									<td><?php echo $post_date; ?></td>
 									<td><?php 
-									if(strlen($post_title) > 42 ) {
-										echo substr($post_title,0,42) . '...';
+									if(strlen($post_title) > 20 ) {
+										echo substr($post_title,0,20) . '...';
 									}else {
 										echo $post_title;
 									}
