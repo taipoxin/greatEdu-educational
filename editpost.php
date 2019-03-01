@@ -1,61 +1,7 @@
 <?php require_once('Include/Sessions.php'); ?>
-<?php require_once('Include/functions.php') ?>
-<?php require_once('Include/dbFunctions.php') ?>
+<?php require_once('src/editpost_c.php') ?>
 <?php ConfirmLogin(); ?>
-<?php
-if ( isset( $_POST['post-update'])) {
-	ini_set("safe_mode",false);
-	// date_default_timezone_set('Asia/Manila');
-	$time = time();
-	$title = mysqli_real_escape_string($con, $_POST['post-title']);
-	// $category = mysqli_real_escape_string($con, $_POST['post-category']);
-	$content = mysqli_real_escape_string($con, $_POST['post-content']);
-	$image = $_FILES['post-image']['name'];
-	$author = $_SESSION['username'];
-	$dateTime = strftime('%Y-%m-%d %T',$time);
-	$title_length = strlen($title);
-	$content_lenght = strlen($content);
-	$updatedImage = $image;
-	if( empty($image)) {
-		$updatedImage = $_POST['currentImage'];
-		$newImage = false;
-	}
-	$imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
-	$sql = "UPDATE Статьи SET дата_публикации ='$dateTime', заголовок = '$title',  изображение = '$updatedImage', файл_контент = '$content' WHERE id = '$_POST[idFromUrl]' ";
-	$exec = QueryNew($sql);
-	if($exec) {
-		if (!empty($image) && move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
-			$_SESSION['successMessage'] = 'Post Edit Successfully';
-		}
-		else {
-			$_SESSION['errorMessage'] = 'Something Went Wrong With saving file Please Try Again Later';
-		}
-		Redirect_To('Dashboard.php');
-	} else {
-		$_SESSION['errorMessage'] = 'Something Went Wrong With db write. Please Try Again Later';
-		Redirect_To('Dashboard.php');
-	}
 
-} else if( isset($_GET['post_id'])) {
-	if (!empty($_GET['post_id'])) {
-
-		$sql = "SELECT * FROM Статьи WHERE id = '$_GET[post_id]'";
-		$res = execQuery($sql);
-		$post = $res[0];
-		$post_id = $post['id'];
-		$post_date = $post['дата_публикации'];
-		$post_title = $post['заголовок'];
-		// $post_category = $post['category'];
-		$post_category = 'категория';
-		$post_author = $post['автор'];
-		$post_image = $post['изображение'];
-		$post_content = 'текст_поста';
-	}
-} else {
-	Redirect_To('dashboard.php');
-}
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,10 +55,7 @@ if ( isset( $_POST['post-update'])) {
 								<input type="text" name="post-title" class="form-control" id="post-title" value="<?php echo $post_title ?>">
 							</div>
 							<div class="form-group">
-								<!-- <label>Existing Category : <?php echo htmlentities($post_category); ?></label><br> -->
-								<!-- <label for="post-category">Change Category</label>
-								<select class="form-control" name="post-category" id="post-category" value="<?php echo $post_category ?>">
-								</select> -->
+
 							</div>
 							<input type="hidden" name="MAX_FILE_SIZE" value="300000" />
 							<label>Existing Image: <img src="Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'> </label>

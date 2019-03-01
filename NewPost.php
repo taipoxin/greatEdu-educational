@@ -1,5 +1,7 @@
-	<?php require_once('Include/Sessions.php'); ?>
+<?php require_once('Include/Sessions.php'); ?>
 <?php require_once('Include/functions.php') ?>
+<?php require_once('Include/dbFunctions.php') ?>
+<?php require_once('Include/fileFunctions.php') ?>
 <?php ConfirmLogin(); ?>
 <?php
 
@@ -93,18 +95,6 @@ if ( isset( $_POST['post-submit'])) {
 							<div class="form-group">
 								<labal for="post-title">Title</labal>
 								<input type="text" name="post-title" class="form-control" id="post-title">
-							</div>
-							<div class="form-group">
-								<labal for="post-category">Category</labal>
-								<select class="form-control" name="post-category" id="post-category">
-									<?php
-										$sql = "SELECT * FROM cms_category";
-										$exec = Query($sql);
-										while($row = mysqli_fetch_assoc($exec)){
-											echo "<option>$row[cat_name]</option>";
-										}
-									?>
-								</select>
 							</div>
 							<div class="form-group">
 								<labal for="post-image">Feature Image</labal>

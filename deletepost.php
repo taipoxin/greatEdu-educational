@@ -1,39 +1,7 @@
 <?php require_once('Include/Sessions.php'); ?>
-<?php require_once('Include/functions.php') ?>
+<?php require_once('src/deletepost_c.php') ?>
 <?php ConfirmLogin(); ?>
-<?php
-if ( isset( $_POST['post-delete'])) {
-	$sql = "DELETE  FROM cms_post WHERE post_id = '$_POST[deleteID]' ";
-	$exec = Query($sql);
-	if ($exec) {
-		$_SESSION['successMessage'] = "Post Deleted Successfully";
-		Redirect_To('Dashboard.php');
-	}else {
-		$_SESSION['errorMessage'] = "Something Went Wrong, Post Is Not Deleted. Please Try Again Later";
-		Redirect_To('Dashboard.php');
-	}
 
-}else if( isset($_GET['delete_post_id'])) {
-	if (!empty($_GET['delete_post_id'])) {
-		$sql = "SELECT * FROM cms_post WHERE post_id = '$_GET[delete_post_id]'";
-		$exec = Query($sql);
-		if (mysqli_num_rows($exec) > 0 ) {
-			if ($post = mysqli_fetch_assoc($exec)) {
-				$post_id = $post['post_id'];
-				$post_date = $post['post_date_time'];
-				$post_title = $post['title'];
-				$post_category = $post['category'];
-				$post_author = $post['author'];
-				$post_image = $post['image'];
-				$post_content = $post['post'];
-			}
-		} 
-	}
-}else {
-	Redirect_To('dashboard.php');
-}
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,34 +57,9 @@ if ( isset( $_POST['post-delete'])) {
 								<labal for="post-title">Title</labal>
 								<input disabled type="text" name="post-title" class="form-control" id="post-title" value="<?php echo $post_title ?>">
 							</div>
-							<div class="form-group">
-								<label>Existing Category : <?php echo htmlentities($post_category); ?></label><br>
-								<labal for="post-category">Change Category</labal>
-								<select disabled class="form-control" name="post-category" id="post-category" value="<?php echo $post_category ?>">
-									<?php
-										$sql = "SELECT cat_name FROM cms_category";
-										$exec = Query($sql);
-										$selected = "";
-										while($row = mysqli_fetch_assoc($exec)){ 
-											// if ( $row['cat_name'] == $post_category ) {
-											// 	$select = 'selected';
-											// }
-											if($post_category === $row['cat_name']) {
-												?>
-												<option selected="selected" ><?php echo htmlentities($row['cat_name']) ?></option>
-												<?php
-											}else {
-												?>
-												<option><?php echo htmlentities($row['cat_name']) ?></option>
-												<?php
-											}
-										}
-									?>
-								</select>
-							</div>
 							<label>Existing Image: <img src="Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'> </label>
 							<div class="form-group">
-								<labal for="post-image">Change Image</labal>
+								<labalkok for="post-image">Change Image</labalkok>
 								<input disabled type="File" name="post-image" class="form-control">
 							</div>
 							<div class="form-group">

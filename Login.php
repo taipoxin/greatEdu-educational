@@ -1,6 +1,7 @@
 <?php
 include('Include/Sessions.php');
 include('Include/functions.php');
+include('Include/dbFunctions.php');
 if ( isset($_POST['submit'])) {
 	$username = $_POST['username'];
 	$password = $_POST['password'];

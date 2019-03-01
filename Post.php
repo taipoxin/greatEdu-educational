@@ -1,5 +1,7 @@
 <?php require_once('Include/Sessions.php'); ?>
 <?php require_once('Include/functions.php') ?>
+<?php require_once('Include/dbFunctions.php') ?>
+<?php require_once('Include/fileFunctions.php') ?>
 <?php 
 	$query = "SELECT заголовок FROM Статьи WHERE id = '$_GET[id]'";
 	$exec = QueryNew($query);

@@ -1,5 +1,7 @@
 <?php require_once('Include/Sessions.php') ?>
 <?php require_once('Include/functions.php') ?>
+<?php require_once('Include/dbFunctions.php') ?>
+<?php require_once('Include/fileFunctions.php') ?>
 <?php ConfirmLogin(); ?>
 <?php
 if ( isset($_GET['Approve_ID'])) {
