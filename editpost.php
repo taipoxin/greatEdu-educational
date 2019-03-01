@@ -1,5 +1,6 @@
 <?php require_once('Include/Sessions.php'); ?>
 <?php require_once('Include/functions.php') ?>
+<?php require_once('Include/dbFunctions.php') ?>
 <?php ConfirmLogin(); ?>
 <?php
 if ( isset( $_POST['post-update'])) {
@@ -20,8 +21,6 @@ if ( isset( $_POST['post-update'])) {
 		$newImage = false;
 	}
 	$imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
-	// echo $imageDirectory;
-	// echo $_FILES['post-image'];
 	$sql = "UPDATE Статьи SET дата_публикации ='$dateTime', заголовок = '$title',  изображение = '$updatedImage', файл_контент = '$content' WHERE id = '$_POST[idFromUrl]' ";
 	$exec = QueryNew($sql);
 	if($exec) {
@@ -31,34 +30,28 @@ if ( isset( $_POST['post-update'])) {
 		else {
 			$_SESSION['errorMessage'] = 'Something Went Wrong With saving file Please Try Again Later';
 		}
-		// $_SESSION['imgDir'] = $imageDirectory;
-		// $_SESSION['img'] = $_FILES['post-image'];
-		// echo $_FILES['post-image']['tmp_name'];
-		// echo $imageDirectory;
 		Redirect_To('Dashboard.php');
-	}else {
+	} else {
 		$_SESSION['errorMessage'] = 'Something Went Wrong With db write. Please Try Again Later';
 		Redirect_To('Dashboard.php');
 	}
 
-}else if( isset($_GET['post_id'])) {
+} else if( isset($_GET['post_id'])) {
 	if (!empty($_GET['post_id'])) {
+
 		$sql = "SELECT * FROM Статьи WHERE id = '$_GET[post_id]'";
-		$exec = QueryNew($sql);
-		if (mysqli_num_rows($exec) > 0 ) {
-			if ($post = mysqli_fetch_assoc($exec)) {
-				$post_id = $post['id'];
-				$post_date = $post['дата_публикации'];
-				$post_title = $post['заголовок'];
-				// $post_category = $post['category'];
-				$post_category = 'категория';
-				$post_author = $post['автор'];
-				$post_image = $post['изображение'];
-				$post_content = 'текст_поста';
-			}
-		} 
+		$res = execQuery($sql);
+		$post = $res[0];
+		$post_id = $post['id'];
+		$post_date = $post['дата_публикации'];
+		$post_title = $post['заголовок'];
+		// $post_category = $post['category'];
+		$post_category = 'категория';
+		$post_author = $post['автор'];
+		$post_image = $post['изображение'];
+		$post_content = 'текст_поста';
 	}
-}else {
+} else {
 	Redirect_To('dashboard.php');
 }
 
@@ -116,28 +109,9 @@ if ( isset( $_POST['post-update'])) {
 								<input type="text" name="post-title" class="form-control" id="post-title" value="<?php echo $post_title ?>">
 							</div>
 							<div class="form-group">
-								<label>Existing Category : <?php echo htmlentities($post_category); ?></label><br>
+								<!-- <label>Existing Category : <?php echo htmlentities($post_category); ?></label><br> -->
 								<!-- <label for="post-category">Change Category</label>
 								<select class="form-control" name="post-category" id="post-category" value="<?php echo $post_category ?>">
-									<?php
-										$sql = "SELECT cat_name FROM cms_category";
-										$exec = Query($sql);
-										$selected = "";
-										while($row = mysqli_fetch_assoc($exec)){ 
-											// if ( $row['cat_name'] == $post_category ) {
-											// 	$select = 'selected';
-											// }
-											if($post_category === $row['cat_name']) {
-												?>
-												<option selected="selected" ><?php echo htmlentities($row['cat_name']) ?></option>
-												<?php
-											}else {
-												?>
-												<option><?php echo htmlentities($row['cat_name']) ?></option>
-												<?php
-											}
-										}
-									?>
 								</select> -->
 							</div>
 							<input type="hidden" name="MAX_FILE_SIZE" value="300000" />

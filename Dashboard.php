@@ -1,5 +1,6 @@
 <?php require_once('Include/Sessions.php') ?>
 <?php require_once('Include/functions.php') ?>
+<?php require_once('Include/dbFunctions.php') ?>
 <?php ConfirmLogin(); ?>
 <!DOCTYPE html>
 <html>

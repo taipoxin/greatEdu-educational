@@ -2,18 +2,14 @@
 
 function QueryNew ($query) {
 	global $con2;
-
 	try {
-
 		$exec = mysqli_query($con2,$query) or die(mysqli_error($con2));
 		if($exec) {
 			return $exec;
 		}
-	
 	}catch (Exception $e) {
 		echo $e->getMessage();
 	}
-
 	return false;
 }
 
