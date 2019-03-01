@@ -1,6 +1,5 @@
 <?php require_once('Include/Sessions.php'); ?>
 <?php require_once('Include/functions.php') ?>
-<?php require_once('Include/dbFunctions.php') ?>
 <?php
 
 ?>
@@ -48,16 +47,14 @@
 		<div class="blog-title">
 			<div class="row">
 				<div class="col-md-8 ">
-					<h1 class="text-warning">Статьи</h1>
-					<p class="lead"></p>
+					<h1 class="text-warning">Welcome To My Blog </h1>
+					<p class="lead">By Dmitry Ermakovich</p>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-8">
 				<?php
-
-
 					$page = 1;
 					$query = "";
 					if ( isset($_GET['search'])) {
@@ -75,32 +72,24 @@
 						if ($page <= 0) {
 							$showPost = 0;
 						}
-						$query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT $showPost,5	";
+						$query = "SELECT * FROM cms_post ORDER BY post_date_time DESC LIMIT $showPost,5	";
 
 					}else{
 
-						$query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT 0,5	";						
+						$query = "SELECT * FROM cms_post ORDER BY post_date_time DESC LIMIT 0,5	";						
 					}
 
-					$exec = QueryNew($query) or die(mysqli_error($con));
+					$exec = Query($query) or die(mysqli_error($con));
 					if( $exec ) {
 						if (mysqli_num_rows($exec) > 0) {
 							while ( $post = mysqli_fetch_assoc($exec) ) {
-								$post_id = $post['id'];
-								$post_date = $post['дата_публикации'];
-								$post_title = $post['заголовок'];
-								$post_category = 'категория';
-								$author_id = $post['автор'];
-								$post_image = $post['изображение'];
-								//$post_content = substr($post['post'], 0,150) . '...'; 
-								// $post_content = $post['файл_контент'] . '...'; 
-								$post_file = $post['файл_контент'];
-								$text = LoadText($post_file);
-								$post_content = substr($text, 0,200) . '...';
-								
-								$author_obj = getArticleAuthor($author_id);
-								$post_author = $author_obj['никнейм'];
-
+								$post_id = $post['post_id'];
+								$post_date = $post['post_date_time'];
+								$post_title = $post['title'];
+								$post_category = $post['category'];
+								$post_author = $post['author'];
+								$post_image = $post['image'];
+								$post_content = substr($post['post'], 0,150) . '...'; 
 							?>
 							<div class="post">
 								<div class="post-title"><h1><?php echo htmlentities($post_title); ?></h1></div>
@@ -109,7 +98,7 @@
 								</div>
 								<div class="post-info">
 									<p class="lead">
-									Публиковано: <?php echo htmlentities($post_date); ?> | Автор: <?php echo htmlentities($post_author);?>
+									Published on: <?php echo htmlentities($post_date); ?> | Category: <?php echo htmlentities($post_category);?>
 									</p>
 								</div>
 								<div class="post-content">

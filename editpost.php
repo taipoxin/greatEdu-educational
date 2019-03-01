@@ -25,7 +25,7 @@ if ( isset( $_POST['post-update'])) {
 	$sql = "UPDATE Статьи SET дата_публикации ='$dateTime', заголовок = '$title',  изображение = '$updatedImage', файл_контент = '$content' WHERE id = '$_POST[idFromUrl]' ";
 	$exec = QueryNew($sql);
 	if($exec) {
-		if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
+		if (!empty($image) && move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
 			$_SESSION['successMessage'] = 'Post Edit Successfully';
 		}
 		else {

@@ -74,12 +74,7 @@
 								// $post_content = $post['post']; 
 								$post_from_db = $post['файл_контент'];
 							}
-							if (is_null($post_from_db)) {
-								$post_content = 'error load';
-							}
-							else {
-								$post_content = file_get_contents('Upload/contents/' . $post_from_db);
-							}
+							$post_content = LoadText($post_from_db);
 
 							?>
 							<div class="post">

@@ -23,22 +23,18 @@ function Query ($query) {
 	return false;
 }
 
-function QueryNew ($query) {
-	global $con2;
-
-	try {
-
-		$exec = mysqli_query($con2,$query) or die(mysqli_error($con2));
-		if($exec) {
-			return $exec;
-		}
-	
-	}catch (Exception $e) {
-		echo $e->getMessage();
+function LoadText($file) {
+	$post_content = '';
+	if (is_null($file)) {
+		$post_content = 'error load';
 	}
-
-	return false;
+	else {
+		$post_content = file_get_contents('Upload/contents/' . $file);
+	}
+	return $post_content;
 }
+
+
 
 function LoginAttempt($username, $password) {
 	// $query = "SHOW TABLES";
