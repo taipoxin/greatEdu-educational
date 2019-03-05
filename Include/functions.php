@@ -5,7 +5,7 @@ function Redirect_To ($location) {
 	header('location:' . $location);
 	exit;
 }  
-
+// TODO: old
 function Query ($query) {
 	global $con;
 	try {

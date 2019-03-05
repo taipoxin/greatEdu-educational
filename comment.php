@@ -1,6 +1,6 @@
 <?php require_once('Include/Sessions.php'); ?>
 <?php require_once('Include/functions.php') ?>
-<?php
+<?php // TODO: закончить комментирование
 	if(isset($_POST['submit'])) {
 		if(!empty($_POST['submit'])) {
 			$postID = $_POST['id'];

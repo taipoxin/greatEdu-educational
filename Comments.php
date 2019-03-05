@@ -3,7 +3,7 @@
 <?php require_once('Include/dbFunctions.php') ?>
 <?php require_once('Include/fileFunctions.php') ?>
 <?php ConfirmLogin(); ?>
-<?php
+<?php	// TODO: all old
 if ( isset($_GET['Approve_ID'])) {
 	if ( !empty($_GET['Approve_ID'])) {
 		$sql = "UPDATE comment SET status ='approved', approve_by = '$_SESSION[username]' WHERE id = '$_GET[Approve_ID]'";

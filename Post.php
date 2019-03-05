@@ -201,7 +201,7 @@
 					<div class="panel-body">
 						<nav>
 							<ul>
-						<?php 
+						<?php // TODO: here, old code
 							$sql = "SELECT cat_name FROM cms_category ";
 							$exec = Query($sql);
 							if (mysqli_num_rows($exec) > 0) {

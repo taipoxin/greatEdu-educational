@@ -3,7 +3,7 @@
 <?php require_once('Include/dbFunctions.php') ?>
 <?php require_once('Include/fileFunctions.php') ?>
 <?php ConfirmLogin(); ?>
-<?php
+<?php   // TODO: here all old
 
 if( isset($_POST['submit_category'])){
 	date_default_timezone_set('Asia/Manila');

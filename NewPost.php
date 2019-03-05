@@ -3,7 +3,7 @@
 <?php require_once('Include/dbFunctions.php') ?>
 <?php require_once('Include/fileFunctions.php') ?>
 <?php ConfirmLogin(); ?>
-<?php
+<?php // TODO: old, should be refactored
 
 date_default_timezone_set('Asia/Manila');
 $time = time();
