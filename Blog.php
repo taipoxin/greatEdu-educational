@@ -9,11 +9,11 @@
 <html>
 <head>
 	<title>Blog</title>
-	<script src="jquery-3.2.1.min.js"></script>
+	<script src="public/jquery-3.2.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="Assets/style.css">
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="public/Assets/style.css">
+	<script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="blog">
@@ -235,7 +235,7 @@
 </div>
 <div class="row navbar-inverse" id="blog-footer">
 	<div class="footer-wrapper">
-		<p>All Rights Reserved 2017 | Theme By :  Dmitry Ermakovich</p>
+		<p>All Rights Reserved 2019 | Theme By :  Dmitry Ermakovich</p>
 	</div>
 </div>
 </body>

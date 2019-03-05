@@ -16,11 +16,11 @@
 <html>
 <head>
 	<title><?php echo $title_title; ?></title>
-	<script src="jquery-3.2.1.min.js"></script>
+	<script src="public/jquery-3.2.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="Assets/style.css">
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="public/Assets/style.css">
+	<script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="blog">
@@ -139,7 +139,7 @@
 							<div class="comment-block" style="margin-bottom: 20px; ">
 								<div class="row">
 									<div class="col-sm-2" style="height: 70px;width: 100px; padding:0; margin:0;">
-									<img src="Assets/Images/user-default.png" height="70px" width="100px">
+									<img src="public/Assets/Images/user-default.png" height="70px" width="100px">
 									</div>
 									<div class="col-sm-10">
 										<div><span class="lead text-info"><?php echo $c_email; ?></span></div>
@@ -163,7 +163,7 @@
 						<h2 class="panel-title">About Me</h2>
 					</div>
 					<div>
-							<img class="img-responsive img-circle imageicon" src="Assets/Images/user-default.png">
+							<img class="img-responsive img-circle imageicon" src="public/Assets/Images/user-default.png">
 						</div>
 					<div class="panel-body">
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book

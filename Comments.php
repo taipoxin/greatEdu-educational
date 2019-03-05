@@ -45,11 +45,11 @@ if ( isset($_GET['Unapprove_ID'])) {
 <html>
 <head>
 	<title>Comments</title>
-	<script src="jquery-3.2.1.min.js"></script>
+	<script src="public/jquery-3.2.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="Assets/style.css">
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="public/Assets/style.css">
+	<script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="heading">
@@ -182,6 +182,6 @@ if ( isset($_GET['Unapprove_ID'])) {
 	</div>
 </div>
 
-<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="public/jquery.js"></script>
 </body>
 </html>
