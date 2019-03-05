@@ -65,6 +65,7 @@
 						if ( empty($_GET['search'])) {
 							Redirect_To('Blog.php');
 						}else {
+							// TODO: reformat search
 							$search = $_GET['search'];
 							$query = "SELECT * FROM cms_post WHERE post_date_time LIKE '%$search%' OR title LIKE '%$search%' OR category LIKE '$search%' ";
 						}
