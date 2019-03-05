@@ -5,19 +5,6 @@ function Redirect_To ($location) {
 	header('location:' . $location);
 	exit;
 }  
-// TODO: old
-function Query ($query) {
-	global $con;
-	try {
-		$exec = mysqli_query($con,$query) or die(mysqli_error($con));
-		if($exec) {
-			return $exec;
-		}
-	}catch (Exception $e) {
-		echo $e->getMessage();
-	}
-	return false;
-}
 
 function LoadText($file) {
 	$post_content = '';
