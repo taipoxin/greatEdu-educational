@@ -1,6 +1,6 @@
 <?php require_once('Include/Sessions.php'); ?>
 <?php require_once('src/editpost_c.php') ?>
-<?php ConfirmLogin(); ?>
+<?php adminRequired(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -28,8 +28,7 @@
 					<span = class="glyphicon glyphicon-list"></span>
 					&nbsp;New Post</a></li>
 					<li class=""><a href="Categories.php">
-					<span = class="glyphicon glyphicon-tags"></span>
-					&nbsp;Categories</a></li>
+				
 					<li><a href="Categories.php">
 					<span = class="glyphicon glyphicon-user"></span>
 					&nbsp;Manage Admin</a></li>

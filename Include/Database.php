@@ -3,7 +3,7 @@ $server = 'localhost';
 $username = 'tiranid';
 $password = ' ';
 $db_name = 'cms_blog';
-$con;
+// $con;
 global $con2;
 
 try{

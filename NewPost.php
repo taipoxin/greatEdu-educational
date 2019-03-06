@@ -2,7 +2,7 @@
 <?php require_once('Include/functions.php') ?>
 <?php require_once('Include/dbFunctions.php') ?>
 <?php require_once('Include/fileFunctions.php') ?>
-<?php ConfirmLogin(); ?>
+<?php adminRequired(); ?>
 <?php // TODO: old, should be refactored
 
 date_default_timezone_set('Asia/Manila');
@@ -69,10 +69,7 @@ if ( isset( $_POST['post-submit'])) {
 					<li class="active"><a href="NewPost.php">
 					<span = class="glyphicon glyphicon-list"></span>
 					&nbsp;New Post</a></li>
-					<li class=""><a href="Categories.php">
-					<span = class="glyphicon glyphicon-tags"></span>
-					&nbsp;Categories</a></li>
-					<li><a href="Categories.php">
+					<li><a href="Admin.php">
 					<span = class="glyphicon glyphicon-user"></span>
 					&nbsp;Manage Admin</a></li>
 					<li><a href="Admin.php">

@@ -52,7 +52,7 @@ function IsLogin() {
 	return $login;
 }
 
-function ConfirmLogin () {
+function loginRequired () {
 	$login = false;
 	if ( isset($_SESSION['user_id'])) {
 		$login = true;
@@ -63,5 +63,7 @@ function ConfirmLogin () {
 		Redirect_To('Login.php');
 	}
 }
+
+
 
 ?>

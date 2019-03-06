@@ -10,16 +10,18 @@ if ( isset($_POST['submit'])) {
 	}else {
 		$foundAccount = LoginAttempt($username, $password);
 		if ($foundAccount) {
-			// $foundAccount['Tables_in_great_edu'] = 'kek';
-			// echo '<pre>'; print_r($foundAccount); echo '</pre>';
-			// echo '<pre>'; echo $foundAccount['Tables_in_great_edu']; echo '</pre>';
 
-			// echo $foundAccount;
 			$_SESSION['errorMessage'] = $foundAccount;
-			$_SESSION['successMessage'] = 'Login Successfully Welcome ' . $foundAccount['username'];
+			$_SESSION['successMessage'] = 'Login Successfully Welcome ' . $foundAccount['никнейм'];
 			$_SESSION['user_id'] = $foundAccount['id'];
-			$_SESSION['username'] = $foundAccount['username'];
-			Redirect_To('Dashboard.php');
+			$_SESSION['username'] = $foundAccount['никнейм'];
+			// если админ
+			if ($foundAccount['группа'] == '2') {
+				Redirect_To('Dashboard.php');
+			}
+			else {
+				Redirect_To('Blog.php');
+			}
 		}else {
 			$_SESSION['errorMessage'] = 'Username/Password Is Invalid';
 		}

@@ -2,7 +2,7 @@
 <?php require_once('Include/functions.php') ?>
 <?php require_once('Include/dbFunctions.php') ?>
 <?php require_once('Include/fileFunctions.php') ?>
-<?php ConfirmLogin(); ?>
+<?php adminRequired(); ?>
 <?php require_once('src/admin_c.php') ?>
 
 <!DOCTYPE html>
@@ -31,9 +31,6 @@
 					<span = class="glyphicon glyphicon-list"></span>
 					&nbsp;New Post</a></li>
 					<li class=""><a href="Categories.php">
-					<span = class="glyphicon glyphicon-tags"></span>
-					&nbsp;Categories</a></li>
-					<li class="active"><a href="Categories.php">
 					<span = class="glyphicon glyphicon-user"></span>
 					&nbsp;Manage Admin</a></li>
 					<li><a href="Comments.php">
