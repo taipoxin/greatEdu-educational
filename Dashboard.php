@@ -28,9 +28,9 @@
 					<li><a href="NewPost.php">
 					<span = class="glyphicon glyphicon-list"></span>
 					&nbsp;New Post</a></li>
-					<li><a href="Categories.php">
+					<!-- <li><a href="Categories.php">
 					<span = class="glyphicon glyphicon-tags"></span>
-					&nbsp;Categories</a></li>
+					&nbsp;Categories</a></li> -->
 					<li><a href="Admin.php">
 					<span = class="glyphicon glyphicon-user"></span>
 					&nbsp;Manage Admin</a></li>

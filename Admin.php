@@ -3,56 +3,8 @@
 <?php require_once('Include/dbFunctions.php') ?>
 <?php require_once('Include/fileFunctions.php') ?>
 <?php ConfirmLogin(); ?>
-<?php // TODO: everything old
-if ( isset($_POST['submit'])) {
-	date_default_timezone_set('Asia/Manila');
-	$time = time();
-	$dateTime = strftime('%Y-%m-%d %H:%M:%S ',$time);
-	$username = mysqli_real_escape_string($con,$_POST['username']);
-	$password = mysqli_real_escape_string($con,$_POST['password']);
-	$confirmPassword = mysqli_real_escape_string($con,$_POST['confirm_password']);
-	$creator = $_SESSION['username'];
-	if ( empty($username) || empty($password) || empty($confirmPassword)) {
-		$_SESSION['errorMessage'] = 'All Fields Must Be Fill Out';
-		Redirect_To('Admin.php');
-	}else if (strlen($password) < 7) {
-		$_SESSION['errorMessage'] = 'Password Must Be 7 Or More Characters';
-		Redirect_To('Admin.php');
-	}else if ($password !== $confirmPassword) {
-		$_SESSION['errorMessage'] = 'Password And Re-tpe Password Does Not Match';
-		Redirect_To('Admin.php');
-	}else {
-		$sql = "INSERT INTO cms_admin (date_time, username, password, added_by) VALUES('$dateTime', '$username', '$password', '$creator')";
-		$exec = Query($sql);
-		if ($exec) {
-			$_SESSION['successMessage'] = 'New Admin Has Been Created Successfully';
-			mysqli_close($con);
-			Redirect_To('Admin.php');
-		} else {
-			$_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
-			Redirect_To('Admin.php');
-		}
-	}
-}
+<?php require_once('src/admin_c.php') ?>
 
-if ( isset($_GET['del_admin'])) {
-	if ( !empty($_GET['del_admin'])) {
-		$sql = "DELETE FROM cms_admin WHERE id = '$_GET[del_admin]'";
-		$exec = Query($sql);
-		if ($exec) {
-			$_SESSION['successMessage'] = 'Admin Deleted Successfully';
-			mysqli_close($con);
-			Redirect_To('Admin.php');
-			
-		}else {
-			$_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
-			mysqli_close($con);
-			Redirect_To('Admin.php');
-
-		}
-	}
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,7 +76,9 @@ if ( isset($_GET['del_admin'])) {
 						</div>
 					</div>
 					<div id="cat_table">
-						<?php echo deleteCategory(); ?>
+						<?php 
+						// TODO: refactor deleteCategory
+						echo deleteCategory(); ?>
 						<h3>Registered Admins</h3>
 						<table class="table table-striped table-hover">
 							<tr>
@@ -135,25 +89,27 @@ if ( isset($_GET['del_admin'])) {
 								<th>Action</th>
 							</tr>
 							<?php
-								$num = 1;
-								$viewSql = "SELECT * FROM cms_admin ORDER BY date_time DESC";
-								$exec = Query($viewSql);
-								while($data = mysqli_fetch_assoc($exec)) {
-									$id = $data['id'];
-									$dateAdded = $data['date_time'];
-									$username = $data['username'];
-									$creator = $data['added_by'];
-									echo "<tr>
-										<td>$num</td>
-											<td>$dateAdded</td>
-											<td>$username</td>
-											<td>$creator</td>
-											<td><a href='Admin.php?del_admin=$id'><button class='btn btn-danger'>Delete</button></a></td>
-										</tr>
-									";
-									$num++;
-								} 
-								mysqli_close($con);
+								// TODO: add delete
+								
+								// $num = 1;
+								// $viewSql = "SELECT * FROM cms_admin ORDER BY date_time DESC";
+								// $exec = Query($viewSql);
+								// while($data = mysqli_fetch_assoc($exec)) {
+								// 	$id = $data['id'];
+								// 	$dateAdded = $data['date_time'];
+								// 	$username = $data['username'];
+								// 	$creator = $data['added_by'];
+								// 	echo "<tr>
+								// 		<td>$num</td>
+								// 			<td>$dateAdded</td>
+								// 			<td>$username</td>
+								// 			<td>$creator</td>
+								// 			<td><a href='Admin.php?del_admin=$id'><button class='btn btn-danger'>Delete</button></a></td>
+								// 		</tr>
+								// 	";
+								// 	$num++;
+								// } 
+								// mysqli_close($con);
 							?>
 						</table>
 					</div>
