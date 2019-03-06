@@ -4,7 +4,7 @@ $username = 'tiranid';
 $password = ' ';
 $db_name = 'cms_blog';
 $con;
-$con2;
+global $con2;
 
 try{
 	// TODO: old
