@@ -1,6 +1,16 @@
 <?php
 
 
+function getQuoteAuthor($id) {
+  $query = "SELECT * FROM Авторы WHERE id = $id";
+  $exec = QueryNew($query);
+  if ($post = mysqli_fetch_assoc($exec)) {
+    return $post;
+  }
+  // $author = $resultArray[0];
+  return null;
+}
+
 function fillQuotes() {
   global $con2;
   $page = 1;
@@ -35,40 +45,47 @@ function fillQuotes() {
         $post_id = $post['id'];
         $post_date = $post['дата_публикации'];
         $post_title = 'заголовок';
-        $post_quote_author = $post['автор'] ;
+        $quote_auth_id = $post['автор'] ;
+        $authorObj = getQuoteAuthor($quote_auth_id);
+        $post_quote_author = $authorObj['фамилия'];
         
         $author_id = $post['автор_публикации'];
         $author_obj = getArticleAuthor($author_id);
         $post_author = $author_obj['никнейм'];
 
         $text = $post['текст'];
-        $post_content = substr($text, 0, 200) . '...';
+        $post_content = $text;
+        if (strlen($text) > 350) {
+          $post_content = substr($text, 0, 350) . '...';
+        }
+
+
 
 
         ?>
-        <div class="post">
-          <div class="post-title">
-            <h1><?php echo htmlentities($post_title); ?></h1>
-          </div>
-          <!-- <div class="thumbnail">
-            <img class="img-responsive img-rounded" style="height: 100px;" 
-            src="Upload/Image/19222724_1555772291131415_6272807584274196775_o.jpg">
-          </div> -->
+        <div class="post" style="border: black solid 1px; border-radius: 5px; background-color: lightgrey;" >
           <div class="post-info">
-            <p class="lead">
-              Публиковано: <?php echo htmlentities($post_date); ?> <br> Пользователь: <?php echo htmlentities($post_author); 
-              ?> <br> Автор цитаты: <?php echo htmlentities($post_quote_author); ?>
+            <p class="lead" style="color: darkblue;">
+              Автор цитаты: <?php echo htmlentities($post_quote_author); ?>
             </p>
           </div>
-          <div class="post-content">
-            <p class="lead"><?php echo htmlentities($post_content); ?></p>
+          <div class="post-content" style="color: black;">
+            <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>
-          <p>
-            <a href="Post.php?id=<?php echo $post_id; ?>">
-              <button class="btn btn-info btn-lg" id="read_more_btn">Read More</button>
-            </a>
-            <div class="clearfix"></div>
-          </p>
+          <div style="display: flex; justify-content: space-between;">
+            <div class="post-info">
+              <p class="lead" style="color: darkblue; margin-bottom: 1px;">
+                Публиковано: <?php echo htmlentities($post_date); ?> <br> Пользователь: <?php echo htmlentities($post_author); 
+                ?> 
+              </p>
+            </div>
+            <!-- <p> -->
+              <a href="Post.php?id=<?php echo $post_id; ?>">
+                <button style="" class="btn btn-info btn-lg" id="read_more_btn">Read More</button>
+              </a>
+              <!-- <div class="clearfix"></div> -->
+            <!-- </p> -->
+          </div>
         </div>
   <?php
   }

@@ -16,7 +16,7 @@
   <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body >
   <div class="blog">
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container">
