@@ -1,33 +1,36 @@
 <?php
 session_start();
 
-function Message () {
-	if ( isset($_SESSION['errorMessage'])) {
-		$ouput = "
+function Message()
+{
+  if (isset($_SESSION['errorMessage'])) {
+    $ouput = "
 			<div class='alert alert-danger'>" .
-			htmlentities($_SESSION["errorMessage"]) .
-			"</div>
+    htmlentities($_SESSION["errorMessage"]) .
+      "</div>
 		";
-		$_SESSION['errorMessage'] = null;
-		return $ouput;
-	}
-} 
-
-function SuccessMessage () {
-	if ( isset($_SESSION['successMessage'])) {
-		$ouput = "
-			<div class='alert alert-success'>" .
-			htmlentities($_SESSION["successMessage"]) .
-			"</div>
-		";
-		$_SESSION['successMessage'] = null;
-		return $ouput;
-	}
+    $_SESSION['errorMessage'] = null;
+    return $ouput;
+  }
 }
 
-function deleteCategory () {
-	if( isset($_SESSION['optDeleteCategory'])) {
-		$opt = "
+function SuccessMessage()
+{
+  if (isset($_SESSION['successMessage'])) {
+    $ouput = "
+			<div class='alert alert-success'>" .
+    htmlentities($_SESSION["successMessage"]) .
+      "</div>
+		";
+    $_SESSION['successMessage'] = null;
+    return $ouput;
+  }
+}
+
+function deleteCategory()
+{
+  if (isset($_SESSION['optDeleteCategory'])) {
+    $opt = "
 			<div style='text-align:center;'>
 				<span class='lead'>Are You Sure You Want $_SESSION[categoryName]?</span>
 				<div class='alert alert-info'>
@@ -35,35 +38,33 @@ function deleteCategory () {
 				</div>
 			</div>
 		";
-		$_SESSION['optDeleteCategory'] = null;
-		$_SESSION['del_id'] = null;
-		$_SESSION['optDeleteCategory'] = null;
-		$_SESSION['categoryName'] = null;
-		return $opt;
+    $_SESSION['optDeleteCategory'] = null;
+    $_SESSION['del_id'] = null;
+    $_SESSION['optDeleteCategory'] = null;
+    $_SESSION['categoryName'] = null;
+    return $opt;
 
-	}
+  }
 }
 
-function IsLogin() {
-	$login = false;
-	if ( isset($_SESSION['user_id'])) {
-		$login = true;
-	}
-	return $login;
+function IsLogin()
+{
+  $login = false;
+  if (isset($_SESSION['user_id'])) {
+    $login = true;
+  }
+  return $login;
 }
 
-function loginRequired () {
-	$login = false;
-	if ( isset($_SESSION['user_id'])) {
-		$login = true;
-	}
+function loginRequired()
+{
+  $login = false;
+  if (isset($_SESSION['user_id'])) {
+    $login = true;
+  }
 
-	if ($login === false) {
-		$_SESSION['errorMessage'] = 'Login Required';
-		Redirect_To('Login.php');
-	}
+  if ($login === false) {
+    $_SESSION['errorMessage'] = 'Login Required';
+    Redirect_To('Login.php');
+  }
 }
-
-
-
-?>
