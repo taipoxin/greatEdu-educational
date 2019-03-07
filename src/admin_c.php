@@ -61,6 +61,7 @@ function addNewAdmin($con2)
   return true;
 }
 
+global $con2;
 if (isset($_POST['submit'])) {
   $res = addNewAdmin($con2);
   if ($res) {
@@ -74,12 +75,12 @@ if (isset($_GET['del_admin'])) {
     $exec = Query($sql);
     if ($exec) {
       $_SESSION['successMessage'] = 'Admin Deleted Successfully';
-      mysqli_close($con);
+      mysqli_close($con2);
       Redirect_To('Admin.php');
 
     } else {
       $_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
-      mysqli_close($con);
+      mysqli_close($con2);
       Redirect_To('Admin.php');
 
     }

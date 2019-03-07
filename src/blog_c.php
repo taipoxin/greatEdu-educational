@@ -1,5 +1,5 @@
 <?php
-
+global $con2;
 $page = 1;
 $query = "";
 if (isset($_GET['search'])) {
@@ -25,7 +25,7 @@ if (isset($_GET['search'])) {
   $query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT 0,5	";
 }
 
-$exec = QueryNew($query) or die(mysqli_error($con));
+$exec = QueryNew($query) or die(mysqli_error($con2));
 if ($exec) {
   if (mysqli_num_rows($exec) > 0) {
     while ($post = mysqli_fetch_assoc($exec)) {

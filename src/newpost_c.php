@@ -3,6 +3,7 @@
 // TODO: old, should be refactored
 function handleNewPost()
 {
+  global $con2;
   // date_default_timezone_set('Asia/Manila');
   $time = time();
   if (isset($_POST['post-submit'])) {

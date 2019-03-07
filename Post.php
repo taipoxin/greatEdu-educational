@@ -4,6 +4,7 @@
 <?php require_once('Include/fileFunctions.php') ?>
 <?php require_once('src/post_c.php') ?>
 <?php 
+  global $title_title;
 	fillHeader();
 ?>
 <!DOCTYPE html>

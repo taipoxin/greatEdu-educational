@@ -1,6 +1,9 @@
 <?php require_once('Include/Sessions.php'); ?>
 <?php require_once('src/deletepost_c.php') ?>
 <?php loginRequired(); ?>
+<?php 
+global $post_title, $post_image, $post_content;
+?>
 
 <!DOCTYPE html>
 <html>

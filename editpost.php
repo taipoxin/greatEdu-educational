@@ -2,6 +2,8 @@
 <?php require_once('src/editpost_c.php') ?>
 <?php adminRequired(); ?>
 <?php 
+
+  global $post_title, $post_image, $post_content;
 	handleUpdatePost();
 	fillEditData();
 ?>

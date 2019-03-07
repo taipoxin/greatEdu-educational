@@ -19,14 +19,14 @@ function handleUpdatePost()
     $author = $_SESSION['username'];
     $dateTime = strftime('%Y-%m-%d %T', $time);
     $title_length = strlen($title);
-    $content_lenght = strlen($content);
     $updatedImage = $image;
     if (empty($image)) {
       $updatedImage = $post_object['currentImage'];
       $newImage = false;
     }
-
+    
     $content = $post_object['post-content'];
+    $content_lenght = strlen($content);
     $filename = "post_$post_object[idFromUrl].txt";
     rewriteContentFile($filename, $content);
 

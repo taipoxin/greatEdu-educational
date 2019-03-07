@@ -16,7 +16,8 @@ function QueryNew($query)
 
 function execQuery($query)
 {
-  $exec = QueryNew($query) or die(mysqli_error($con));
+  global $con2;
+  $exec = QueryNew($query) or die(mysqli_error($con2));
   if ($exec) {
     $arr = [];
     if (mysqli_num_rows($exec) > 0) {

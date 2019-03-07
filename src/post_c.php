@@ -15,6 +15,8 @@ function fillHeader()
 
 function fillPostData()
 {
+  global $_GET, $post_title, $post_image, 
+    $post_category, $post_date, $post_author;
   if (isset($_GET['id'])) {
     $query = "SELECT * FROM Статьи WHERE id = '$_GET[id]'";
     $exec = QueryNew($query);
