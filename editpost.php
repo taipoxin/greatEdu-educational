@@ -1,6 +1,10 @@
 <?php require_once('Include/Sessions.php'); ?>
 <?php require_once('src/editpost_c.php') ?>
 <?php adminRequired(); ?>
+<?php 
+	handleUpdatePost();
+	fillEditData();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -64,7 +68,7 @@
 							</div>
 							<div class="form-group">
 								<labal for="post-content">Existing Content</labal>
-								<textarea rows="20" class="form-control" name="post-content" id="post-content"><?php echo htmlentities($post_content);  mysqli_close($con); ?></textarea>
+								<textarea rows="20" class="form-control" name="post-content" id="post-content"><?php echo htmlentities($post_content); ?></textarea>
 							</div>
 							<input type="hidden" name="idFromUrl" value="<?php echo $_GET['post_id']; ?>">
 							<input type="hidden" name="currentImage" value="<?php echo $post_image; ?>">

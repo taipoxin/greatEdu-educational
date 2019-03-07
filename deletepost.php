@@ -63,7 +63,7 @@
 							</div>
 							<div class="form-group">
 								<labal for="post-content">Existing Content</labal>
-								<textarea disabled rows="20" class="form-control" name="post-content" id="post-content"><?php echo htmlentities($post_content);  mysqli_close($con); ?></textarea>
+								<textarea disabled rows="20" class="form-control" name="post-content" id="post-content"><?php echo htmlentities($post_content); ?></textarea>
 							</div>
 							<input type="hidden" name="deleteID" value="<?php echo $_GET['delete_post_id']; ?>">
 							<input type="hidden" name="currentImage" value="<?php echo $post_image; ?>">

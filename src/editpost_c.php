@@ -4,8 +4,12 @@
 
 <?php
 
-function updatePost($post_object)
+function handleUpdatePost()
 {
+  global $_POST, $_SESSION;
+  if (isset($_POST['post-update'])) {
+    //   updatePost($_POST);
+    $post_object = $_POST;
     ini_set("safe_mode", false);
     // date_default_timezone_set('Asia/Manila');
     $time = time();
@@ -18,10 +22,10 @@ function updatePost($post_object)
     $content_lenght = strlen($content);
     $updatedImage = $image;
     if (empty($image)) {
-        $updatedImage = $post_object['currentImage'];
-        $newImage = false;
+      $updatedImage = $post_object['currentImage'];
+      $newImage = false;
     }
-   
+
     $content = $post_object['post-content'];
     $filename = "post_$post_object[idFromUrl].txt";
     rewriteContentFile($filename, $content);
@@ -30,44 +34,47 @@ function updatePost($post_object)
 	изображение = '$updatedImage', файл_контент = '$filename' WHERE id = '$post_object[idFromUrl]' ";
     $exec = QueryNew($sql);
     if ($exec) {
-        if (!empty($image)) {
-						$imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
-            if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
-                $_SESSION['successMessage'] = 'Post Edit Successfully: Updated Image';
-            } else {
-                $_SESSION['errorMessage'] = 'Something Went Wrong With saving file Please Try Again Later';
-            }
-            Redirect_To('Dashboard.php');
+      if (!empty($image)) {
+        $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
+        if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
+          $_SESSION['successMessage'] = 'Post Edit Successfully: Updated Image';
+        } else {
+          $_SESSION['errorMessage'] = 'Something Went Wrong With saving file Please Try Again Later';
         }
-        $_SESSION['successMessage'] = 'Post Edit Successfully';
-        Redirect_To('Dashboard.php');
+      } else {
+        $_SESSION['successMessage'] = 'Post Edit Successfully: w/o edit image';
+      }
     } else {
-        $_SESSION['errorMessage'] = 'Something Went Wrong With db write. Please Try Again Later';
-        Redirect_To('Dashboard.php');
+      $_SESSION['errorMessage'] = 'Something Went Wrong With db write. Please Try Again Later';
     }
+    Redirect_To('Dashboard.php');
+  }
 }
 
-if (isset($_POST['post-update'])) {
-    updatePost($_POST);
-} else if (isset($_GET['post_id'])) {
+function fillEditData()
+{
+  global $_GET, $post_id, $post_date, $post_title,
+  $post_category, $post_author, $post_image, $post_content;
+
+  if (isset($_GET['post_id'])) {
     if (!empty($_GET['post_id'])) {
 
-        $sql = "SELECT * FROM Статьи WHERE id = '$_GET[post_id]'";
-        $res = execQuery($sql);
-        $post = $res[0];
-        $post_id = $post['id'];
-        $post_date = $post['дата_публикации'];
-        $post_title = $post['заголовок'];
-        // $post_category = $post['category'];
-        $post_category = 'категория';
-        $post_author = $post['автор'];
-        $post_image = $post['изображение'];
-        $post_file = $post['файл_контент'];
-        $text = LoadText($post_file);
-        $post_content = $text;
+      $sql = "SELECT * FROM Статьи WHERE id = '$_GET[post_id]'";
+      $res = execQuery($sql);
+      $post = $res[0];
+      $post_id = $post['id'];
+      $post_date = $post['дата_публикации'];
+      $post_title = $post['заголовок'];
+      $post_category = 'категория';
+      $post_author = $post['автор'];
+      $post_image = $post['изображение'];
+      $post_file = $post['файл_контент'];
+      $text = LoadText($post_file);
+      $post_content = $text;
     }
-} else {
-    Redirect_To('dashboard.php');
+  } else {
+    Redirect_To('Dashboard.php');
+  }
 }
 
 ?>

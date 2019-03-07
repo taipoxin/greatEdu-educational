@@ -1,4 +1,5 @@
 <?php require_once('Include/Sessions.php') ?>
+<?php require_once('Include/Database.php') ?>
 <?php require_once('Include/functions.php') ?>
 <?php require_once('Include/dbFunctions.php') ?>
 <?php require_once('Include/fileFunctions.php') ?>
@@ -7,15 +8,15 @@
 if ( isset($_GET['Approve_ID'])) {
 	if ( !empty($_GET['Approve_ID'])) {
 		$sql = "UPDATE comment SET status ='approved', approve_by = '$_SESSION[username]' WHERE id = '$_GET[Approve_ID]'";
-		$exec = Query($sql);
+		$exec = QueryNew($sql);
 		if ( $exec) {
 			$_SESSION['SuccessMessage'] = 'Post Has Been Approved';
-			mysqli_close($con);
+			mysqli_close($con2);
 			Redirect_To('Comments.php');
 		}else {
 			$_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again';
-			Redirect_To['Comments.php'];
-			mysqli_close($con);
+			Redirect_To('Comments.php');
+			mysqli_close($con2);
 		}
 	}else {
 		Redirect_To('Comments.php');
@@ -25,15 +26,15 @@ if ( isset($_GET['Approve_ID'])) {
 if ( isset($_GET['Unapprove_ID'])) {
 	if ( !empty($_GET['Unapprove_ID'])) {
 		$sql = "UPDATE comment SET status ='unapprove'  WHERE id = '$_GET[Unapprove_ID]'";
-		$exec = Query($sql);
+		$exec = QueryNew($sql);
 		if ( $exec) {
 			$_SESSION['SuccessMessage'] = 'Post Has Been Unapproved';
-			mysqli_close($con);
+			mysqli_close($con2);
 			Redirect_To('Comments.php');
 		}else {
 			$_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again';
-			Redirect_To['Comments.php'];
-			mysqli_close($con);
+			Redirect_To('Comments.php');
+			mysqli_close($con2);
 		}
 	}else {
 		Redirect_To('Comments.php');
@@ -90,7 +91,7 @@ if ( isset($_GET['Unapprove_ID'])) {
 					<div class="table-responsive">
 							<?php
 							$sql = "SELECT * FROM comment WHERE status ='approved' ORDER BY date_time";
-							$exec = Query($sql);
+							$exec = QueryNew($sql);
 							$postNo = 1;
 							if(mysqli_num_rows($exec) < 1	) {
 								?>
@@ -133,7 +134,7 @@ if ( isset($_GET['Unapprove_ID'])) {
 					<div class="table-responsive">
 							<?php
 							$sql = "SELECT * FROM comment WHERE status ='unapprove' ORDER BY date_time";
-							$exec = Query($sql);
+							$exec = QueryNew($sql);
 							$postNo = 1;
 							if(mysqli_num_rows($exec) < 1	) {
 								?>

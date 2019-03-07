@@ -48,12 +48,17 @@ function adminRequired()
 			} 
 		}
 	}
-
-
 	if ($admin === false) {
 		$_SESSION['errorMessage'] = 'Admin Required';
 		Redirect_To('Login.php');
 	}
+}
+
+function getArticleAuthor($id) {
+  $query = "SELECT * FROM Пользователи WHERE id = $id";
+  $resultArray = execQuery($query);
+  $author = $resultArray[0];
+  return $author;
 }
 
 
