@@ -2,10 +2,10 @@
 
 
 function fillQuotes() {
-    global $con2;
-    $page = 1;
-    $query = "";
-    if (isset($_GET['search'])) {
+  global $con2;
+  $page = 1;
+  $query = "";
+  if (isset($_GET['search'])) {
     if (empty($_GET['search'])) {
       Redirect_To('Blog.php');
     } else {
@@ -25,7 +25,7 @@ function fillQuotes() {
 
   } else {
 
-    $query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT 0,5	";
+    $query = "SELECT * FROM Цитаты ORDER BY дата_публикации DESC LIMIT 0,5	";
   }
 
   $exec = QueryNew($query) or die(mysqli_error($con2));
@@ -34,30 +34,30 @@ function fillQuotes() {
       while ($post = mysqli_fetch_assoc($exec)) {
         $post_id = $post['id'];
         $post_date = $post['дата_публикации'];
-        $post_title = $post['заголовок'];
-        $post_category = 'категория';
-        $author_id = $post['автор'];
-        $post_image = $post['изображение'];
-        //$post_content = substr($post['post'], 0,150) . '...';
-        // $post_content = $post['файл_контент'] . '...';
-        $post_file = $post['файл_контент'];
-        $text = LoadText($post_file);
-        $post_content = substr($text, 0, 200) . '...';
-
+        $post_title = 'заголовок';
+        $post_quote_author = $post['автор'] ;
+        
+        $author_id = $post['автор_публикации'];
         $author_obj = getArticleAuthor($author_id);
         $post_author = $author_obj['никнейм'];
+
+        $text = $post['текст'];
+        $post_content = substr($text, 0, 200) . '...';
+
 
         ?>
         <div class="post">
           <div class="post-title">
             <h1><?php echo htmlentities($post_title); ?></h1>
           </div>
-          <div class="thumbnail">
-            <img class="img-responsive img-rounded" src="Upload/Image/<?php echo $post_image; ?>">
-          </div>
+          <!-- <div class="thumbnail">
+            <img class="img-responsive img-rounded" style="height: 100px;" 
+            src="Upload/Image/19222724_1555772291131415_6272807584274196775_o.jpg">
+          </div> -->
           <div class="post-info">
             <p class="lead">
-              Публиковано: <?php echo htmlentities($post_date); ?> | Автор: <?php echo htmlentities($post_author); ?>
+              Публиковано: <?php echo htmlentities($post_date); ?> <br> Пользователь: <?php echo htmlentities($post_author); 
+              ?> <br> Автор цитаты: <?php echo htmlentities($post_quote_author); ?>
             </p>
           </div>
           <div class="post-content">

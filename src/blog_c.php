@@ -2,10 +2,10 @@
 
 
 function fillBlog() {
-    global $con2;
-    $page = 1;
-    $query = "";
-    if (isset($_GET['search'])) {
+  global $con2;
+  $page = 1;
+  $query = "";
+  if (isset($_GET['search'])) {
     if (empty($_GET['search'])) {
       Redirect_To('Blog.php');
     } else {
