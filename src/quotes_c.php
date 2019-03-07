@@ -1,7 +1,7 @@
 <?php
 
 
-function fillBlog() {
+function fillQuotes() {
     global $con2;
     $page = 1;
     $query = "";

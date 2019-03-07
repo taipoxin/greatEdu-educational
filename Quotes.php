@@ -2,13 +2,13 @@
 <?php require_once 'Include/functions.php'?>
 <?php require_once 'Include/dbFunctions.php'?>
 <?php require_once 'Include/fileFunctions.php'?>
-<?php require_once 'src/blog_c.php'  ?>
+<?php require_once 'src/quotes_c.php'  ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Blog</title>
+  <title>Quotes</title>
   <script src="public/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
@@ -54,7 +54,7 @@
         <?php echo Message(); ?>
         <?php echo SESSION_INFO(); ?>
           <div class="col-md-8 ">
-            <h1 class="text-warning">Статьи</h1>
+            <h1 class="text-warning">Цитаты</h1>
             <p class="lead"></p>
           </div>
         </div>
@@ -62,14 +62,14 @@
       <div class="row">
         <div class="col-md-8">
           <?php // заполнить все статьями
-          fillBlog();
-						?>
+            fillQuotes()
+            ?>
         </div>
         <!--END OF COL-MD-8  -->
         <div class="col-md-3 col-md-offset-1 post-side-menu">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">About Articles</h2>
+              <h2 class="panel-title">About Quotes</h2>
             </div>
             <div>
               <!-- <img class="img-responsive img-circle imageicon" src="Assets/Images/user-default.png"> -->
