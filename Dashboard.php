@@ -32,14 +32,9 @@
             <li><a href="NewPost.php">
                 <span class="glyphicon glyphicon-list"></span>
                 &nbsp;New Post</a></li>
-            <!-- <li><a href="Categories.php">
-				 -->
             <li><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Manage Admin</a></li>
-            <li><a href="Comments.php">
-                <span class="glyphicon glyphicon-comment"></span>
-                &nbsp;Comments</a></li>
             <li><a href="Blog.php">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;Live Blog</a></li>
@@ -126,6 +121,14 @@
     </div>
     <div class="row navbar-inverse" id="footer">
     </div>
+  </div>
+  <div class="row" id="footer">
+    <div class="col-sm-12">
+      <hr>
+      <p>All Rights Reserved 2019 | Theme By : Dmitry Ermakovich</p>
+      <hr>
+    </div>
+  </div>
   </div>
 
   <script type="text/javascript" src="public/jquery.js"></script>

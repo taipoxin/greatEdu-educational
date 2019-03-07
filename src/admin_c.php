@@ -4,7 +4,7 @@
 <?php require_once 'Include/Database.php'?>
 <?php require_once 'Include/fileFunctions.php'?>
 
-<?php // TODO: everything old
+<?php
 
 function addNewAdminQuery($username, $email, $passwordHash, $status, $group, $dateOfRegister, $dateOfUpdate)
 {

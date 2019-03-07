@@ -34,12 +34,9 @@
             <li><a href="NewPost.php">
                 <span class="glyphicon glyphicon-list"></span>
                 &nbsp;New Post</a></li>
-            <li class=""><a href="Categories.php">
+            <li class="active"><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Manage Admin</a></li>
-            <li><a href="Comments.php">
-                <span class="glyphicon glyphicon-comment"></span>
-                &nbsp;Comments</a></li>
             <li><a href="Blog.php">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;Live Blog</a></li>

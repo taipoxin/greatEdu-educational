@@ -39,9 +39,6 @@ handleNewPost();
             <li><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Manage Admin</a></li>
-            <li><a href="Admin.php">
-                <span class="glyphicon glyphicon-comment"></span>
-                &nbsp;Comments</a></li>
             <li><a href="Blog.php">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;Live Blog</a></li>
