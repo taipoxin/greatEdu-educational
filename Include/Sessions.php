@@ -27,6 +27,20 @@ function SuccessMessage()
   }
 }
 
+// retrieve info from session
+function SESSION_INFO()
+{
+  if (isset($_SESSION)) {
+    $ouput = "
+			<div class='alert alert-success'>" . ' User_id: ' .
+    htmlentities($_SESSION["user_id"]) . ' <br>Username: ' .
+    htmlentities($_SESSION["username"]) .
+      "</div>
+		";
+    return $ouput;
+  }
+}
+
 function deleteCategory()
 {
   if (isset($_SESSION['optDeleteCategory'])) {

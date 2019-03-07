@@ -60,3 +60,13 @@ function getArticleAuthor($id)
   $author = $resultArray[0];
   return $author;
 }
+
+// check by username
+function isUserExists($username) {
+  $query = "SELECT * FROM `Пользователи` WHERE `никнейм` = '$username'";
+  $exec = QueryNew($query);
+  if ($group = mysqli_fetch_assoc($exec)) {
+    return true;
+  }
+  return false;
+}

@@ -57,6 +57,7 @@
         <div class="col-md-8">
           <?php echo SuccessMessage(); ?>
           <?php echo Message(); ?>
+          <?php echo SESSION_INFO(); ?>
           <?php 
 					fillPostData();
 				?>

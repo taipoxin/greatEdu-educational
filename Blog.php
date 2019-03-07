@@ -49,6 +49,9 @@
     <div class="container">
       <div class="blog-title">
         <div class="row">
+        <?php echo SuccessMessage(); ?>
+        <?php echo Message(); ?>
+        <?php echo SESSION_INFO(); ?>
           <div class="col-md-8 ">
             <h1 class="text-warning">Статьи</h1>
             <p class="lead"></p>

@@ -37,7 +37,7 @@ function addNewAdmin($con2)
   $username = mysqli_real_escape_string($con2, $_POST['username']);
   $password = mysqli_real_escape_string($con2, $_POST['password']);
   $confirmPassword = mysqli_real_escape_string($con2, $_POST['confirm_password']);
-  $creator = $_SESSION['username'];
+  // $creator = $_SESSION['username'];
   echo $username . ' ' . $password . ' ' . $confirmPassword . '<br>';
 
   $validationResult = validateNewAdmin($username, $password, $confirmPassword);
