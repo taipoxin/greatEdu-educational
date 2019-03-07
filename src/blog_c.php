@@ -76,10 +76,27 @@ function fillBlog() {
   } else {
     echo "<span class='lead'>No result<span>";
     }
-  } else {
-
   }
-
 }
+
+
+function fillBlogPostsReferences()
+{
+  $sql = "SELECT * FROM Статьи LIMIT 5";
+  $exec = QueryNew($sql);
+  while ($recentPost = mysqli_fetch_assoc($exec)) {
+    $postID = $recentPost['id'];
+    ?>
+    <nav>
+      <ul>
+        <li><a href="Post.php?id=<?php echo $postID; ?>">
+            <?php echo $recentPost['заголовок'] ?>
+          </a></li>
+      </ul>
+    </nav>
+  <?php
+  }
+}
+
 
 ?>

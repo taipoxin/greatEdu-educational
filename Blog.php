@@ -3,6 +3,7 @@
 <?php require_once 'Include/dbFunctions.php'?>
 <?php require_once 'Include/fileFunctions.php'?>
 <?php require_once 'src/blog_c.php'  ?>
+<!-- <?php require_once 'src/post_c.php'  ?> -->
 
 <!DOCTYPE html>
 <html>
@@ -82,13 +83,15 @@
           </div>
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Recent Post</h2>
+              <h2 class="panel-title">Recent Posts</h2>
             </div>
             <div class="panel-body">
-
+              <?php
+                fillBlogPostsReferences();
+              ?>
             </div>
           </div>
-          <div class="panel panel-primary">
+          <!-- <div class="panel panel-primary">
             <div class="panel-heading">
               <h2 class="panel-title">Some more info</h2>
             </div>
@@ -99,7 +102,7 @@
                 </ul>
               </nav>
             </div>
-          </div>
+          </div> -->
 
         </div>
         <!--END OF COL-MD-4  -->

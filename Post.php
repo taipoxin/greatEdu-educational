@@ -102,7 +102,7 @@
           </div>
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Recent Post</h2>
+              <h2 class="panel-title">Recent Posts</h2>
             </div>
             <div class="panel-body">
               <?php
