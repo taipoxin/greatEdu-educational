@@ -19,12 +19,12 @@ require_once 'src/register_c.php';
 
 <body>
   <div class="row">
-    <div class="col-md-4 col-md-offset-4 login-area">
+    <div class="col-md-4 col-md-offset-4 login-area" style="min-width: 500px;">
       <?php echo Message(); ?>
       <?php echo SESSION_INFO(); ?>
       <h1>Welcome to Register Page</h1>
-      <div class="">
-        <form method="POST" action="Register.php">
+      <div class="" >
+        <form method="POST" action="Register.php" >
           <legend class="lead">
             <h4>Enter your credentials</h4>
           </legend>
@@ -58,6 +58,11 @@ require_once 'src/register_c.php';
           </div>
           <div class="form-group">
             <input type="submit" name="submit" class="form-control input-lg btn btn-info" value="Register">
+          </div>
+          <div class="form-group" style="display: flex; 
+          flex-flow: wrap; justify-content: space-between;">
+            <a href="Login.php" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >Return to Login</a>
+            <a href="Blog.php" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >Go to Blog</a>
           </div>
         </form>
       </div>
