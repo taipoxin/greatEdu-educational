@@ -107,8 +107,8 @@ function fillPostsReferences()
           </a></li>
       </ul>
     </nav>
-<?php
-}
+  <?php
+  }
 }
 
 ?>

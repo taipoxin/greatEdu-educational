@@ -62,7 +62,7 @@
 				?>
           <div class="comment-section">
             <?php if(isLogin()) : ?>
-            <form method="POST" action="comment.php?>'">
+            <form method="POST" action="comment.php">
               <legend>Your Thoughts About This Post</legend>
               <div class="form-group">
                 <label>Comment</label>
