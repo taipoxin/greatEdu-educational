@@ -43,7 +43,7 @@
                 &nbsp;Lagout</a></li>
           </ul>
         </div>
-        <div class="col-xs-10">
+        <div class="col-xs-10" style="min-height: -webkit-fill-available;">
           <div>
             <h1>Dashboard</h1>
             <?php echo SuccessMessage(); ?>

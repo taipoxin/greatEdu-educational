@@ -45,7 +45,7 @@
                 &nbsp;Lagout</a></li>
           </ul>
         </div>
-        <div class="col-xs-10">
+        <div class="col-xs-10" style="min-height: -webkit-fill-available;">
           <div class="page-title">
             <h1>Manage Admin</h1>
           </div>
