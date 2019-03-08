@@ -37,14 +37,34 @@
             <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
             <li class="nav-item"><a href="Blog.php">Биографии</a></li>
           </ul>
-          <form action="Blog.php" method="GET" class="navbar-form navbar-right">
-            <div class="input-group">
-              <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
-              <span class="input-group-btn">
-                <button class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
-              </span>
-            </div>
-          </form>
+          <div class="navbar-right" style="display: flex;">
+              <form action="Blog.php" method="GET" class="navbar-form ">
+                <div class="input-group">
+                  <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
+                  </span>
+                </div>
+              </form>
+              <!-- <div class="container mt-3"> -->
+                  <!-- <h2>Dropdown Events</h2> -->
+                  <!-- <p>Click on the Dropdown button below. <strong>event.relatedTarget</strong> returns the element which triggered the dropdown.</p>   -->
+                  <div class="dropdown navbar-form">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      Войти
+                    </button>
+                    <div class="dropdown-menu mt-3" >
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                  </div>
+                <!-- </div> -->
+          
+          
+          </div>
+
+          
         </div>
       </div>
     </nav>
