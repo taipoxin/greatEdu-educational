@@ -88,7 +88,7 @@ global $post_title, $post_image, $post_content;
   <div class="row" id="footer">
     <div class="col-sm-12">
       <hr>
-      <p>All Rights Reserved 2019 | Theme By : Dmitry Ermakovich</p>
+      <p>Все права защищены 2019 | Designed by: Dmitry Ermakovich</p>
       <hr>
     </div>
   </div>
