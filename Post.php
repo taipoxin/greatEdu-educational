@@ -40,14 +40,29 @@
             <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
             <li class="nav-item"><a href="Blog.php">Биографии</a></li>
           </ul>
-          <form action="Blog.php" method="GET" class="navbar-form navbar-right">
-            <div class="input-group">
-              <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
-              <span class="input-group-btn">
-                <button class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
-              </span>
-            </div>
-          </form>
+          <div class="navbar-right" style="display: flex;">
+              <form action="Blog.php" method="GET" class="navbar-form ">
+                <div class="input-group" style="width:200px;">
+                  <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
+                  </span>
+                </div>
+              </form>
+              <?php $isLogged = isLogin(); ?>
+
+              <?php if($isLogged) : ?>
+              <button type="button" class="nav-item btn">
+                <a href="Lagout.php" style="color: grey;">Выйти</a>
+              </button>
+              <?php endif; ?>
+              <?php if(!$isLogged) : ?>
+              <button type="button" class="nav-item btn">
+                <a href="Login.php" style="color: grey;">Войти</a>
+              </button>
+              <?php endif; ?>
+
+          </div>
         </div>
       </div>
     </nav>
