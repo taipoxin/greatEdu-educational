@@ -1,8 +1,3 @@
-<?php require_once 'Include/Sessions.php'?>
-<?php require_once 'Include/functions.php'?>
-<?php require_once 'Include/dbFunctions.php'?>
-<?php require_once 'Include/Database.php'?>
-<?php require_once 'Include/fileFunctions.php'?>
 
 <?php
 
@@ -10,7 +5,7 @@ function addNewAdminQuery($username, $email, $passwordHash, $status, $group, $da
 {
   $sql = "INSERT INTO Пользователи (никнейм, почта, хэш_пароля, статус, группа, дата_регистрации, дата_изменения)
       VALUES('$username', '$email', '$passwordHash', $status, $group, '$dateOfRegister', '$dateOfUpdate')";
-  return QueryNew($sql);
+  return doSQLQuery($sql);
 }
 
 function validateNewAdmin($username, $password, $confirmPassword)

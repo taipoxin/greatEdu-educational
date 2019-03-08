@@ -28,7 +28,7 @@ function fillBlog() {
     $query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT 0,5	";
   }
 
-  $exec = QueryNew($query) or die(mysqli_error($con2));
+  $exec = doSQLQuery($query) or die(mysqli_error($con2));
   if ($exec) {
     if (mysqli_num_rows($exec) > 0) {
       while ($post = mysqli_fetch_assoc($exec)) {
@@ -41,10 +41,10 @@ function fillBlog() {
         //$post_content = substr($post['post'], 0,150) . '...';
         // $post_content = $post['файл_контент'] . '...';
         $post_file = $post['файл_контент'];
-        $text = LoadText($post_file);
+        $text = LoadTextFromContentFile($post_file);
         $post_content = substr($text, 0, 200) . '...';
 
-        $author_obj = getArticleAuthor($author_id);
+        $author_obj = getUserById($author_id);
         $post_author = $author_obj['никнейм'];
 
         ?>
@@ -83,7 +83,7 @@ function fillBlog() {
 function fillBlogPostsReferences()
 {
   $sql = "SELECT * FROM Статьи LIMIT 5";
-  $exec = QueryNew($sql);
+  $exec = doSQLQuery($sql);
   while ($recentPost = mysqli_fetch_assoc($exec)) {
     $postID = $recentPost['id'];
     ?>

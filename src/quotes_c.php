@@ -3,7 +3,7 @@
 
 function getQuoteAuthor($id) {
   $query = "SELECT * FROM Авторы WHERE id = $id";
-  $exec = QueryNew($query);
+  $exec = doSQLQuery($query);
   if ($post = mysqli_fetch_assoc($exec)) {
     return $post;
   }
@@ -38,7 +38,7 @@ function fillQuotes() {
     $query = "SELECT * FROM Цитаты ORDER BY дата_публикации DESC LIMIT 0,5	";
   }
 
-  $exec = QueryNew($query) or die(mysqli_error($con2));
+  $exec = doSQLQuery($query) or die(mysqli_error($con2));
   if ($exec) {
     if (mysqli_num_rows($exec) > 0) {
       while ($post = mysqli_fetch_assoc($exec)) {
@@ -50,7 +50,7 @@ function fillQuotes() {
         $post_quote_author = $authorObj['фамилия'];
         
         $author_id = $post['автор_публикации'];
-        $author_obj = getArticleAuthor($author_id);
+        $author_obj = getUserById($author_id);
         $post_author = $author_obj['никнейм'];
 
         $text = $post['текст'];

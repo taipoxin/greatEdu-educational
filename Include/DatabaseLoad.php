@@ -1,9 +1,9 @@
 <?php
+// connect to database
+
 $server = 'localhost';
 $username = 'tiranid';
 $password = ' ';
-$db_name = 'cms_blog';
-// $con;
 global $con2;
 
 try {

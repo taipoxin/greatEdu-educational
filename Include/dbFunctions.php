@@ -1,6 +1,8 @@
 <?php
+require_once 'DatabaseLoad.php';
 
-function QueryNew($query)
+// low level query to $con2
+function doSQLQuery($query)
 {
   global $con2;
   try {
@@ -14,10 +16,11 @@ function QueryNew($query)
   return false;
 }
 
-function execQuery($query)
+// high-level query exec to array result
+function execQueryToArray($query)
 {
   global $con2;
-  $exec = QueryNew($query) or die(mysqli_error($con2));
+  $exec = doSQLQuery($query) or die(mysqli_error($con2));
   if ($exec) {
     $arr = [];
     if (mysqli_num_rows($exec) > 0) {
@@ -30,6 +33,7 @@ function execQuery($query)
   return null;
 }
 
+// return true if admin log-inned, redirect to Login if not
 function adminRequired()
 {
   $admin = false;
@@ -38,7 +42,7 @@ function adminRequired()
     $username = $_SESSION['username'];
     // Redirect_To('Login.php');
     $query = "SELECT группа FROM `Пользователи` WHERE `никнейм` = '$username'";
-    $exec = QueryNew($query);
+    $exec = doSQLQuery($query);
     if ($group = mysqli_fetch_assoc($exec)) {
       // $_SESSION['errorMessage'] = $group['группа'];
       if ($group['группа'] === '2') {
@@ -54,18 +58,19 @@ function adminRequired()
   }
 }
 
-function getArticleAuthor($id)
+// return user by id provided
+function getUserById($id)
 {
   $query = "SELECT * FROM Пользователи WHERE id = $id";
-  $resultArray = execQuery($query);
+  $resultArray = execQueryToArray($query);
   $author = $resultArray[0];
   return $author;
 }
 
 // check by username
-function isUserExists($username) {
+function isUserExistsByUsername($username) {
   $query = "SELECT * FROM `Пользователи` WHERE `никнейм` = '$username'";
-  $exec = QueryNew($query);
+  $exec = doSQLQuery($query);
   if ($group = mysqli_fetch_assoc($exec)) {
     return true;
   }

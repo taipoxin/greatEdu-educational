@@ -1,7 +1,7 @@
 <?php require_once('Include/Sessions.php'); ?>
-<?php require_once('Include/functions.php') ?>
+<?php require_once('Include/commonFuncs.php') ?>
 <?php require_once('Include/dbFunctions.php') ?>
-<?php require_once('Include/fileFunctions.php') ?>
+
 <?php require_once('src/post_c.php') ?>
 <?php 
   global $title_title;

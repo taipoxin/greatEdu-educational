@@ -15,7 +15,7 @@ function validateNewUser($username, $email, $password, $confirmPassword)
     $_SESSION['errorMessage'] = 'Password Must Be 2 Or More Characters';
     return false;
   }
-  $isExists = isUserExists($username);
+  $isExists = isUserExistsByUsername($username);
   if ($isExists) {
     $_SESSION['errorMessage'] = "User $username already registered";
     return false;
@@ -31,12 +31,12 @@ function writeUser($username, $email, $passwordHash, $dateTime)
   $sql = "INSERT INTO Пользователи
   (никнейм, почта, хэш_пароля, статус, группа, дата_регистрации, дата_изменения)
   VALUES('$username', '$email', '$passwordHash', $status, $group, '$dateTime', '$dateTime')";
-  return QueryNew($sql);
+  return doSQLQuery($sql);
 }
 function selectUserId($username)
 {
   $sql = "SELECT id, никнейм FROM Пользователи WHERE никнейм = '$username'";
-  $exec = QueryNew($sql);
+  $exec = doSQLQuery($sql);
   if ($user = mysqli_fetch_assoc($exec)) {
     return $user;
   }

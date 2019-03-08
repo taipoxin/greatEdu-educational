@@ -4,7 +4,7 @@ function fillHeader()
 {
   global $_GET, $title_title;
   $query = "SELECT заголовок FROM Статьи WHERE id = '$_GET[id]'";
-  $exec = QueryNew($query);
+  $exec = doSQLQuery($query);
   if (mysqli_num_rows($exec) > 0) {
     while ($post = mysqli_fetch_assoc($exec)) {
       $title_title = $post['заголовок'];
@@ -19,7 +19,7 @@ function fillPostData()
     $post_category, $post_date, $post_author;
   if (isset($_GET['id'])) {
     $query = "SELECT * FROM Статьи WHERE id = '$_GET[id]'";
-    $exec = QueryNew($query);
+    $exec = doSQLQuery($query);
     $post_from_db = null;
     if (mysqli_num_rows($exec) > 0) {
       while ($post = mysqli_fetch_assoc($exec)) {
@@ -32,7 +32,7 @@ function fillPostData()
         // $post_content = $post['post'];
         $post_from_db = $post['файл_контент'];
       }
-      $post_content = LoadText($post_from_db);
+      $post_content = LoadTextFromContentFile($post_from_db);
 
       ?>
       <div class="post">
@@ -64,7 +64,7 @@ function fillPostComments()
 {
   // $sql = "SELECT * FROM comment WHERE post_id = '$_GET[id]'";
   $sql = "SELECT * FROM Комментарии WHERE статья = '$_GET[id]'";
-  $exec = QueryNew($sql);
+  $exec = doSQLQuery($sql);
   if (mysqli_num_rows($exec) > 0) {
     while ($comments = mysqli_fetch_assoc($exec)) {
       // $c_email = $comments['email'];
@@ -98,7 +98,7 @@ function fillPostComments()
 function fillPostsReferences()
 {
   $sql = "SELECT * FROM Статьи LIMIT 5";
-  $exec = QueryNew($sql);
+  $exec = doSQLQuery($sql);
   while ($recentPost = mysqli_fetch_assoc($exec)) {
     $postID = $recentPost['id'];
     ?>

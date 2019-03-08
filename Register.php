@@ -1,7 +1,8 @@
 <?php
 include 'Include/Sessions.php';
-include 'Include/functions.php';
+include 'Include/commonFuncs.php';
 include 'Include/dbFunctions.php';
+
 require_once 'src/register_c.php';
 
 ?>

@@ -1,5 +1,5 @@
 <?php require_once 'Include/Sessions.php';?>
-<?php require_once 'Include/functions.php'?>
+<?php require_once 'Include/commonFuncs.php'?>
 <?php require_once 'Include/dbFunctions.php'?>
 <?php // TODO: закончить комментирование
 if (isset($_POST['submit'])) {
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO Комментарии 
       (автор, сообщение, статья, дата_публикации) 
       VALUES('$author', '$comment', '$postID', '$dateTime')";
-    $exec = QueryNew($sql);
+    $exec = doSQLQuery($sql);
     if ($exec) {
       $_SESSION['successMessage'] = "Your Comment Has Been Submitted.";
       // mysqli_close($con);

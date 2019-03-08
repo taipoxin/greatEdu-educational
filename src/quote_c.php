@@ -9,7 +9,7 @@ function getQuotePageTitle()
 
 function getQuoteAuthor($id) {
   $query = "SELECT * FROM Авторы WHERE id = $id";
-  $exec = QueryNew($query);
+  $exec = doSQLQuery($query);
   if ($post = mysqli_fetch_assoc($exec)) {
     return $post;
   }
@@ -20,7 +20,7 @@ function fillQuoteData() {
   global $con2;
   $query = "SELECT * FROM Цитаты WHERE id = '$_GET[id]'	";
 
-  $exec = QueryNew($query) or die(mysqli_error($con2));
+  $exec = doSQLQuery($query) or die(mysqli_error($con2));
   if ($exec) {
     if (mysqli_num_rows($exec) > 0) {
       if ($post = mysqli_fetch_assoc($exec)) {
@@ -32,7 +32,7 @@ function fillQuoteData() {
         $post_quote_author = $authorObj['фамилия'];
         
         $author_id = $post['автор_публикации'];
-        $author_obj = getArticleAuthor($author_id);
+        $author_obj = getUserById($author_id);
         $post_author = $author_obj['никнейм'];
 
         $text = $post['текст'];
@@ -72,7 +72,7 @@ function fillQuoteData() {
 function fillPostComments()
 {
   $sql = "SELECT * FROM Комментарии WHERE статья = '$_GET[id]'";
-  $exec = QueryNew($sql);
+  $exec = doSQLQuery($sql);
   if (mysqli_num_rows($exec) > 0) {
     while ($comments = mysqli_fetch_assoc($exec)) {
       $c_email = 'комментатор';
@@ -103,7 +103,7 @@ function fillPostComments()
 function fillPostsReferences()
 {
   $sql = "SELECT * FROM Статьи LIMIT 5";
-  $exec = QueryNew($sql);
+  $exec = doSQLQuery($sql);
   while ($recentPost = mysqli_fetch_assoc($exec)) {
     $postID = $recentPost['id'];
     ?>

@@ -1,4 +1,7 @@
 <?php require_once('Include/Sessions.php'); ?>
+<?php require_once('Include/commonFuncs.php') ?>
+<?php require_once('Include/dbFunctions.php') ?>
+
 <?php require_once('src/editpost_c.php') ?>
 <?php adminRequired(); ?>
 <?php 

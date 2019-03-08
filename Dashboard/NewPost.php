@@ -1,8 +1,8 @@
-<?php require_once 'Include/Sessions.php';?>
-<?php require_once 'Include/commonFuncs.php'?>
-<?php require_once 'Include/dbFunctions.php'?>
-
-<?php require_once 'src/newpost_c.php'?>
+<?php require_once '../Include/Sessions.php';?>
+<?php require_once '../Include/commonFuncs.php'?>
+<?php require_once '../Include/dbFunctions.php'?>
+<?php require_once '../Include/fileFunctions.php'?>
+<?php require_once '../src/newpost_c.php'?>
 <?php adminRequired();?>
 <?php // TODO: old, should be refactored
 handleNewPost();
@@ -12,11 +12,11 @@ handleNewPost();
 
 <head>
   <title>New Post</title>
-  <script src="public/jquery-3.2.1.min.js"></script>
+  <script src="../public/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="public/Assets/style.css">
-  <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../public/Assets/style.css">
+  <script type="text/javascript" src="../public/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@ handleNewPost();
       <div class="row">
         <div class="col-sm-2">
           <ul id="side-menu" class="nav nav-pills nav-stacked">
-            <li class=""><a href="Dashboard.php">
+            <li class=""><a href="/Dashboard/">
                 <span class="glyphicon glyphicon-th"></span>
                 &nbsp;Dashboard</a></li>
             <li class="active"><a href="NewPost.php">
@@ -86,7 +86,7 @@ handleNewPost();
     </div>
   </div>
   </div>
-  <script type="text/javascript" src="public/jquery.js"></script>
+  <script type="text/javascript" src="../public/jquery.js"></script>
 </body>
 
 </html>

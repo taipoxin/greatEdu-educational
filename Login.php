@@ -1,6 +1,6 @@
 <?php
 include 'Include/Sessions.php';
-include 'Include/functions.php';
+include 'Include/commonFuncs.php';
 include 'Include/dbFunctions.php';
 include 'src/login_c.php';
 

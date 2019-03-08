@@ -1,20 +1,20 @@
-<?php require_once 'Include/Sessions.php';?>
-<?php require_once 'Include/commonFuncs.php'?>
-<?php require_once 'Include/dbFunctions.php'?>
-
+<?php require_once '../Include/Sessions.php';?>
+<?php require_once '../Include/commonFuncs.php'?>
+<?php require_once '../Include/dbFunctions.php'?>
+<?php require_once '../Include/fileFunctions.php'?>
+<?php require_once '../src/admin_c.php'?>
 <?php adminRequired();?>
-<?php require_once 'src/admin_c.php'?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
   <title>Manage Admin</title>
-  <script src="public/jquery-3.2.1.min.js"></script>
+  <script src="../public/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="public/Assets/style.css">
-  <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../public/Assets/style.css">
+  <script type="text/javascript" src="../public/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col-sm-2">
           <ul id="side-menu" class="nav nav-pills nav-stacked">
-            <li class=""><a href="Dashboard.php">
+            <li class=""><a href="/Dashboard/">
                 <span class="glyphicon glyphicon-th"></span>
                 &nbsp;Dashboard</a></li>
             <li><a href="NewPost.php">
@@ -37,10 +37,10 @@
             <li class="active"><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Manage Admin</a></li>
-            <li><a href="Blog.php">
+            <li><a href="/Blog.php">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;Live Blog</a></li>
-            <li><a href="Lagout.php">
+            <li><a href="/Lagout.php">
                 <span class="glyphicon glyphicon-log-out"></span>
                 &nbsp;Lagout</a></li>
           </ul>
@@ -127,7 +127,7 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="public/jquery.js"></script>
+  <script type="text/javascript" src="../public/jquery.js"></script>
 </body>
 
 </html>

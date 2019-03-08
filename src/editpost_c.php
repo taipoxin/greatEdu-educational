@@ -1,8 +1,13 @@
-<?php require_once 'Include/functions.php'?>
-<?php require_once 'Include/dbFunctions.php'?>
-<?php require_once 'Include/fileFunctions.php'?>
 
 <?php
+
+// write to content file
+function rewriteContentFile($filename, $content)
+{
+  $filepath = "Upload/contents/$filename";
+  file_put_contents($filepath, $content);
+}
+
 
 function handleUpdatePost()
 {
@@ -32,7 +37,7 @@ function handleUpdatePost()
 
     $sql = "UPDATE Статьи SET дата_публикации ='$dateTime', заголовок = '$title',
 	изображение = '$updatedImage', файл_контент = '$filename' WHERE id = '$post_object[idFromUrl]' ";
-    $exec = QueryNew($sql);
+    $exec = doSQLQuery($sql);
     if ($exec) {
       if (!empty($image)) {
         $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
@@ -60,7 +65,7 @@ function fillEditData()
     if (!empty($_GET['post_id'])) {
 
       $sql = "SELECT * FROM Статьи WHERE id = '$_GET[post_id]'";
-      $res = execQuery($sql);
+      $res = execQueryToArray($sql);
       $post = $res[0];
       $post_id = $post['id'];
       $post_date = $post['дата_публикации'];
@@ -69,7 +74,7 @@ function fillEditData()
       $post_author = $post['автор'];
       $post_image = $post['изображение'];
       $post_file = $post['файл_контент'];
-      $text = LoadText($post_file);
+      $text = LoadTextFromContentFile($post_file);
       $post_content = $text;
     }
   } else {

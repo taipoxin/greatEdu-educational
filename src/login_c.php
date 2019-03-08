@@ -1,4 +1,18 @@
 <?php
+function LoginAttempt($username, $password)
+{
+  $query = "SELECT id, никнейм FROM `Пользователи` WHERE `никнейм` = '$username'  AND `хэш_пароля` = '$password'";
+  $exec = doSQLQuery($query);
+  // Tables_in_great_edu
+  if ($user = mysqli_fetch_assoc($exec)) {
+    return $user;
+  } else {
+    return null;
+  }
+}
+
+
+
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
