@@ -1,8 +1,8 @@
-<?php require_once('Include/Sessions.php'); ?>
-<?php require_once('Include/commonFuncs.php') ?>
-<?php require_once('Include/dbFunctions.php') ?>
+<?php require_once('../Include/Sessions.php'); ?>
+<?php require_once('../Include/commonFuncs.php') ?>
+<?php require_once('../Include/dbFunctions.php') ?>
 
-<?php require_once('utils/deletepost_c.php') ?>
+<?php require_once('../utils/deletepost_c.php') ?>
 <?php loginRequired(); ?>
 <?php 
 global $post_title, $post_image, $post_content;
@@ -13,11 +13,11 @@ global $post_title, $post_image, $post_content;
 
 <head>
   <title>Delete Post</title>
-  <script src="js-scripts/jquery-3.2.1.min.js"></script>
+  <script src="../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="js-scripts/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="js-scripts/Assets/style.css">
-  <script type="text/javascript" src="js-scripts/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../js-scripts/Assets/style.css">
+  <script type="text/javascript" src="../js-scripts/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -69,7 +69,7 @@ global $post_title, $post_image, $post_content;
                 <input disabled type="text" name="post-title" class="form-control" id="post-title"
                   value="<?php echo $post_title ?>">
               </div>
-              <label>Existing Image: <img src="Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
+              <label>Existing Image: <img src="../Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
               </label>
               <div class="form-group">
                 <labalkok for="post-image">Change Image</labalkok>
@@ -96,7 +96,7 @@ global $post_title, $post_image, $post_content;
     </div>
   </div>
   </div>
-  <script type="text/javascript" src="js-scripts/jquery.js"></script>
+  <script type="text/javascript" src="../js-scripts/jquery.js"></script>
 </body>
 
 </html>

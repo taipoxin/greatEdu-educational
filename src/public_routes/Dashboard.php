@@ -1,6 +1,6 @@
-<?php require_once('Include/Sessions.php') ?>
-<?php require_once('Include/commonFuncs.php') ?>
-<?php require_once('Include/dbFunctions.php') ?>
+<?php require_once('../Include/Sessions.php') ?>
+<?php require_once('../Include/commonFuncs.php') ?>
+<?php require_once('../Include/dbFunctions.php') ?>
 
 <?php adminRequired(); ?>
 <!DOCTYPE html>
@@ -8,11 +8,11 @@
 
 <head>
   <title>Dashboard</title>
-  <script src="js-scripts/jquery-3.2.1.min.js"></script>
+  <script src="../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="js-scripts/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="js-scripts/Assets/style.css">
-  <script type="text/javascript" src="js-scripts/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../js-scripts/Assets/style.css">
+  <script type="text/javascript" src="../js-scripts/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -98,7 +98,7 @@
                   <td><?php echo $author; ?></td>
                   <td><?php echo $category; ?></td>
                   <td>
-                    <?php echo "<img class='img-responsive' src='Upload/Image/$image' width='100px' height='150px'>"; ?>
+                    <?php echo "<img class='img-responsive' src='../Upload/Image/$image' width='100px' height='150px'>"; ?>
                   </td>
                   <td><?php echo 'Ongoing'; ?></td>
                   <td>
@@ -131,7 +131,7 @@
   </div>
   </div>
 
-  <script type="text/javascript" src="js-scripts/jquery.js"></script>
+  <script type="text/javascript" src="../js-scripts/jquery.js"></script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@ function LoadTextFromContentFile($file)
   if (is_null($file)) {
     $post_content = 'error load';
   } else {
-    $post_content = file_get_contents('Upload/contents/' . $file);
+    $post_content = file_get_contents('../Upload/contents/' . $file);
   }
   return $post_content;
 }

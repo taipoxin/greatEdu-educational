@@ -1,8 +1,8 @@
-<?php require_once('Include/Sessions.php'); ?>
-<?php require_once('Include/commonFuncs.php') ?>
-<?php require_once('Include/dbFunctions.php') ?>
+<?php require_once('../Include/Sessions.php'); ?>
+<?php require_once('../Include/commonFuncs.php') ?>
+<?php require_once('../Include/dbFunctions.php') ?>
 
-<?php require_once('utils/quote_c.php') ?>
+<?php require_once('../utils/quote_c.php') ?>
 <?php 
 	$title_title = getQuotePageTitle();
 ?>
@@ -11,11 +11,11 @@
 
 <head>
   <title><?php echo $title_title . ' - GreatEdu'; ?></title>
-  <script src="js-scripts/jquery-3.2.1.min.js"></script>
+  <script src="../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="js-scripts/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="js-scripts/Assets/style.css">
-  <script type="text/javascript" src="js-scripts/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../js-scripts/Assets/style.css">
+  <script type="text/javascript" src="../js-scripts/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -108,7 +108,7 @@
               <h2 class="panel-title">Обо мне</h2>
             </div>
             <div>
-              <img class="img-responsive img-circle imageicon" src="js-scripts/Assets/Images/user-default.png">
+              <img class="img-responsive img-circle imageicon" src="../js-scripts/Assets/Images/user-default.png">
             </div>
             <div class="panel-body">
               Подробнее

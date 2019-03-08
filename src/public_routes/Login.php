@@ -1,8 +1,8 @@
 <?php
-include 'Include/Sessions.php';
-include 'Include/commonFuncs.php';
-include 'Include/dbFunctions.php';
-include 'utils/login_c.php';
+include '../Include/Sessions.php';
+include '../Include/commonFuncs.php';
+include '../Include/dbFunctions.php';
+include '../utils/login_c.php';
 
 ?>
 <!DOCTYPE html>
@@ -10,11 +10,11 @@ include 'utils/login_c.php';
 
 <head>
   <title>Вход - GreatEdu</title>
-  <script src="js-scripts/jquery-3.2.1.min.js"></script>
+  <script src="../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="js-scripts/bootstrap/css/bootstrap.min.css">
-  <script type="text/javascript" src="js-scripts/bootstrap/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="js-scripts/Assets/login.css">
+  <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
+  <script type="text/javascript" src="../js-scripts/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../js-scripts/Assets/login.css">
 </head>
 
 <body>

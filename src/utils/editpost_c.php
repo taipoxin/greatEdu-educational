@@ -4,7 +4,7 @@
 // write to content file
 function rewriteContentFile($filename, $content)
 {
-  $filepath = "Upload/contents/$filename";
+  $filepath = "../Upload/contents/$filename";
   file_put_contents($filepath, $content);
 }
 
@@ -40,7 +40,7 @@ function handleUpdatePost()
     $exec = doSQLQuery($sql);
     if ($exec) {
       if (!empty($image)) {
-        $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
+        $imageDirectory = "../Upload/Image/" . basename($_FILES['post-image']['name']);
         if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
           $_SESSION['successMessage'] = 'Post Edit Successfully: Updated Image';
         } else {

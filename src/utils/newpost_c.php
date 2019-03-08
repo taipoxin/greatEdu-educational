@@ -15,7 +15,7 @@ function handleNewPost()
     $dateTime = strftime('%Y-%m-%d', $time);
     $title_length = strlen($title);
     $content_lenght = strlen($content);
-    $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
+    $imageDirectory = "../Upload/Image/" . basename($_FILES['post-image']['name']);
     if (empty($title)) {
       $_SESSION['errorMessage'] = "Title Is Emtpy";
       Redirect_To('NewPost.php');
