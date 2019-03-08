@@ -11,7 +11,7 @@
 <html>
 
 <head>
-  <title><?php echo $title_title; ?></title>
+  <title><?php echo $title_title . ' - GreatEdu'; ?></title>
   <script src="public/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
 
 <body>
   <div class="blog">
-    <nav class="navbar navbar-inverse" role="navigation">
+  <nav class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-header">
@@ -31,17 +31,18 @@
             <span class="icon-bar"></span>
           </button>
           <a href="Blog.php" class="navbar-brand">
-            DMITRY ERMAKOVICH
+            Great Edu
           </a>
         </div>
         <div class="collapse navbar-collapse" id="nav-header">
           <ul class="nav navbar-nav">
-            <li class=""><a href="#">HOME</a></li>
-
+            <li class="nav-item"><a href="Blog.php">Статьи</a></li>
+            <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
+            <li class="nav-item"><a href="Blog.php">Биографии</a></li>
           </ul>
           <form action="Blog.php" method="GET" class="navbar-form navbar-right">
             <div class="input-group">
-              <input type="text" name="search" class="form-control" placeholder="Search The Site">
+              <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
               <span class="input-group-btn">
                 <button class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
               </span>
@@ -65,13 +66,13 @@
           <div class="comment-section">
             <?php if(isLogin()) : ?>
             <form method="POST" action="comment.php">
-              <legend>Your Thoughts About This Post</legend>
+              <legend>Ваши мысли об этом посте</legend>
               <div class="form-group">
-                <label>Comment</label>
-                <textarea name="comment" placeholder="Your Comment Here" class="form-control" rows="10"></textarea>
+                <label>Комментарий</label>
+                <textarea name="comment" placeholder="Текст вашего комментария" class="form-control" rows="10"></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" name="submit" class="btn btn-primary" value="Send Comment">
+                <input type="submit" name="submit" class="btn btn-primary" value="Отправить">
               </div>
               <input type="hidden" name="author" value="<?php echo $_SESSION['user_id']; ?>">
               <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
@@ -79,7 +80,7 @@
             <?php endif; ?>
 
           </div>
-          <div class="page-header">Comments</div>
+          <div class="page-header">Комментарии</div>
           <?php
 					fillPostComments();
 				?>
@@ -89,20 +90,18 @@
         <div class="col-md-3 post-side-menu col-md-offset-1">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">About Me</h2>
+              <h2 class="panel-title">Обо мне</h2>
             </div>
             <div>
               <img class="img-responsive img-circle imageicon" src="public/Assets/Images/user-default.png">
             </div>
             <div class="panel-body">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book
+              Подробнее
             </div>
           </div>
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Recent Posts</h2>
+              <h2 class="panel-title">Последние статьи</h2>
             </div>
             <div class="panel-body">
               <?php

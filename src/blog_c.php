@@ -65,7 +65,7 @@ function fillBlog() {
           </div>
           <p>
             <a href="Post.php?id=<?php echo $post_id; ?>">
-              <button class="btn btn-info btn-lg" id="read_more_btn">Read More</button>
+              <button class="btn btn-info btn-lg" id="read_more_btn">Подробнее</button>
             </a>
             <div class="clearfix"></div>
           </p>

@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $foundAccount = LoginAttempt($username, $password);
     if ($foundAccount) {
 
-      $_SESSION['errorMessage'] = $foundAccount;
+      // $_SESSION['errorMessage'] = $foundAccount;
       $_SESSION['successMessage'] = 'Login Successfully Welcome ' . $foundAccount['никнейм'];
       $_SESSION['user_id'] = $foundAccount['id'];
       $_SESSION['username'] = $foundAccount['никнейм'];

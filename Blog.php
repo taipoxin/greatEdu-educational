@@ -8,7 +8,7 @@
 <html>
 
 <head>
-  <title>Blog</title>
+  <title>Статьи - GreatEdu</title>
   <script src="public/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">

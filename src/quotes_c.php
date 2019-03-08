@@ -81,7 +81,7 @@ function fillQuotes() {
             </div>
             <!-- <p> -->
               <a href="Post.php?id=<?php echo $post_id; ?>">
-                <button style="" class="btn btn-info btn-lg" id="read_more_btn">Read More</button>
+                <button style="" class="btn btn-info btn-lg" id="read_more_btn">Подробнее</button>
               </a>
               <!-- <div class="clearfix"></div> -->
             <!-- </p> -->

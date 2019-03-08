@@ -44,8 +44,8 @@ function fillPostData()
         </div>
         <div class="post-info">
           <p class="lead">
-            Published on: <?php echo htmlentities($post_date); ?> | Category: <?php echo htmlentities($post_category); ?> |
-            By: <?php echo $post_author; ?>
+            Опубликовано: <?php echo htmlentities($post_date); ?> | Категория: <?php echo htmlentities($post_category); ?> |
+            Автор: <?php echo $post_author; ?>
           </p>
         </div>
         <div class="post-content">
@@ -83,7 +83,7 @@ function fillPostComments()
           <div class="col-sm-10">
             <div><span class="lead text-info"><?php echo $c_email; ?></span></div>
             <div><span><?php echo $c_dateTime; ?></span></div>
-            <div><span class="lead"> Say: <?php echo $c_comment; ?></span></div>
+            <div><span class="lead"> Сказал: <?php echo $c_comment; ?></span></div>
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@ function fillPostComments()
 <?php
 }
   } else {
-    echo "No Comments Yet";
+    echo "Комментариев к статье нет";
   }
 }
 
