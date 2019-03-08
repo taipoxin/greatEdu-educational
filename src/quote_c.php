@@ -1,5 +1,11 @@
 <?php
 
+function getQuotePageTitle()
+{
+  global $_GET;
+  return 'Цитата #' . $_GET['id'] . ' - GreatEdu';
+}
+
 
 function getQuoteAuthor($id) {
   $query = "SELECT * FROM Авторы WHERE id = $id";
@@ -7,41 +13,17 @@ function getQuoteAuthor($id) {
   if ($post = mysqli_fetch_assoc($exec)) {
     return $post;
   }
-  // $author = $resultArray[0];
   return null;
 }
 
-function fillQuotes() {
+function fillQuoteData() {
   global $con2;
-  $page = 1;
-  $query = "";
-  if (isset($_GET['search'])) {
-    if (empty($_GET['search'])) {
-      Redirect_To('Blog.php');
-    } else {
-      // TODO: reformat search
-      $search = $_GET['search'];
-      $query = "SELECT * FROM cms_post WHERE post_date_time LIKE '%$search%' OR title LIKE '%$search%' OR category LIKE '$search%' ";
-    }
-  } else if (isset($_GET['category'])) {
-    $query = "SELECT * FROM cms_post WHERE category = '$_GET[category]'";
-  } else if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-    $showPost = ($page * 5) - 5;
-    if ($page <= 0) {
-      $showPost = 0;
-    }
-    $query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT $showPost,5	";
-
-  } else {
-
-    $query = "SELECT * FROM Цитаты ORDER BY дата_публикации DESC LIMIT 0,5	";
-  }
+  $query = "SELECT * FROM Цитаты WHERE id = '$_GET[id]'	";
 
   $exec = QueryNew($query) or die(mysqli_error($con2));
   if ($exec) {
     if (mysqli_num_rows($exec) > 0) {
-      while ($post = mysqli_fetch_assoc($exec)) {
+      if ($post = mysqli_fetch_assoc($exec)) {
         $post_id = $post['id'];
         $post_date = $post['дата_публикации'];
         $post_title = 'заголовок';
@@ -55,12 +37,6 @@ function fillQuotes() {
 
         $text = $post['текст'];
         $post_content = $text;
-        if (strlen($text) > 350) {
-          $post_content = substr($text, 0, 350) . '...';
-        }
-
-
-
 
         ?>
         <div class="post" style="border: black solid 1px; border-radius: 5px; background-color: lightgrey;" >
@@ -79,21 +55,67 @@ function fillQuotes() {
                 ?> 
               </p>
             </div>
-              <a href="Quote.php?id=<?php echo $post_id; ?>">
-                <button style="" class="btn btn-info btn-lg" id="read_more_btn">Подробнее</button>
-              </a>
           </div>
         </div>
   <?php
   }
-
   } else {
-    echo "<span class='lead'>Нет никаких цитат<span>";
+    echo "<span class='lead'>Ошибка: нет цитаты с таким id<span>";
     }
   } else {
     echo "<span class='lead'>Ошибка сервера<span>";
   }
 
+}
+
+
+function fillPostComments()
+{
+  $sql = "SELECT * FROM Комментарии WHERE статья = '$_GET[id]'";
+  $exec = QueryNew($sql);
+  if (mysqli_num_rows($exec) > 0) {
+    while ($comments = mysqli_fetch_assoc($exec)) {
+      $c_email = 'комментатор';
+      $c_dateTime = '14-02-19 21:00';
+      $c_comment = $comments['сообщение'];
+      ?>
+
+      <div class="comment-block" style="margin-bottom: 20px; ">
+        <div class="row">
+          <div class="col-sm-2" style="height: 70px;width: 100px; padding:0; margin:0;">
+            <img src="public/Assets/Images/user-default.png" height="70px" width="100px">
+          </div>
+          <div class="col-sm-10">
+            <div><span class="lead text-info"><?php echo $c_email; ?></span></div>
+            <div><span><?php echo $c_dateTime; ?></span></div>
+            <div><span class="lead"> Сказал: <?php echo $c_comment; ?></span></div>
+          </div>
+        </div>
+      </div>
+
+<?php
+}
+  } else {
+    echo "Комментариев к статье нет";
+  }
+}
+
+function fillPostsReferences()
+{
+  $sql = "SELECT * FROM Статьи LIMIT 5";
+  $exec = QueryNew($sql);
+  while ($recentPost = mysqli_fetch_assoc($exec)) {
+    $postID = $recentPost['id'];
+    ?>
+    <nav>
+      <ul>
+        <li><a href="Post.php?id=<?php echo $postID; ?>">
+            <?php echo $recentPost['заголовок'] ?>
+          </a></li>
+      </ul>
+    </nav>
+  <?php
+  }
 }
 
 ?>
