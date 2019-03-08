@@ -39,29 +39,26 @@
           </ul>
           <div class="navbar-right" style="display: flex;">
               <form action="Blog.php" method="GET" class="navbar-form ">
-                <div class="input-group">
+                <div class="input-group" style="width:200px;">
                   <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
                   <span class="input-group-btn">
                     <button class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
                   </span>
                 </div>
               </form>
-              <!-- <div class="container mt-3"> -->
-                  <!-- <h2>Dropdown Events</h2> -->
-                  <!-- <p>Click on the Dropdown button below. <strong>event.relatedTarget</strong> returns the element which triggered the dropdown.</p>   -->
-                  <div class="dropdown navbar-form">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                      Войти
-                    </button>
-                    <div class="dropdown-menu mt-3" >
-                      <a class="dropdown-item" href="#">Link 1</a>
-                      <a class="dropdown-item" href="#">Link 2</a>
-                      <a class="dropdown-item" href="#">Link 3</a>
-                    </div>
-                  </div>
-                <!-- </div> -->
-          
-          
+              <?php $isLogged = isLogin(); ?>
+
+              <?php if($isLogged) : ?>
+              <button type="button" class="nav-item btn">
+                <a href="Lagout.php" style="color: grey;">Выйти</a>
+              </button>
+              <?php endif; ?>
+              <?php if(!$isLogged) : ?>
+              <button type="button" class="nav-item btn">
+                <a href="Login.php" style="color: grey;">Войти</a>
+              </button>
+              <?php endif; ?>
+
           </div>
 
           
