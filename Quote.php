@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <div class="blog">
+  <div class="blog" style="min-height: -webkit-fill-available;">
   <nav class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
