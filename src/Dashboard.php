@@ -8,11 +8,11 @@
 
 <head>
   <title>Dashboard</title>
-  <script src="public/jquery-3.2.1.min.js"></script>
+  <script src="js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="public/Assets/style.css">
-  <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="js-scripts/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="js-scripts/Assets/style.css">
+  <script type="text/javascript" src="js-scripts/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -131,7 +131,7 @@
   </div>
   </div>
 
-  <script type="text/javascript" src="public/jquery.js"></script>
+  <script type="text/javascript" src="js-scripts/jquery.js"></script>
 </body>
 
 </html>

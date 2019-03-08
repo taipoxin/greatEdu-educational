@@ -2,22 +2,25 @@
 <?php require_once('Include/commonFuncs.php') ?>
 <?php require_once('Include/dbFunctions.php') ?>
 
-<?php require_once('src/deletepost_c.php') ?>
-<?php loginRequired(); ?>
+<?php require_once('utils/editpost_c.php') ?>
+<?php adminRequired(); ?>
 <?php 
-global $post_title, $post_image, $post_content;
+
+  global $post_title, $post_image, $post_content;
+	handleUpdatePost();
+	fillEditData();
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Delete Post</title>
-  <script src="public/jquery-3.2.1.min.js"></script>
+  <title>Update Post</title>
+  <script src="js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="public/Assets/style.css">
-  <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="js-scripts/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="js-scripts/Assets/style.css">
+  <script type="text/javascript" src="js-scripts/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +45,7 @@ global $post_title, $post_image, $post_content;
             <li><a href="Categories.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Manage Admin</a></li>
-            <li><a href="Dashboard.php">
+            <li><a href="Admin.php">
                 <span class="glyphicon glyphicon-comment"></span>
                 &nbsp;Comments</a></li>
             <li><a href="Blog.php">
@@ -55,33 +58,37 @@ global $post_title, $post_image, $post_content;
         </div>
         <div class="col-xs-10">
           <div class="page-title">
-            <h1>Delete Post</h1>
+            <h1>Update Post</h1>
           </div>
           <?php echo Message(); ?>
           <?php echo SuccessMessage(); ?>
-          <form action="deletepost.php" method="POST" enctype="multipart/form-data">
+          <form action="editpost.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <button name="post-delete" class="btn btn-danger form-control">DELETE</button>
-              </div>
-              <div class="form-group">
                 <labal for="post-title">Title</labal>
-                <input disabled type="text" name="post-title" class="form-control" id="post-title"
+                <input type="text" name="post-title" class="form-control" id="post-title"
                   value="<?php echo $post_title ?>">
               </div>
+              <div class="form-group">
+
+              </div>
+              <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
               <label>Existing Image: <img src="Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
               </label>
               <div class="form-group">
-                <labalkok for="post-image">Change Image</labalkok>
-                <input disabled type="File" name="post-image" class="form-control">
+                <labal for="post-image">Change Image</labal>
+                <input type="File" name="post-image" class="form-control">
               </div>
               <div class="form-group">
                 <labal for="post-content">Existing Content</labal>
-                <textarea disabled rows="20" class="form-control" name="post-content"
+                <textarea rows="20" class="form-control" name="post-content"
                   id="post-content"><?php echo htmlentities($post_content); ?></textarea>
               </div>
-              <input type="hidden" name="deleteID" value="<?php echo $_GET['delete_post_id']; ?>">
+              <input type="hidden" name="idFromUrl" value="<?php echo $_GET['post_id']; ?>">
               <input type="hidden" name="currentImage" value="<?php echo $post_image; ?>">
+              <div class="form-group">
+                <button name="post-update" class="btn btn-primary form-control">UPDATE</button>
+              </div>
             </fieldset>
           </form>
         </div>
@@ -96,7 +103,7 @@ global $post_title, $post_image, $post_content;
     </div>
   </div>
   </div>
-  <script type="text/javascript" src="public/jquery.js"></script>
+  <script type="text/javascript" src="js-scripts/jquery.js"></script>
 </body>
 
 </html>

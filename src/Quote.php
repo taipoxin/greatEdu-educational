@@ -2,21 +2,20 @@
 <?php require_once('Include/commonFuncs.php') ?>
 <?php require_once('Include/dbFunctions.php') ?>
 
-<?php require_once('src/post_c.php') ?>
+<?php require_once('utils/quote_c.php') ?>
 <?php 
-  global $title_title;
-	fillHeader();
+	$title_title = getQuotePageTitle();
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
   <title><?php echo $title_title . ' - GreatEdu'; ?></title>
-  <script src="public/jquery-3.2.1.min.js"></script>
+  <script src="js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="public/Assets/style.css">
-  <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="js-scripts/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="js-scripts/Assets/style.css">
+  <script type="text/javascript" src="js-scripts/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -76,12 +75,13 @@
           <?php echo Message(); ?>
           <?php echo SESSION_INFO(); ?>
           <?php 
-					fillPostData();
+					fillQuoteData();
 				?>
           <div class="comment-section">
+            <!-- TODO: addInFuture -->
             <?php if(isLogin()) : ?>
-            <form method="POST" action="comment.php">
-              <legend>Ваши мысли об этом посте</legend>
+            <!-- <form method="POST" action="comment.php">
+              <legend>Ваши мысли об этой цитате</legend>
               <div class="form-group">
                 <label>Комментарий</label>
                 <textarea name="comment" placeholder="Текст вашего комментария" class="form-control" rows="10"></textarea>
@@ -91,14 +91,14 @@
               </div>
               <input type="hidden" name="author" value="<?php echo $_SESSION['user_id']; ?>">
               <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-            </form>
+            </form> -->
             <?php endif; ?>
 
           </div>
-          <div class="page-header">Комментарии</div>
-          <?php
-					fillPostComments();
-				?>
+          <!-- <div class="page-header">Комментарии</div> -->
+            <?php
+            // fillQuoteComments();
+            ?>
 
         </div>
         <!--END OF COL-MD-8  -->
@@ -108,7 +108,7 @@
               <h2 class="panel-title">Обо мне</h2>
             </div>
             <div>
-              <img class="img-responsive img-circle imageicon" src="public/Assets/Images/user-default.png">
+              <img class="img-responsive img-circle imageicon" src="js-scripts/Assets/Images/user-default.png">
             </div>
             <div class="panel-body">
               Подробнее
@@ -116,11 +116,11 @@
           </div>
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Последние статьи</h2>
+              <h2 class="panel-title">Последние цитаты</h2>
             </div>
             <div class="panel-body">
               <?php
-							fillPostsReferences();
+							// fillQuoteReferences();
 						?>
             </div>
           </div>
