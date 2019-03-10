@@ -61,7 +61,7 @@ function fillBlog() {
             </p>
           </div>
           <div class="post-content">
-            <p class="lead"><?php echo htmlentities($post_content); ?></p>
+            <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>
           <p>
             <a href="Post.php?id=<?php echo $post_id; ?>">
