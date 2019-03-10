@@ -69,6 +69,15 @@
     <div class="container">
       <div class="blog-title">
         <div class="row">
+        <?php $isAdmined = isAdmin(); ?>
+
+        <?php if($isAdmined) : ?>
+        <div class="text-warning">
+          <a href="Dashboard.php">
+            <p>Перейти к панели управления</p>
+          </a>
+        </div>
+        <?php endif; ?>
         <?php echo SuccessMessage(); ?>
         <?php echo Message(); ?>
         <?php echo SESSION_INFO(); ?>

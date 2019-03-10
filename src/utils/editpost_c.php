@@ -19,9 +19,7 @@ function handleUpdatePost()
     }
     $validationResult = validatePost($title, $content, 'image');
     if (!$validationResult) {
-      $_SESSION['errorMessage'] = 'validation not passed';
       Redirect_To("editpost.php?post_id=$_POST[idFromUrl]");
-      // return;
     }
 
     $time = time();

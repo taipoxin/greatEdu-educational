@@ -33,6 +33,22 @@ function execQueryToArray($query)
   return null;
 }
 
+function IsAdmin()
+{
+  $admin = false;
+  if (isset($_SESSION['user_id'])) {
+    $username = $_SESSION['username'];
+    $query = "SELECT группа FROM `Пользователи` WHERE `никнейм` = '$username'";
+    $exec = doSQLQuery($query);
+    if ($group = mysqli_fetch_assoc($exec)) {
+      if ($group['группа'] === '2') {
+        $admin = true;
+      }
+    }
+  }
+  return $admin;
+}
+
 // return true if admin log-inned, redirect to Login if not
 function adminRequired()
 {
@@ -46,7 +62,7 @@ function adminRequired()
     if ($group = mysqli_fetch_assoc($exec)) {
       // $_SESSION['errorMessage'] = $group['группа'];
       if ($group['группа'] === '2') {
-        $_SESSION['errorMessage'] = null;
+        // $_SESSION['errorMessage'] = null;
         $admin = true;
         return true;
       }
