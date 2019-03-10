@@ -1,7 +1,7 @@
 <?php
 function LoginAttempt($username, $password)
 {
-  $query = "SELECT id, никнейм FROM `Пользователи` WHERE `никнейм` = '$username'  AND `хэш_пароля` = '$password'";
+  $query = "SELECT id, никнейм, группа FROM `Пользователи` WHERE `никнейм` = '$username'  AND `хэш_пароля` = '$password'";
   $exec = doSQLQuery($query);
   // Tables_in_great_edu
   if ($user = mysqli_fetch_assoc($exec)) {
