@@ -79,39 +79,22 @@
             </div>
             <div id="cat_table">
               <?php
-							// TODO: refactor deleteCategory
-							echo deleteCategory(); ?>
-              <h3>Registered Admins</h3>
+              // FIX: here was deleteCategory
+              ?>
+              <h3>Добавленные администраторы</h3>
               <table class="table table-striped table-hover">
                 <tr>
-                  <th>Number</th>
-                  <th>Date Added</th>
-                  <th>Username</th>
-                  <th>Added By</th>
-                  <th>Action</th>
+                  <th>номер</th>
+                  <th>id</th>
+                  <th>Дата изменения</th>
+                  <th>никнейм</th>
+                  <th>Действие</th>
                 </tr>
                 <?php
-// TODO: add delete
+                // TODO: add delete
+                retrieveAdmins();
 
-// $num = 1;
-// $viewSql = "SELECT * FROM cms_admin ORDER BY date_time DESC";
-// $exec = Query($viewSql);
-// while($data = mysqli_fetch_assoc($exec)) {
-//   $id = $data['id'];
-//   $dateAdded = $data['date_time'];
-//   $username = $data['username'];
-//   $creator = $data['added_by'];
-//   echo "<tr>
-//     <td>$num</td>
-//       <td>$dateAdded</td>
-//       <td>$username</td>
-//       <td>$creator</td>
-//       <td><a href='Admin.php?del_admin=$id'><button class='btn btn-danger'>Delete</button></a></td>
-//     </tr>
-//   ";
-//   $num++;
-// }
-// mysqli_close($con);
+
 ?>
               </table>
             </div>
