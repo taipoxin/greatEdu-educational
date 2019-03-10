@@ -62,16 +62,17 @@ function fillPostData()
 
 function fillPostComments()
 {
-  // $sql = "SELECT * FROM comment WHERE post_id = '$_GET[id]'";
   $sql = "SELECT * FROM Комментарии WHERE статья = '$_GET[id]'";
   $exec = doSQLQuery($sql);
   if (mysqli_num_rows($exec) > 0) {
     while ($comments = mysqli_fetch_assoc($exec)) {
-      // $c_email = $comments['email'];
-      $c_email = 'комментатор';
-      // $c_dateTime = $comments['date_time'];
-      $c_dateTime = '14-02-19 21:00';
-      // $c_comment = $comments['comment'];
+      $author_id = $comments['автор'];
+      $auth = getUserById($author_id);
+      $c_author = 'нераспознанный комментатор';
+      if ($auth) {
+        $c_author = $auth['никнейм'];
+      }
+      $c_dateTime = $comments['дата_публикации'];
       $c_comment = $comments['сообщение'];
       ?>
 
@@ -81,7 +82,7 @@ function fillPostComments()
             <img src="../js-scripts/Assets/Images/user-default.png" height="70px" width="100px">
           </div>
           <div class="col-sm-10">
-            <div><span class="lead text-info"><?php echo $c_email; ?></span></div>
+            <div><span class="lead text-info"><?php echo $c_author; ?></span></div>
             <div><span><?php echo $c_dateTime; ?></span></div>
             <div><span class="lead"> Сказал: <?php echo $c_comment; ?></span></div>
           </div>
@@ -111,6 +112,35 @@ function fillPostsReferences()
     </nav>
   <?php
   }
+}
+
+function insertComment($author, $text, $postID, $dateTime) {
+  $sql = "INSERT INTO Комментарии 
+    (автор, сообщение, статья, дата_публикации) 
+    VALUES('$author', '$text', '$postID', '$dateTime')";
+  return doSQLQuery($sql);
+}
+
+function handlePostAddComment() {
+  if (!empty($_POST['submit'])) {
+    $postID = $_POST['id'];
+    $author = $_POST['author'];
+    $comment = $_POST['comment'];
+    $time = time();
+    $dateTime = strftime('%Y-%m-%d %H:%M:%S ', $time);
+
+    $exec = insertComment($author, $comment, $postID, $dateTime);
+    if ($exec) {
+      $_SESSION['successMessage'] = "Your Comment Has Been Submitted.";
+    } else {
+      $_SESSION['errorMessage'] = "Something Went Wrong Please Try Again Later";
+    }
+    Redirect_To("Post.php?id=$postID");
+  }
+}
+
+if (isset($_POST['submit'])) {
+  handlePostAddComment();
 }
 
 ?>

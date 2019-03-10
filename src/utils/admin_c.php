@@ -62,7 +62,6 @@ function getAllAdminsByChangeDesc() {
   return doSQLQuery($viewSql);
 }
 
-// TODO: add delete
 function retrieveAdmins()
 {
   $num = 1;
@@ -85,7 +84,7 @@ function retrieveAdmins()
 
 function deleteAdminById($id)
 {
-  $sql = "DELETE FROM Пользователи WHERE id = $id";
+  $sql = "DELETE FROM Пользователи WHERE id = $id AND группа = 2";
   return doSQLQuery($sql);
 }
 

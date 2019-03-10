@@ -4,9 +4,8 @@
 
 <?php require_once '../utils/newpost_c.php'?>
 <?php adminRequired();?>
-<?php // TODO: old, should be refactored
-handleNewPost();
-?>
+
+<?php handleNewPost();?>
 <!DOCTYPE html>
 <html>
 

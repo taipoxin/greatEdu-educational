@@ -80,7 +80,7 @@
 				?>
           <div class="comment-section">
             <?php if(isLogin()) : ?>
-            <form method="POST" action="comment.php">
+            <form method="POST" action="Post.php">
               <legend>Ваши мысли об этом посте</legend>
               <div class="form-group">
                 <label>Комментарий</label>

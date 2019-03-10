@@ -78,9 +78,6 @@
               </div>
             </div>
             <div id="cat_table">
-              <?php
-              // FIX: here was deleteCategory
-              ?>
               <h3>Добавленные администраторы</h3>
               <table class="table table-striped table-hover">
                 <tr>
@@ -91,11 +88,8 @@
                   <th>Действие</th>
                 </tr>
                 <?php
-                // TODO: add delete
                 retrieveAdmins();
-
-
-?>
+                ?>
               </table>
             </div>
           </div>
