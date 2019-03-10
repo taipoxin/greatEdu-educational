@@ -52,18 +52,21 @@ function addNewAdmin($con2)
       echo 'before failure redirect <br>';
     }
   }
-
   return true;
+}
+
+function getAllAdminsByChangeDesc() {
+  $viewSql = "SELECT * FROM Пользователи
+    WHERE группа = 2
+    ORDER BY дата_изменения DESC";
+  return doSQLQuery($viewSql);
 }
 
 // TODO: add delete
 function retrieveAdmins()
 {
   $num = 1;
-  $viewSql = "SELECT * FROM Пользователи
-    WHERE группа = 2
-    ORDER BY дата_изменения DESC";
-  $exec = doSQLQuery($viewSql);
+  $exec = getAllAdminsByChangeDesc();
   while ($data = mysqli_fetch_assoc($exec)) {
     $id = $data['id'];
     $dateAdded = $data['дата_изменения'];
@@ -80,17 +83,10 @@ function retrieveAdmins()
   }
 }
 
-// TODO: refactor, old
 function deleteAdminById($id)
 {
   $sql = "DELETE FROM Пользователи WHERE id = $id";
-  $exec = doSQLQuery($sql);
-  if ($exec) {
-    $_SESSION['successMessage'] = 'Admin Deleted Successfully';
-  } else {
-    $_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
-  }
-  Redirect_To('Admin.php');
+  return doSQLQuery($sql);
 }
 
 // Add new admin
@@ -101,8 +97,15 @@ if (isset($_POST['submit'])) {
     Redirect_To('Admin.php');
   }
 }
+// Delete admin
 if (isset($_GET['del_admin'])) {
   if (!empty($_GET['del_admin'])) {
-    deleteAdminById($_GET['del_admin']);
+    $exec = deleteAdminById($_GET['del_admin']);
+    if ($exec) {
+      $_SESSION['successMessage'] = 'Admin Deleted Successfully';
+    } else {
+      $_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
+    }
+    Redirect_To('Admin.php');
   }
 }
