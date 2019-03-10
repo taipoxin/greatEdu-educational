@@ -7,8 +7,15 @@
 <?php 
 
   global $post_title, $post_image, $post_content;
-	handleUpdatePost();
-	fillEditData();
+  if (isset($_GET['post_id'])) {
+    fillEditData();
+  }
+  else if (isset($_POST['post-update'])) {
+    handleUpdatePost();
+  }
+  else {
+    Redirect_To('Dashboard.php');
+  }
 ?>
 
 <!DOCTYPE html>

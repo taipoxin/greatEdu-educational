@@ -32,30 +32,26 @@ function addNewAdmin($con2)
   $username = mysqli_real_escape_string($con2, $_POST['username']);
   $password = mysqli_real_escape_string($con2, $_POST['password']);
   $confirmPassword = mysqli_real_escape_string($con2, $_POST['confirm_password']);
-  // $creator = $_SESSION['username'];
-  echo $username . ' ' . $password . ' ' . $confirmPassword . '<br>';
 
   $validationResult = validateNewAdmin($username, $password, $confirmPassword);
-  echo 'result: ' . $validationResult . '<br>';
-  echo 'sessionError: ' . $_SESSION['errorMessage'] . '<br>';
 
-  if ($validationResult) {
-    // TODO: add email
-    // TODO: add password hashing
-    $result = addNewAdminQuery($username, 'sample-admin@test.ru', $password, 1, 2, $dateTime, $dateTime);
-    echo 'add to db result: ' . $result . '<br>';
-    if ($result) {
-      $_SESSION['successMessage'] = 'New Admin Has Been Created Successfully';
-      echo 'before success redirect <br>';
-    } else {
-      $_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
-      echo 'before failure redirect <br>';
-    }
+  if (!$validationResult) {
+    return false;
+  }
+
+  // TODO: add email
+  // TODO: add password hashing
+  $result = addNewAdminQuery($username, 'sample-admin@test.ru', $password, 1, 2, $dateTime, $dateTime);
+  if ($result) {
+    $_SESSION['successMessage'] = 'New Admin Has Been Created Successfully';
+  } else {
+    $_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
   }
   return true;
 }
 
-function getAllAdminsByChangeDesc() {
+function getAllAdminsByChangeDesc()
+{
   $viewSql = "SELECT * FROM Пользователи
     WHERE группа = 2
     ORDER BY дата_изменения DESC";
@@ -93,6 +89,9 @@ global $con2;
 if (isset($_POST['submit'])) {
   $res = addNewAdmin($con2);
   if ($res) {
+    Redirect_To('Admin.php');
+  }
+  else {
     Redirect_To('Admin.php');
   }
 }

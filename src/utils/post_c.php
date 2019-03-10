@@ -98,7 +98,7 @@ function fillPostComments()
 
 function fillPostsReferences()
 {
-  $sql = "SELECT * FROM Статьи LIMIT 5";
+  $sql = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT 5 ";
   $exec = doSQLQuery($sql);
   while ($recentPost = mysqli_fetch_assoc($exec)) {
     $postID = $recentPost['id'];

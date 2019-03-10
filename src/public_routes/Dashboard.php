@@ -3,6 +3,9 @@
 <?php require_once('../Include/dbFunctions.php') ?>
 
 <?php adminRequired(); ?>
+<?php
+// $_SESSION['errorMessage'] = 'test';
+?>
 <!DOCTYPE html>
 <html>
 
