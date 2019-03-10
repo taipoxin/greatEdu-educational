@@ -1,29 +1,20 @@
 
 <?php
 
-// write to content file
-function rewriteContentFile($filename, $content)
-{
-  $filepath = "../Upload/contents/$filename";
-  file_put_contents($filepath, $content);
-}
+
 
 
 function handleUpdatePost()
 {
   global $_POST, $_SESSION;
   if (isset($_POST['post-update'])) {
-    //   updatePost($_POST);
     $post_object = $_POST;
-    ini_set("safe_mode", false);
-    // date_default_timezone_set('Asia/Manila');
     $time = time();
     $title = $post_object['post-title'];
 
     $image = $_FILES['post-image']['name'];
-    $author = $_SESSION['username'];
+    // $author = $_SESSION['username'];
     $dateTime = strftime('%Y-%m-%d %T', $time);
-    $title_length = strlen($title);
     $updatedImage = $image;
     if (empty($image)) {
       $updatedImage = $post_object['currentImage'];
@@ -31,7 +22,6 @@ function handleUpdatePost()
     }
     
     $content = $post_object['post-content'];
-    $content_lenght = strlen($content);
     $filename = "post_$post_object[idFromUrl].txt";
     rewriteContentFile($filename, $content);
 
@@ -40,7 +30,7 @@ function handleUpdatePost()
     $exec = doSQLQuery($sql);
     if ($exec) {
       if (!empty($image)) {
-        $imageDirectory = "../Upload/Image/" . basename($_FILES['post-image']['name']);
+        $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
         if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
           $_SESSION['successMessage'] = 'Post Edit Successfully: Updated Image';
         } else {

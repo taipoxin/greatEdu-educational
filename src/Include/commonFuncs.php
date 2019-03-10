@@ -21,4 +21,11 @@ function LoadTextFromContentFile($file)
   return $post_content;
 }
 
+// write to content file
+function rewriteContentFile($filename, $content)
+{
+  $filepath = "Upload/contents/$filename";
+  file_put_contents($filepath, $content);
+}
+
 
