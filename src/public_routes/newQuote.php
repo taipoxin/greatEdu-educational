@@ -5,7 +5,7 @@
 <?php require_once '../utils/newQuote_c.php'?>
 <?php loginRequired();?>
 
-<?php handleNewPost();?>
+<?php handleNewQuote();?>
 <!DOCTYPE html>
 <html>
 
@@ -74,10 +74,6 @@
           <form action="newQuote.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <p for="quote-title">Заголовок</p>
-                <input type="text" name="quote-title" class="form-control" id="quote-title">
-              </div>
-              <div class="form-group">
                 <p for="quote-author">Автор цитаты</p>
                 <input type="text" name="quote-author" class="form-control" id="quote-author">
               </div>
@@ -94,7 +90,7 @@
                 <textarea rows="10" class="form-control" name="quote-content" id="quote-content"></textarea>
               </div>
               <div class="form-group">
-                <button name="post-submit" class="btn btn-primary form-control">Опубликовать цитату</button>
+                <button name="quote-submit" class="btn btn-primary form-control">Опубликовать цитату</button>
               </div>
             </fieldset>
           </form>

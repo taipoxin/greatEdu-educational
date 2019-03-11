@@ -3,7 +3,6 @@ require_once 'DatabaseLoad.php';
 
 // common functions
 
-
 function Redirect_To($location)
 {
   header('location:' . $location);
@@ -38,8 +37,25 @@ function rewriteContentFile($filename, $content)
   file_put_contents($filepath, $content);
 }
 
+// TODO: fix strlen
+// require title, author, content
+function validateQuote($creatorId, $author, $content)
+{
+  if (empty($creatorId) || empty($author) || empty($content)) {
+    $_SESSION['errorMessage'] = "All Fields Must Be Fill Out $creatorId, $author, $content";
+    return false;
+  } else if (strlen($content) > 2000) {
+    $_SESSION['errorMessage'] = 'Content Is Too Long';
+    return false;
+  } else {
+    return true;
+  }
+  // } else if (is_numeric($author)) {
+  //   $_SESSION['errorMessage'] = 'Author should be numeric';
+  //   return false;
+}
 
-function validatePost($title, $content, $image) 
+function validatePost($title, $content, $image)
 {
   if (empty($title) || empty($content) || empty($image)) {
     $_SESSION['errorMessage'] = "All Fields Must Be Fill Out $title, $content, $image";
@@ -55,4 +71,3 @@ function validatePost($title, $content, $image)
     return true;
   }
 }
-

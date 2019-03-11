@@ -10,52 +10,72 @@ function getLastQuoteId()
   return null;
 }
 
-function handleNewPost()
+function handleNewQuote()
 {
   global $_POST, $_SESSION;
-  if (isset($_POST['post-submit'])) {
+  if (isset($_POST['quote-submit'])) {
 
-    $title = $_POST['post-title'];
-    $content = $_POST['post-content'];
-    $image = $_FILES['post-image']['name'];
-    
-    $validationResult = validatePost($title, $content, $image);
+    $quote_author = $_POST['quote-author'];
+    $quote_content = $_POST['quote-content'];
+    $quote_creator_id = $_SESSION['user_id'];
+
+    $validationResult = validateQuote($quote_creator_id, $quote_author, $quote_content);
     if (!$validationResult) {
       return;
     }
 
-    $lastId = getLastArticleId();
-    $post_id = $lastId + 1;
+    $quote_source = $_POST['quote-source'];
+    $quote_theme = $_POST['quote-theme'];
+    if (empty($quote_source)) {
+      $quote_source = 'NULL';
+    }
+    if (empty($quote_theme)) {
+      $quote_theme = 'NULL';
+    }
 
-    $authorId =  $_SESSION['user_id'];
+    $lastId = getLastQuoteId();
+    $quote_id = $lastId + 1;
+
     $time = time();
     $dateTime = strftime('%Y-%m-%d %T', $time);
 
-    $filename = "post_$post_id.txt";
-    rewriteContentFile($filename, $content);
+    $sql = "INSERT INTO Цитаты (id, автор, текст, источник, тема,
+      автор_публикации, дата_публикации)
+      VALUES ($quote_id, $quote_author, '$quote_content',
+      $quote_source, $quote_theme, '$quote_creator_id', '$dateTime')";
+    
+    // return;
+    $exec = doSQLQuery($sql);
 
-    if (!empty($image)) {
-      $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
-      if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
-        $sql = "INSERT INTO Статьи (id, темы, автор, теги,
-          дата_публикации, заголовок, файл_контент, изображение)
-          VALUES ($post_id, 1, $authorId, 2,
-          '$dateTime', '$title', '$filename', '$image')";
-        $exec = doSQLQuery($sql);
-        if ($exec) {
-          $_SESSION['successMessage'] = 'Post Added Successfully';
-        }
-        else {
-          $_SESSION['errorMessage'] = 'Something wrong with insert to db';
-        }
-        
-      } else {
-        $_SESSION['errorMessage'] = 'Something Went Wrong With saving image Please Try Again Later';
-      }
+    if ($exec) {
+      $_SESSION['successMessage'] = 'Quote Added Successfully';
+    } else {
+      $_SESSION['errorMessage'] = 'Error: sql wrong - '. $sql;
+      // $_SESSION['errorMessage'] = 'Something wrong with insert to db';
     }
-    else {
-      $_SESSION['errorMessage'] = 'You do not set image for article';
-    }
+
+    // if (!empty($image)) {
+    //   $imageDirectory = "Upload/Image/" . basename($_FILES['quote-image']['name']);
+    //   if (move_uploaded_file($_FILES['quote-image']['tmp_name'], $imageDirectory)) {
+    //     $sql = "INSERT INTO Статьи (id, темы, автор, теги,
+    //       дата_публикации, заголовок, файл_контент, изображение)
+    //       VALUES ($post_id, 1, $authorId, 2,
+    //       '$dateTime', '$title', '$filename', '$image')";
+    //     $exec = doSQLQuery($sql);
+    //     if ($exec) {
+    //       $_SESSION['successMessage'] = 'Post Added Successfully';
+    //     }
+    //     else {
+    //       $_SESSION['errorMessage'] = 'Something wrong with insert to db';
+    //     }
+
+    //   } else {
+    //     $_SESSION['errorMessage'] = 'Something Went Wrong With saving image Please Try Again Later';
+    //   }
+    // }
+    // else {
+    //   $_SESSION['errorMessage'] = 'You do not set image for article';
+    // }
 
   }
 }
