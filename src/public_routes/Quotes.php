@@ -67,6 +67,13 @@
     <div class="container">
       <div class="blog-title">
         <div class="row">
+        <?php if($isLogged) : ?>
+        <a href="newQuote.php">
+          <button style="" class="btn btn-info btn-lg">Добавить цитату</button>
+        </a>
+        <p></p>
+        <?php endif; ?>
+
         <?php echo SuccessMessage(); ?>
         <?php echo Message(); ?>
         <?php echo SESSION_INFO(); ?>
