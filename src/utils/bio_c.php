@@ -13,16 +13,7 @@ function fillHeader()
 
 }
 
-function LoadTextFromBioFile($file)
-{
-  $post_content = '';
-  if (is_null($file)) {
-    $post_content = 'error load';
-  } else {
-    $post_content = file_get_contents('Upload/bios/' . $file);
-  }
-  return $post_content;
-}
+
 
 function fillBioData()
 {
@@ -63,7 +54,7 @@ function fillBioData()
             <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>
         </div>
-<?php
+    <?php
       }
 
     }

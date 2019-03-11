@@ -36,7 +36,6 @@ function fillBlog() {
         $post_id = $post['id'];
         $post_date = $post['дата_публикации'];
         $post_title = $post['заголовок'];
-        $post_category = 'категория';
         $author_id = $post['автор'];
         $post_image = $post['изображение'];
         $post_file = $post['файл_контент'];

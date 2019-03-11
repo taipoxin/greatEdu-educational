@@ -21,6 +21,16 @@ function LoadTextFromContentFile($file)
   return $post_content;
 }
 
+function LoadTextFromBioFile($file)
+{
+  $post_content = '';
+  if (is_null($file)) {
+    $post_content = 'error load';
+  } else {
+    $post_content = file_get_contents('Upload/bios/' . $file);
+  }
+  return $post_content;
+}
 // write to content file
 function rewriteContentFile($filename, $content)
 {

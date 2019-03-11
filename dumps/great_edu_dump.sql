@@ -30,12 +30,14 @@ CREATE TABLE `Авторы` (
   `страна_принадлежности` varchar(50) COLLATE utf8_bin NOT NULL,
   `сферы_деятельности` int(11) NOT NULL,
   `период` int(11) NOT NULL,
+  `биография` varchar(30) COLLATE utf8_bin DEFAULT NULL,
+  `дата_добавления` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Авторы_1_idx` (`сферы_деятельности`),
   KEY `fk_Авторы_1_idx1` (`период`),
   CONSTRAINT `fk_Авторы_1` FOREIGN KEY (`период`) REFERENCES `Период` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Авторы_fk2` FOREIGN KEY (`сферы_деятельности`) REFERENCES `Сферы_деятельности` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +46,7 @@ CREATE TABLE `Авторы` (
 
 LOCK TABLES `Авторы` WRITE;
 /*!40000 ALTER TABLE `Авторы` DISABLE KEYS */;
-INSERT INTO `Авторы` VALUES (1,'Пушкин','Александр','Сергеевич','Российская империя',8,6),(2,'Достоевский','Федор','Михайлович','Российская империя',6,5),(3,'Маяковский','Владимир','Владимирович','СССР',5,3),(4,'Лондон','Джек',' ','США',3,2),(5,'Булгаков','Михаил','Афанасьевич','СССР',8,7);
+INSERT INTO `Авторы` VALUES (1,'Пушкин','Александр','Сергеевич','Российская империя',8,6,'bio1','2019-02-11 16:01:44'),(2,'Достоевский','Федор','Михайлович','Российская империя',6,5,'bio2','2019-02-13 16:01:44'),(3,'Маяковский','Владимир','Владимирович','СССР',5,3,'bio3','2019-02-15 16:01:44'),(4,'Лондон','Джек',' ','США',3,2,'bio4','2019-02-20 16:01:44'),(5,'Булгаков','Михаил','Афанасьевич','СССР',8,7,'bio5','2019-02-01 16:01:44'),(6,'Жмышенко','Валерий','Альбертович','РФ',8,7,'bio6','2019-03-11 16:01:44');
 /*!40000 ALTER TABLE `Авторы` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -525,4 +527,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-11 10:59:37
+-- Dump completed on 2019-03-11 13:42:05

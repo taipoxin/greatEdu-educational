@@ -1,7 +1,7 @@
 <?php
 
 
-function fillBlog() {
+function fillBios() {
   global $con2;
   // global $page;
   if (!isset($_GET['page'])) {
@@ -22,11 +22,10 @@ function fillBlog() {
     if ($page <= 0) {
       $showPost = 0;
     }
-    $query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT $showPost,5	";
+    $query = "SELECT * FROM Авторы ORDER BY дата_добавления DESC LIMIT $showPost,5	";
 
   } else {
-
-    $query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT 0,5	";
+    $query = "SELECT * FROM Авторы ORDER BY дата_добавления DESC LIMIT 0,5	";
   }
 
   $exec = doSQLQuery($query) or die(mysqli_error($con2));
@@ -34,20 +33,23 @@ function fillBlog() {
     if (mysqli_num_rows($exec) > 0) {
       while ($post = mysqli_fetch_assoc($exec)) {
         $post_id = $post['id'];
-        $post_date = $post['дата_публикации'];
-        $post_title = $post['заголовок'];
-        $post_category = 'категория';
-        $author_id = $post['автор'];
-        $post_image = $post['изображение'];
-        $post_file = $post['файл_контент'];
-        $text = LoadTextFromContentFile($post_file);
+        $post_date = $post['дата_добавления'];
+        $post_title = "$post[фамилия] $post[имя] $post[отчество]";
+
+        $post_state = $post['страна_принадлежности'];
+        $post_spheres = $post['сферы_деятельности'];
+        $post_period_id = $post['период'];
+
+        $biography = $post['биография'];
+
+
+        $post_image = $biography . '.jpg';
+        $post_file = $biography . '.txt';
+        $text = LoadTextFromBioFile($post_file);
         $post_content = $text;
         if (mb_strlen($text) > 128) {
           $post_content = mb_substr($text, 0, 128, "utf-8") . '...';
         }
-
-        $author_obj = getUserById($author_id);
-        $post_author = $author_obj['никнейм'];
 
         ?>
         <div class="post">
@@ -55,28 +57,29 @@ function fillBlog() {
             <h1><?php echo htmlentities($post_title); ?></h1>
           </div>
           <div class="thumbnail">
-            <img class="img-responsive img-rounded" src="../Upload/Image/<?php echo $post_image; ?>">
+            <img class="img-responsive img-rounded" src="../Upload/bios/<?php echo $post_image; ?>">
           </div>
           <div class="post-info">
-            <p class="lead">
-              Публиковано: <?php echo htmlentities($post_date); ?> | Автор: <?php echo htmlentities($post_author); ?>
+          <p class="lead">
+              Опубликовано: <?php echo htmlentities($post_date); ?> | Период: <?php echo htmlentities($post_period_id); ?> |
+              Страна: <?php echo $post_state; ?> | Сферы деятельности: <?php echo $post_spheres; ?> 
             </p>
           </div>
           <div class="post-content">
             <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>
           <p>
-            <a href="Post.php?id=<?php echo $post_id; ?>">
+            <a href="Bio.php?id=<?php echo $post_id; ?>">
               <button class="btn btn-info btn-lg" id="read_more_btn">Подробнее</button>
             </a>
             <div class="clearfix"></div>
           </p>
         </div>
-  <?php
-  }
+      <?php
+      }
 
-  } else {
-    echo "<span class='lead'>No result<span>";
+    } else {
+      echo "<span class='lead'>No result<span>";
     }
   }
 }
@@ -90,10 +93,10 @@ function fillPages() {
   }
   if ($page > 1) {
     ?>
-    <li><a href="Blog.php?page=<?php echo $page - 1; ?>"><</a></li>
+    <li><a href="/Bios.php?page=<?php echo $page - 1; ?>"><</a></li>
     <?php
   }
-  $sql = "SELECT COUNT(*) FROM Статьи";
+  $sql = "SELECT COUNT(*) FROM Авторы";
   $exec = doSQLQuery($sql);
   $rowCount = mysqli_fetch_array($exec);
   if (!$rowCount) {return;}
@@ -103,34 +106,36 @@ function fillPages() {
   for ($count = 1; $count <= $postPerPage; $count++){
     if ($page == $count) {
       ?>
-      <li class="active"><a href="Blog.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <li class="active"><a href="/Bios.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
       <?php
     }else {
       ?>
-      <li><a href="Blog.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <li><a href="/Bios.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
       <?php
     }
   }
   if($page < $postPerPage) {
     ?>
-    <li><a href="Blog.php?page=<?php echo $page + 1; ?>">></a></li>
+    <li><a href="/Bios.php?page=<?php echo $page + 1; ?>">></a></li>
     <?php
   }
   
 }
 
 
-function fillBlogPostsReferences()
+
+function fillBiosReferences()
 {
-  $sql = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT 5 ";
+  $sql = "SELECT * FROM Авторы ORDER BY дата_добавления DESC LIMIT 5 ";
   $exec = doSQLQuery($sql);
   while ($recentPost = mysqli_fetch_assoc($exec)) {
     $postID = $recentPost['id'];
+    $linkText = "$recentPost[фамилия] $recentPost[имя] $recentPost[отчество]";
     ?>
     <nav>
       <ul>
-        <li><a href="Post.php?id=<?php echo $postID; ?>">
-            <?php echo $recentPost['заголовок'] ?>
+        <li><a href="/Bio.php?id=<?php echo $postID; ?>">
+            <?php echo $linkText ?>
           </a></li>
       </ul>
     </nav>

@@ -8,7 +8,7 @@
 <html>
 
 <head>
-  <title>Статьи - GreatEdu</title>
+  <title>Биографии - GreatEdu</title>
   <script src="../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
@@ -82,15 +82,15 @@
         <?php echo Message(); ?>
         <?php echo SESSION_INFO(); ?>
           <div class="col-md-8 ">
-            <h1 class="text-warning">Статьи</h1>
+            <h1 class="text-warning">Биографии</h1>
             <p class="lead"></p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-8">
-          <?php // заполнить все статьями
-            fillBlog();
+          <?php // заполнить все биографиями
+            fillBios();
             ?>
 
         <ul class="pagination pagination-lg">
@@ -103,7 +103,7 @@
         <div class="col-md-3 col-md-offset-1 post-side-menu">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Статьи</h2>
+              <h2 class="panel-title">Биографии</h2>
             </div>
             <div>
               <!-- <img class="img-responsive img-circle imageicon" src="Assets/Images/user-default.png"> -->
@@ -114,11 +114,11 @@
           </div>
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Последние статьи</h2>
+              <h2 class="panel-title">Последние биографии</h2>
             </div>
             <div class="panel-body">
               <?php
-                fillBlogPostsReferences();
+                fillBiosReferences();
               ?>
             </div>
           </div>
