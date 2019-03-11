@@ -38,11 +38,12 @@ function fillBlog() {
         $post_category = 'категория';
         $author_id = $post['автор'];
         $post_image = $post['изображение'];
-        //$post_content = substr($post['post'], 0,150) . '...';
-        // $post_content = $post['файл_контент'] . '...';
         $post_file = $post['файл_контент'];
         $text = LoadTextFromContentFile($post_file);
-        $post_content = substr($text, 0, 200) . '...';
+        $post_content = $text;
+        if (strlen($text) > 128) {
+          $post_content = substr($text, 0, 128) . '...';
+        }
 
         $author_obj = getUserById($author_id);
         $post_author = $author_obj['никнейм'];
