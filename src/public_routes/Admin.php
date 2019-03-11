@@ -61,6 +61,10 @@
                       <input class="form-control input-md" type="text" name="username" placeholder="Никнейм">
                     </div>
                     <div class="form-group">
+                      <label for="username">Email</label>
+                      <input class="form-control input-md" type="text" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
                       <label for="password">Пароль</label>
                       <input class="form-control input-md" type="Password" name="password" placeholder="Пароль">
                     </div>

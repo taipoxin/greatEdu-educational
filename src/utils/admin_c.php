@@ -30,6 +30,7 @@ function addNewAdmin($con2)
   $time = time();
   $dateTime = strftime('%Y-%m-%d %H:%M:%S ', $time);
   $username = mysqli_real_escape_string($con2, $_POST['username']);
+  $email = mysqli_real_escape_string($con2, $_POST['email']);
   $password = mysqli_real_escape_string($con2, $_POST['password']);
   $confirmPassword = mysqli_real_escape_string($con2, $_POST['confirm_password']);
 
@@ -38,10 +39,13 @@ function addNewAdmin($con2)
   if (!$validationResult) {
     return false;
   }
+  if (empty($email)) {
+    $_SESSION['errorMessage'] = 'Email cannot be empty';
+    return false;
+  }
 
-  // TODO: add email
   // TODO: add password hashing
-  $result = addNewAdminQuery($username, 'sample-admin@test.ru', $password, 1, 2, $dateTime, $dateTime);
+  $result = addNewAdminQuery($username, $email, $password, 1, 2, $dateTime, $dateTime);
   if ($result) {
     $_SESSION['successMessage'] = 'New Admin Has Been Created Successfully';
   } else {
