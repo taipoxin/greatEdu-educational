@@ -35,5 +35,5 @@ if (isset($_POST['post-delete'])) {
     }
   }
 } else {
-  Redirect_To('dashboard.php');
+  Redirect_To('Dashboard.php');
 }

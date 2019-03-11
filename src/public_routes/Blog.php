@@ -73,7 +73,7 @@
 
         <?php if($isAdmined) : ?>
         <div class="text-warning">
-          <a href="Dashboard.php">
+          <a href="Dashboard">
             <p>Перейти к панели управления</p>
           </a>
         </div>

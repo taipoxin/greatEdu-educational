@@ -1,23 +1,33 @@
-<?php require_once('../Include/Sessions.php'); ?>
-<?php require_once('../Include/commonFuncs.php') ?>
-<?php require_once('../Include/dbFunctions.php') ?>
+<?php require_once('../../Include/Sessions.php'); ?>
+<?php require_once('../../Include/commonFuncs.php') ?>
+<?php require_once('../../Include/dbFunctions.php') ?>
 
-<?php require_once('../utils/deletepost_c.php') ?>
-<?php loginRequired(); ?>
+<?php require_once('../../utils/editpost_c.php') ?>
+<?php adminRequired(); ?>
 <?php 
-global $post_title, $post_image, $post_content;
+
+  global $post_title, $post_image, $post_content;
+  if (isset($_GET['post_id'])) {
+    fillEditData();
+  }
+  else if (isset($_POST['post-update'])) {
+    handleUpdatePost();
+  }
+  else {
+    Redirect_To('Dashboard.php');
+  }
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Удалить статью - Панель управления GreatEdu</title>
-  <script src="../js-scripts/jquery-3.2.1.min.js"></script>
+  <title>Изменить статью - Панель управления GreatEdu</title>
+  <script src="../../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../js-scripts/Assets/style.css">
-  <script type="text/javascript" src="../js-scripts/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../js-scripts/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../js-scripts/Assets/style.css">
+  <script type="text/javascript" src="../../js-scripts/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -40,43 +50,47 @@ global $post_title, $post_image, $post_content;
             <li><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Администраторы</a></li>
-            <li><a href="Blog.php">
+            <li><a href="/Blog.php">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;На главную</a></li>
-            <li><a href="Lagout.php">
+            <li><a href="/Lagout.php">
                 <span class="glyphicon glyphicon-log-out"></span>
                 &nbsp;Выйти</a></li>
           </ul>
         </div>
         <div class="col-xs-10">
           <div class="page-title">
-            <h1>Удалить статью</h1>
+            <h1>Изменить статью</h1>
           </div>
           <?php echo Message(); ?>
           <?php echo SuccessMessage(); ?>
-          <form action="deletepost.php" method="POST" enctype="multipart/form-data">
+          <form action="editpost.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <button name="post-delete" class="btn btn-danger form-control">УДАЛИТЬ</button>
-              </div>
-              <div class="form-group">
                 <p for="post-title">Заголовок</p>
-                <input disabled type="text" name="post-title" class="form-control" id="post-title"
+                <input type="text" name="post-title" class="form-control" id="post-title"
                   value="<?php echo $post_title ?>">
               </div>
-              <label>Изображение: <img src="../Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
+              <div class="form-group">
+
+              </div>
+              <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+              <label>Изображение: <img src="../../Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
               </label>
               <div class="form-group">
                 <p for="post-image">Изменить изображение</p>
-                <input disabled type="File" name="post-image" class="form-control">
+                <input type="File" name="post-image" class="form-control">
               </div>
               <div class="form-group">
                 <p for="post-content">Текст (поддерживает HTML)</p>
-                <textarea disabled rows="20" class="form-control" name="post-content"
+                <textarea rows="20" class="form-control" name="post-content"
                   id="post-content"><?php echo htmlentities($post_content); ?></textarea>
               </div>
-              <input type="hidden" name="deleteID" value="<?php echo $_GET['delete_post_id']; ?>">
+              <input type="hidden" name="idFromUrl" value="<?php echo $_GET['post_id']; ?>">
               <input type="hidden" name="currentImage" value="<?php echo $post_image; ?>">
+              <div class="form-group">
+                <button name="post-update" class="btn btn-primary form-control">UPDATE</button>
+              </div>
             </fieldset>
           </form>
         </div>
@@ -91,7 +105,7 @@ global $post_title, $post_image, $post_content;
     </div>
   </div>
   </div>
-  <script type="text/javascript" src="../js-scripts/jquery.js"></script>
+  <script type="text/javascript" src="../../js-scripts/jquery.js"></script>
 </body>
 
 </html>

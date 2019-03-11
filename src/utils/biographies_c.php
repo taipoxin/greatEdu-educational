@@ -50,7 +50,7 @@ function fillBiographiesTable()
         <td>
           <?php echo "<a href='editpost.php?post_id=$post_id'>Изменить</a> | <a href='deletepost.php?delete_post_id=$post_id'>Удалить</a>"; ?>
         </td>
-        <td><a href="Bio.php?id=<?php echo $bio_id; ?>"><button class="btn btn-primary">Просмотреть</button></a></td>
+        <td><a href="/Bio.php?id=<?php echo $bio_id; ?>"><button class="btn btn-primary">Просмотреть</button></a></td>
       </tr>
       <?php // TODO: old editpost, deletepost
       $postNo++;

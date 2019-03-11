@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['username'] = $foundAccount['никнейм'];
       // если админ
       if ($foundAccount['группа'] == '2') {
-        Redirect_To('Dashboard.php');
+        Redirect_To('Dashboard');
       } else {
         Redirect_To('Blog.php');
       }
