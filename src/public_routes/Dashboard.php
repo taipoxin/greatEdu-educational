@@ -3,6 +3,7 @@
 <?php require_once('../Include/dbFunctions.php') ?>
 
 <?php adminRequired(); ?>
+<?php require_once('../utils/dashboard_c.php') ?>
 
 <!DOCTYPE html>
 <html>
@@ -50,62 +51,7 @@
             <?php echo SuccessMessage(); ?>
             <?php echo Message(); ?>
             <div class="table-responsive">
-
-              <?php 
-							$sql = "SELECT * FROM Статьи ORDER BY дата_публикации";
-							$exec = doSQLQuery($sql);
-							$postNo = 1;
-							if(mysqli_num_rows($exec) < 1	) {
-								?>
-              <p class="lead">У вас 0 постов в данный момент</p>
-              <a href="NewPost.php"><button class="btn btn-info">Добавить пост</button></a>
-              <?php
-							}else{ ?>
-              <table class="table table-hover">
-                <tr>
-                  <th>Id</th>
-                  <th>Дата публикации</th>
-                  <th>Заголовок</th>
-                  <th>Автор</th>
-                  <th>Изображение</th>
-                  <th>Действия</th>
-                  <th>Детали</th>
-                </tr>
-                <?php
-								while ($post = mysqli_fetch_assoc($exec)) {
-									$post_id = $post['id'];
-									$post_date = $post['дата_публикации'];
-									$post_title = $post['заголовок'];
-                  $authorId = $post['автор'];
-                  $author = getUserById($authorId)['никнейм'];
-
-									$image = $post['изображение'];
-									?>
-                <tr>
-                  <td><?php echo $post_id; ?></td>
-                  <td><?php echo $post_date; ?></td>
-                  <td><?php 
-									if(strlen($post_title) > 64 ) {
-										echo substr($post_title,0,64) . '...';
-									}else {
-										echo $post_title;
-									}
-					
-									?></td>
-                  <td><?php echo $author; ?></td>
-                  <td>
-                    <?php echo "<img class='img-responsive' src='../Upload/Image/$image' width='100px' height='150px'>"; ?>
-                  </td>
-                  <td>
-                    <?php echo "<a href='editpost.php?post_id=$post_id'>Изменить</a> | <a href='deletepost.php?delete_post_id=$post_id'>Удалить</a>"; ?>
-                  </td>
-                  <td><a href="Post.php?id=<?php echo $post_id; ?>"><button class="btn btn-primary">Просмотреть</button></a></td>
-                </tr>
-                <?php
-									$postNo++;
-								}
-							}
-							?>
+              <?php fillArticleTable() ?>
               </table>
             </div>
           </div>

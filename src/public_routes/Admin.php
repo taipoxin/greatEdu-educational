@@ -9,7 +9,7 @@
 <html>
 
 <head>
-  <title>Manage Admin</title>
+  <title>Администраторы - Панель управления GreatEdu</title>
   <script src="../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
 <body>
   <div class="heading">
     <a href="">
-      <p>Visit Blog</p>
+      <p>Панель управления</p>
     </a>
   </div>
   <div class="container-fluid">
@@ -30,24 +30,24 @@
           <ul id="side-menu" class="nav nav-pills nav-stacked">
             <li class=""><a href="Dashboard.php">
                 <span class="glyphicon glyphicon-th"></span>
-                &nbsp;Dashboard</a></li>
+                &nbsp;Статьи</a></li>
             <li><a href="NewPost.php">
                 <span class="glyphicon glyphicon-list"></span>
-                &nbsp;New Post</a></li>
+                &nbsp;Новая статья</a></li>
             <li class="active"><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
-                &nbsp;Manage Admin</a></li>
+                &nbsp;Администраторы</a></li>
             <li><a href="Blog.php">
                 <span class="glyphicon glyphicon-equalizer"></span>
-                &nbsp;Live Blog</a></li>
+                &nbsp;На главную</a></li>
             <li><a href="Lagout.php">
                 <span class="glyphicon glyphicon-log-out"></span>
-                &nbsp;Lagout</a></li>
+                &nbsp;Выйти</a></li>
           </ul>
         </div>
         <div class="col-xs-10" style="min-height: -webkit-fill-available;">
           <div class="page-title">
-            <h1>Manage Admin</h1>
+            <h1>Администраторы</h1>
           </div>
           <?php echo Message(); ?>
           <?php echo SuccessMessage(); ?>
@@ -57,21 +57,21 @@
                 <form method="POST" action="Admin.php">
                   <fieldset>
                     <div class="form-group">
-                      <label for="username">Username</label>
-                      <input class="form-control input-md" type="text" name="username" placeholder="Username">
+                      <label for="username">Никнейм</label>
+                      <input class="form-control input-md" type="text" name="username" placeholder="Никнейм">
                     </div>
                     <div class="form-group">
-                      <label for="password">Password</label>
-                      <input class="form-control input-md" type="Password" name="password" placeholder="Password">
+                      <label for="password">Пароль</label>
+                      <input class="form-control input-md" type="Password" name="password" placeholder="Пароль">
                     </div>
                     <div class="form-group">
-                      <label for="confirm_password">Re-type Same Password</label>
+                      <label for="confirm_password">Подтвердите пароль</label>
                       <input class="form-control input-md" type="Password" name="confirm_password"
-                        placeholder="Confirm Password">
+                        placeholder="Подтвердите пароль">
                     </div>
                     <div class="form-group">
                       <input class="form-control btn btn-primary" type="submit" name="submit"
-                        value="Register New Admin">
+                        value="Зарегистрировать нового администратора">
                     </div>
                   </fieldset>
                 </form>

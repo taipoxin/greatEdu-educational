@@ -10,7 +10,7 @@
 <html>
 
 <head>
-  <title>New Post</title>
+  <title>Новая статья - Панель управления GreatEdu</title>
   <script src="../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
 <body>
   <div class="heading">
     <a href="">
-      <p>Visit Blog</p>
+      <p>Панель управления</p>
     </a>
   </div>
   <div class="container-fluid">
@@ -31,45 +31,45 @@
           <ul id="side-menu" class="nav nav-pills nav-stacked">
             <li class=""><a href="Dashboard.php">
                 <span class="glyphicon glyphicon-th"></span>
-                &nbsp;Dashboard</a></li>
+                &nbsp;Статьи</a></li>
             <li class="active"><a href="NewPost.php">
                 <span class="glyphicon glyphicon-list"></span>
-                &nbsp;New Post</a></li>
+                &nbsp;Новая статья</a></li>
             <li><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
-                &nbsp;Manage Admin</a></li>
+                &nbsp;Администраторы</a></li>
             <li><a href="Blog.php">
                 <span class="glyphicon glyphicon-equalizer"></span>
-                &nbsp;Live Blog</a></li>
+                &nbsp;На главную</a></li>
             <li><a href="Lagout.php">
                 <span class="glyphicon glyphicon-log-out"></span>
-                &nbsp;Lagout</a></li>
+                &nbsp;Выйти</a></li>
           </ul>
         </div>
         <div class="col-xs-10" style="min-height: -webkit-fill-available;">
           <div class="page-title">
-            <h1>Add New Post</h1>
+            <h1>Добавить новую статью</h1>
           </div>
           <?php echo Message(); ?>
           <?php echo SuccessMessage(); ?>
           <form action="NewPost.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <labal for="post-title">Title</labal>
+                <labal for="post-title">Заголовок</labal>
                 <input type="text" name="post-title" class="form-control" id="post-title">
               </div>
               <div class="form-group">
-                <labal for="post-image">Feature Image</labal>
+                <labal for="post-image">Главное изображение</labal>
                 <input type="File" name="post-image" class="form-control">
               </div>
               <div class="form-group">
-                <labal for="post-content">Content</labal>
+                <labal for="post-content">Текст (поддерживает HTML)</labal>
                 <textarea rows="10" class="form-control" name="post-content" id="post-content">
 
 								</textarea>
               </div>
               <div class="form-group">
-                <button name="post-submit" class="btn btn-primary form-control">Publish</button>
+                <button name="post-submit" class="btn btn-primary form-control">Опубликовать</button>
               </div>
             </fieldset>
           </form>
