@@ -13,7 +13,10 @@ function getQuoteAuthor($id) {
 
 function fillQuotes() {
   global $con2;
-  $page = 1;
+  if (!isset($_GET['page'])) {
+    $page = 1;
+  }
+  // $page = 1;
   $query = "";
   if (isset($_GET['search'])) {
     if (empty($_GET['search'])) {
@@ -92,6 +95,45 @@ function fillQuotes() {
     echo "<span class='lead'>Ошибка сервера<span>";
   }
 
+}
+
+
+function fillPagesQuotes() {
+  if (!isset($_GET['page'])) {
+    $page = 1;
+  }
+  else {
+    $page = $_GET['page'];
+  }
+  if ($page > 1) {
+    ?>
+    <li><a href="Quotes.php?page=<?php echo $page - 1; ?>"><</a></li>
+    <?php
+  }
+  $sql = "SELECT COUNT(*) FROM Цитаты";
+  $exec = doSQLQuery($sql);
+  $rowCount = mysqli_fetch_array($exec);
+  if (!$rowCount) {return;}
+  $totalRow = array_shift($rowCount);
+  $postPerPage = ceil($totalRow / 5);
+
+  for ($count = 1; $count <= $postPerPage; $count++){
+    if ($page == $count) {
+      ?>
+      <li class="active"><a href="Quotes.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <?php
+    }else {
+      ?>
+      <li><a href="Quotes.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <?php
+    }
+  }
+  if($page < $postPerPage) {
+    ?>
+    <li><a href="Quotes.php?page=<?php echo $page + 1; ?>">></a></li>
+    <?php
+  }
+  
 }
 
 ?>

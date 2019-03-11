@@ -81,6 +81,11 @@
           <?php // заполнить все статьями
             fillQuotes()
             ?>
+          <ul class="pagination pagination-lg">
+            <?php
+              fillPagesQuotes();
+            ?>
+          </ul>
         </div>
         <!--END OF COL-MD-8  -->
         <div class="col-md-3 col-md-offset-1 post-side-menu">
