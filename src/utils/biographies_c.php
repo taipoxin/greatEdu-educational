@@ -48,7 +48,7 @@ function fillBiographiesTable()
           <?php echo "<img class='img-responsive' src='../Upload/bios/$image' width='100px' height='150px'>"; ?>
         </td>
         <td>
-          <?php echo "<a href='editpost.php?post_id=$post_id'>Изменить</a> | <a href='deletepost.php?delete_post_id=$post_id'>Удалить</a>"; ?>
+          <?php echo "<a href='editpost.php?post_id=$bio_id'>Изменить</a> | <a href='deletepost.php?delete_post_id=$bio_id'>Удалить</a>"; ?>
         </td>
         <td><a href="/Bio.php?id=<?php echo $bio_id; ?>"><button class="btn btn-primary">Просмотреть</button></a></td>
       </tr>

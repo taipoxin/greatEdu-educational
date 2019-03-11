@@ -76,30 +76,8 @@
           <?php echo Message(); ?>
           <?php echo SESSION_INFO(); ?>
           <?php 
-					fillPostData();
+					fillBioData();
 				?>
-          <div class="comment-section">
-            <?php if(isLogin()) : ?>
-            <form method="POST" action="Post.php">
-              <legend>Ваши мысли об этом посте</legend>
-              <div class="form-group">
-                <label>Комментарий</label>
-                <textarea name="comment" placeholder="Текст вашего комментария" class="form-control" rows="10"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" name="submit" class="btn btn-primary" value="Отправить">
-              </div>
-              <input type="hidden" name="author" value="<?php echo $_SESSION['user_id']; ?>">
-              <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-            </form>
-            <?php endif; ?>
-
-          </div>
-          <div class="page-header">Комментарии</div>
-          <?php
-					fillPostComments();
-				?>
-
         </div>
         <!--END OF COL-MD-8  -->
         <div class="col-md-3 post-side-menu col-md-offset-1">
@@ -116,11 +94,11 @@
           </div>
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Последние статьи</h2>
+              <h2 class="panel-title">Последние биографии</h2>
             </div>
             <div class="panel-body">
               <?php
-							fillPostsReferences();
+							fillBioReferences();
 						?>
             </div>
           </div>

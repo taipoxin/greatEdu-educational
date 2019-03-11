@@ -6,7 +6,7 @@ function fillHeader()
   $query = "SELECT заголовок FROM Статьи WHERE id = '$_GET[id]'";
   $exec = doSQLQuery($query);
   if (mysqli_num_rows($exec) > 0) {
-    while ($post = mysqli_fetch_assoc($exec)) {
+    if ($post = mysqli_fetch_assoc($exec)) {
       $title_title = $post['заголовок'];
     }
   }
@@ -15,8 +15,7 @@ function fillHeader()
 
 function fillPostData()
 {
-  global $_GET, $post_title, $post_image,
-  $post_category, $post_date, $post_author;
+  global $_GET;
   if (isset($_GET['id'])) {
     $query = "SELECT * FROM Статьи WHERE id = '$_GET[id]'";
     $exec = doSQLQuery($query);
@@ -115,7 +114,7 @@ function fillPostsReferences()
       </ul>
     </nav>
   <?php
-}
+  }
 }
 
 function insertComment($author, $text, $postID, $dateTime)

@@ -3,39 +3,47 @@
 function fillHeader()
 {
   global $_GET, $title_title;
-  $query = "SELECT заголовок FROM Статьи WHERE id = '$_GET[id]'";
+  $query = "SELECT фамилия, имя, отчество FROM Авторы WHERE id = '$_GET[id]'";
   $exec = doSQLQuery($query);
   if (mysqli_num_rows($exec) > 0) {
-    while ($post = mysqli_fetch_assoc($exec)) {
-      $title_title = $post['заголовок'];
+    if ($post = mysqli_fetch_assoc($exec)) {
+      $title_title = "$post[фамилия] $post[имя] $post[отчество]";
     }
   }
 
 }
 
-function fillPostData()
+function LoadTextFromBioFile($file)
 {
-  global $_GET, $post_title, $post_image,
-  $post_category, $post_date, $post_author;
+  $post_content = '';
+  if (is_null($file)) {
+    $post_content = 'error load';
+  } else {
+    $post_content = file_get_contents('Upload/bios/' . $file);
+  }
+  return $post_content;
+}
+
+function fillBioData()
+{
+  global $_GET;
   if (isset($_GET['id'])) {
-    $query = "SELECT * FROM Статьи WHERE id = '$_GET[id]'";
+    $query = "SELECT * FROM Авторы WHERE id = '$_GET[id]'";
     $exec = doSQLQuery($query);
-    $post_from_db = null;
     if (mysqli_num_rows($exec) > 0) {
       if ($post = mysqli_fetch_assoc($exec)) {
         $post_id = $post['id'];
-        $post_date = $post['дата_публикации'];
-        $post_title = $post['заголовок'];
-        $post_themes = $post['темы'];
-        $authorId = $post['автор'];
-        $post_image = $post['изображение'];
-
-        $post_from_db = $post['файл_контент'];
-
-        $authObj = getUserById($authorId);
-        $post_author = $authObj['никнейм'];
-
-        $post_content = LoadTextFromContentFile($post_from_db);
+        $post_date = $post['дата_добавления'];
+        $post_title = "$post[фамилия] $post[имя] $post[отчество]";
+        $post_state = $post['страна_принадлежности'];
+        $post_spheres = $post['сферы_деятельности'];
+        $post_period_id = $post['период'];
+        
+        $biography = $post['биография'];
+        
+        $post_image = $biography . '.jpg';
+        $post_file = $biography . '.txt';
+        $post_content = LoadTextFromBioFile($post_file);
 
         ?>
         <div class="post">
@@ -43,12 +51,12 @@ function fillPostData()
             <h1><?php echo htmlentities($post_title); ?></h1>
           </div>
           <div class="thumbnail">
-            <img class="img-responsive img-rounded" style="max-height: 500px;" src="../Upload/Image/<?php echo $post_image; ?>">
+            <img class="img-responsive img-rounded" style="max-height: 500px;" src="../Upload/bios/<?php echo $post_image; ?>">
           </div>
           <div class="post-info">
             <p class="lead">
-              Опубликовано: <?php echo htmlentities($post_date); ?> | Темы: <?php echo htmlentities($post_themes); ?> |
-              Автор: <?php echo $post_author; ?>
+              Опубликовано: <?php echo htmlentities($post_date); ?> | Период: <?php echo htmlentities($post_period_id); ?> |
+              Страна: <?php echo $post_state; ?> | Сферы деятельности: <?php echo $post_spheres; ?> 
             </p>
           </div>
           <div class="post-content">
@@ -60,93 +68,27 @@ function fillPostData()
 
     }
   } else {
-    Redirect_To('Blog.php');
+    Redirect_To('/Bios.php');
   }
 }
 
-function fillPostComments()
+function fillBioReferences()
 {
-  $sql = "SELECT * FROM Комментарии WHERE статья = '$_GET[id]'";
-  $exec = doSQLQuery($sql);
-  if (mysqli_num_rows($exec) > 0) {
-    while ($comments = mysqli_fetch_assoc($exec)) {
-      $author_id = $comments['автор'];
-      $auth = getUserById($author_id);
-      $c_author = 'нераспознанный комментатор';
-      if ($auth) {
-        $c_author = $auth['никнейм'];
-      }
-      $c_dateTime = $comments['дата_публикации'];
-      $c_comment = $comments['сообщение'];
-      ?>
-
-      <div class="comment-block" style="margin-bottom: 20px; ">
-        <div class="row">
-          <div class="col-sm-2" style="height: 70px;width: 100px; padding:0; margin:0;">
-            <img src="../js-scripts/Assets/Images/user-default.png" height="70px" width="100px">
-          </div>
-          <div class="col-sm-10">
-            <div><span class="lead text-info"><?php echo $c_author; ?></span></div>
-            <div><span><?php echo $c_dateTime; ?></span></div>
-            <div><span class="lead"> Сказал: <?php echo $c_comment; ?></span></div>
-          </div>
-        </div>
-      </div>
-
-<?php
-}
-  } else {
-    echo "Комментариев к статье нет";
-  }
-}
-
-function fillPostsReferences()
-{
-  $sql = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT 5 ";
+  $sql = "SELECT * FROM Авторы ORDER BY дата_добавления DESC LIMIT 5 ";
   $exec = doSQLQuery($sql);
   while ($recentPost = mysqli_fetch_assoc($exec)) {
     $postID = $recentPost['id'];
+    $linkText = "$recentPost[фамилия] $recentPost[имя] $recentPost[отчество]";
     ?>
     <nav>
       <ul>
-        <li><a href="Post.php?id=<?php echo $postID; ?>">
-            <?php echo $recentPost['заголовок'] ?>
+        <li><a href="/Bio.php?id=<?php echo $postID; ?>">
+            <?php echo $linkText ?>
           </a></li>
       </ul>
     </nav>
   <?php
-}
-}
-
-function insertComment($author, $text, $postID, $dateTime)
-{
-  $sql = "INSERT INTO Комментарии
-    (автор, сообщение, статья, дата_публикации)
-    VALUES('$author', '$text', '$postID', '$dateTime')";
-  return doSQLQuery($sql);
-}
-
-function handlePostAddComment()
-{
-  if (!empty($_POST['submit'])) {
-    $postID = $_POST['id'];
-    $author = $_POST['author'];
-    $comment = $_POST['comment'];
-    $time = time();
-    $dateTime = strftime('%Y-%m-%d %H:%M:%S ', $time);
-
-    $exec = insertComment($author, $comment, $postID, $dateTime);
-    if ($exec) {
-      $_SESSION['successMessage'] = "Your Comment Has Been Submitted.";
-    } else {
-      $_SESSION['errorMessage'] = "Something Went Wrong Please Try Again Later";
-    }
-    Redirect_To("Post.php?id=$postID");
   }
-}
-
-if (isset($_POST['submit'])) {
-  handlePostAddComment();
 }
 
 ?>
