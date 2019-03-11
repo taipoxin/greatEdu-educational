@@ -55,15 +55,15 @@
           <form action="NewPost.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <labal for="post-title">Заголовок</labal>
+                <p for="post-title">Заголовок</p>
                 <input type="text" name="post-title" class="form-control" id="post-title">
               </div>
               <div class="form-group">
-                <labal for="post-image">Главное изображение</labal>
+                <p for="post-image">Главное изображение</p>
                 <input type="File" name="post-image" class="form-control">
               </div>
               <div class="form-group">
-                <labal for="post-content">Текст (поддерживает HTML)</labal>
+                <p for="post-content">Текст (поддерживает HTML)</p>
                 <textarea rows="10" class="form-control" name="post-content" id="post-content">
 
 								</textarea>

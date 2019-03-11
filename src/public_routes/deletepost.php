@@ -60,18 +60,18 @@ global $post_title, $post_image, $post_content;
                 <button name="post-delete" class="btn btn-danger form-control">УДАЛИТЬ</button>
               </div>
               <div class="form-group">
-                <labal for="post-title">Заголовок</labal>
+                <p for="post-title">Заголовок</p>
                 <input disabled type="text" name="post-title" class="form-control" id="post-title"
                   value="<?php echo $post_title ?>">
               </div>
               <label>Изображение: <img src="../Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
               </label>
               <div class="form-group">
-                <labal for="post-image">Изменить изображение</labal>
+                <p for="post-image">Изменить изображение</p>
                 <input disabled type="File" name="post-image" class="form-control">
               </div>
               <div class="form-group">
-                <labal for="post-content">Текст (поддерживает HTML)</labal>
+                <p for="post-content">Текст (поддерживает HTML)</p>
                 <textarea disabled rows="20" class="form-control" name="post-content"
                   id="post-content"><?php echo htmlentities($post_content); ?></textarea>
               </div>

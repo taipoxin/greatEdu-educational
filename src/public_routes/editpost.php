@@ -67,7 +67,7 @@
           <form action="editpost.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <labal for="post-title">Заголовок</labal>
+                <p for="post-title">Заголовок</p>
                 <input type="text" name="post-title" class="form-control" id="post-title"
                   value="<?php echo $post_title ?>">
               </div>
@@ -78,11 +78,11 @@
               <label>Изображение: <img src="../Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
               </label>
               <div class="form-group">
-                <labal for="post-image">Изменить изображение</labal>
+                <p for="post-image">Изменить изображение</p>
                 <input type="File" name="post-image" class="form-control">
               </div>
               <div class="form-group">
-                <labal for="post-content">Текст (поддерживает HTML)</labal>
+                <p for="post-content">Текст (поддерживает HTML)</p>
                 <textarea rows="20" class="form-control" name="post-content"
                   id="post-content"><?php echo htmlentities($post_content); ?></textarea>
               </div>
