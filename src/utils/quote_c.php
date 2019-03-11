@@ -100,17 +100,21 @@ function fillPostComments()
   }
 }
 
-function fillPostsReferences()
+function fillQuoteReferences()
 {
-  $sql = "SELECT * FROM Статьи LIMIT 5";
+  $sql = "SELECT * FROM Цитаты ORDER BY дата_публикации DESC LIMIT 5 ";
   $exec = doSQLQuery($sql);
   while ($recentPost = mysqli_fetch_assoc($exec)) {
     $postID = $recentPost['id'];
+    $text = $recentPost['текст'];
+    if (mb_strlen($text) > 32) {
+      $text = mb_substr($text, 0, 32, "utf-8") . '...';
+    }
     ?>
     <nav>
       <ul>
-        <li><a href="Post.php?id=<?php echo $postID; ?>">
-            <?php echo $recentPost['заголовок'] ?>
+        <li><a href="Quote.php?id=<?php echo $postID; ?>">
+            <?php echo $text ?>
           </a></li>
       </ul>
     </nav>

@@ -105,7 +105,9 @@
               <h2 class="panel-title">Последние цитаты</h2>
             </div>
             <div class="panel-body">
-
+              <?php
+                fillQuotesReferences();
+              ?>
             </div>
           </div>
 

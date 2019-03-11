@@ -120,8 +120,8 @@
             </div>
             <div class="panel-body">
               <?php
-							// fillQuoteReferences();
-						?>
+                fillQuoteReferences();
+						  ?>
             </div>
           </div>
         </div>
