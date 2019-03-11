@@ -56,12 +56,9 @@ function fillQuotes() {
 
         $text = $post['текст'];
         $post_content = $text;
-        if (strlen($text) > 350) {
-          $post_content = substr($text, 0, 350) . '...';
+        if (mb_strlen($text) > 300) {
+          $post_content = mb_substr($text, 0, 300, "utf-8") . '...';
         }
-
-
-
 
         ?>
         <div class="post" style="border: black solid 1px; border-radius: 5px; background-color: lightgrey;" >

@@ -13,11 +13,9 @@ function fillBlog() {
       Redirect_To('Blog.php');
     } else {
       // TODO: reformat search
-      $search = $_GET['search'];
-      $query = "SELECT * FROM cms_post WHERE post_date_time LIKE '%$search%' OR title LIKE '%$search%' OR category LIKE '$search%' ";
+      // $search = $_GET['search'];
+      // $query = "SELECT * FROM cms_post WHERE post_date_time LIKE '%$search%' OR title LIKE '%$search%' OR category LIKE '$search%' ";
     }
-  } else if (isset($_GET['category'])) {
-    $query = "SELECT * FROM cms_post WHERE category = '$_GET[category]'";
   } else if (isset($_GET['page'])) {
     $page = $_GET['page'];
     $showPost = ($page * 5) - 5;
@@ -44,8 +42,8 @@ function fillBlog() {
         $post_file = $post['файл_контент'];
         $text = LoadTextFromContentFile($post_file);
         $post_content = $text;
-        if (strlen($text) > 128) {
-          $post_content = substr($text, 0, 128) . '...';
+        if (mb_strlen($text) > 128) {
+          $post_content = mb_substr($text, 0, 128, "utf-8") . '...';
         }
 
         $author_obj = getUserById($author_id);

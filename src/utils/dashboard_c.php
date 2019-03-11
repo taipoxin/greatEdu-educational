@@ -36,8 +36,8 @@ function fillArticleTable()
         <td><?php echo $post_id; ?></td>
         <td><?php echo $post_date; ?></td>
         <td><?php
-      if (strlen($post_title) > 64) {
-        echo substr($post_title, 0, 64) . '...';
+      if (mb_strlen($post_title) > 32) {
+        echo mb_substr($post_title, 0, 32, "utf-8") . '...';
       } else {
         echo $post_title;
       }
