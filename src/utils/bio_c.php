@@ -10,7 +10,6 @@ function fillHeader()
       $title_title = "$post[фамилия] $post[имя] $post[отчество]";
     }
   }
-
 }
 
 
@@ -26,9 +25,15 @@ function fillBioData()
         $post_id = $post['id'];
         $post_date = $post['дата_добавления'];
         $post_title = "$post[фамилия] $post[имя] $post[отчество]";
+
         $post_state = $post['страна_принадлежности'];
-        $post_spheres = $post['сферы_деятельности'];
+
+        $post_sphere_id = $post['сферы_деятельности'];
+        $post_sphere = getShpereNameById($post_sphere_id);
+
+
         $post_period_id = $post['период'];
+        $post_period = getPeriodNameById($post_period_id);
         
         $biography = $post['биография'];
         
@@ -46,8 +51,8 @@ function fillBioData()
           </div>
           <div class="post-info">
             <p class="lead">
-              Опубликовано: <?php echo htmlentities($post_date); ?> | Период: <?php echo htmlentities($post_period_id); ?> |
-              Страна: <?php echo $post_state; ?> | Сферы деятельности: <?php echo $post_spheres; ?> 
+              Опубликовано: <?php echo htmlentities($post_date); ?> | Период: <?php echo htmlentities($post_period); ?> |
+              Страна: <?php echo $post_state; ?> | Сферы деятельности: <?php echo $post_sphere; ?> 
             </p>
           </div>
           <div class="post-content">

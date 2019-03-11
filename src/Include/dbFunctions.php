@@ -83,6 +83,24 @@ function getUserById($id)
   return $author;
 }
 
+function getPeriodNameById($id) {
+  $query = "SELECT название FROM Периоды WHERE id = $id";
+  $exec = doSQLQuery($query);
+  if ($res = mysqli_fetch_assoc($exec)) {
+    return $res['название'];
+  }
+  return null;
+}
+
+function getShpereNameById($id) {
+  $query = "SELECT название FROM Сферы_деятельности WHERE id = $id";
+  $exec = doSQLQuery($query);
+  if ($res = mysqli_fetch_assoc($exec)) {
+    return $res['название'];
+  }
+  return null;
+}
+
 // check by username
 function isUserExistsByUsername($username) {
   $query = "SELECT * FROM `Пользователи` WHERE `никнейм` = '$username'";
