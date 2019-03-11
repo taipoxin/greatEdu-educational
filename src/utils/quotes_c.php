@@ -20,18 +20,16 @@ function fillQuotes() {
       Redirect_To('Blog.php');
     } else {
       // TODO: reformat search
-      $search = $_GET['search'];
-      $query = "SELECT * FROM cms_post WHERE post_date_time LIKE '%$search%' OR title LIKE '%$search%' OR category LIKE '$search%' ";
+      // $search = $_GET['search'];
+      // $query = "SELECT * FROM Цитаты WHERE дата_публикации LIKE '%$search%' OR автор LIKE '%$search%' OR автор_публикации LIKE '$search%'";
     }
-  } else if (isset($_GET['category'])) {
-    $query = "SELECT * FROM cms_post WHERE category = '$_GET[category]'";
   } else if (isset($_GET['page'])) {
     $page = $_GET['page'];
     $showPost = ($page * 5) - 5;
     if ($page <= 0) {
       $showPost = 0;
     }
-    $query = "SELECT * FROM Статьи ORDER BY дата_публикации DESC LIMIT $showPost,5	";
+    $query = "SELECT * FROM Цитаты ORDER BY дата_публикации DESC LIMIT $showPost,5	";
 
   } else {
 
