@@ -3,6 +3,7 @@
 
 function fillBlog() {
   global $con2;
+  global $page;
   $page = 1;
   $query = "";
   if (isset($_GET['search'])) {
@@ -77,6 +78,36 @@ function fillBlog() {
   } else {
     echo "<span class='lead'>No result<span>";
     }
+  }
+}
+
+function fillPages() {
+  if ($page > 1) {
+    ?>
+    <li><a href="Blog.php?page=<?php echo $page - 1; ?>"><</a></li>
+    <?php
+  }
+  $sql = "SELECT COUNT(*) FROM Статьи";
+  $exec = doSQLQuery($sql);
+  $rowCount = mysqli_fetch_array($exec);
+  $totalRow = array_shift($rowCount);
+  $postPerPage = ceil($totalRow / 5);
+
+  for ($count = 1; $count <= $postPerPage; $count++){
+    if ($page == $count) {
+      ?>
+      <li class="active"><a href="Blog.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <?php
+    }else {
+      ?>
+      <li><a href="Blog.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <?php
+    }
+  }
+  if($page < $postPerPage) {
+    ?>
+    <li><a href="Blog.php?page=<?php echo $page + 1; ?>">></a></li>
+    <?php
   }
 }
 

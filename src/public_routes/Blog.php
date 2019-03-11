@@ -90,8 +90,9 @@
       <div class="row">
         <div class="col-md-8">
           <?php // заполнить все статьями
-          fillBlog();
-						?>
+            fillBlog();
+            fillPages();
+					?>
         </div>
         <!--END OF COL-MD-8  -->
         <div class="col-md-3 col-md-offset-1 post-side-menu">
