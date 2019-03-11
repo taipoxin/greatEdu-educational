@@ -35,7 +35,7 @@
           <ul class="nav navbar-nav">
             <li class="nav-item"><a href="Blog.php">Статьи</a></li>
             <li class="nav-item active"><a href="Quotes.php">Цитаты</a></li>
-            <li class="nav-item"><a href="Blog.php">Биографии</a></li>
+            <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
           </ul>
           <div class="navbar-right" style="display: flex;">
               <form action="Quotes.php" method="GET" class="navbar-form ">

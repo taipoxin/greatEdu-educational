@@ -1,14 +1,17 @@
-<?php require_once '../Include/Sessions.php';?>
-<?php require_once '../Include/commonFuncs.php'?>
-<?php require_once '../Include/dbFunctions.php'?>
+<?php require_once('../Include/Sessions.php'); ?>
+<?php require_once('../Include/commonFuncs.php') ?>
+<?php require_once('../Include/dbFunctions.php') ?>
 
-<?php require_once '../utils/blog_c.php'  ?>
-
+<?php require_once('../utils/bio_c.php') ?>
+<?php 
+  global $title_title;
+	fillHeader();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Статьи - GreatEdu</title>
+  <title><?php echo $title_title . ' - GreatEdu'; ?></title>
   <script src="../js-scripts/jquery-3.2.1.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
@@ -18,7 +21,7 @@
 
 <body>
   <div class="blog" style="min-height: -webkit-fill-available;">
-    <nav class="navbar navbar-inverse" role="navigation">
+  <nav class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-header">
@@ -33,7 +36,7 @@
         </div>
         <div class="collapse navbar-collapse" id="nav-header">
           <ul class="nav navbar-nav">
-            <li class="nav-item active"><a href="Blog.php">Статьи</a></li>
+            <li class="nav-item"><a href="Blog.php">Статьи</a></li>
             <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
             <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
           </ul>
@@ -60,56 +63,55 @@
               <?php endif; ?>
 
           </div>
-
-          
         </div>
       </div>
     </nav>
     <!--END OF NAVBAR  -->
     <div class="container">
       <div class="blog-title">
-        <div class="row">
-        <?php $isAdmined = isAdmin(); ?>
-
-        <?php if($isAdmined) : ?>
-        <div class="text-warning">
-          <a href="Dashboard">
-            <p>Перейти к панели управления</p>
-          </a>
-        </div>
-        <?php endif; ?>
-        <?php echo SuccessMessage(); ?>
-        <?php echo Message(); ?>
-        <?php echo SESSION_INFO(); ?>
-          <div class="col-md-8 ">
-            <h1 class="text-warning">Статьи</h1>
-            <p class="lead"></p>
-          </div>
-        </div>
       </div>
       <div class="row">
         <div class="col-md-8">
-          <?php // заполнить все статьями
-            fillBlog();
-            ?>
+          <?php echo SuccessMessage(); ?>
+          <?php echo Message(); ?>
+          <?php echo SESSION_INFO(); ?>
+          <?php 
+					fillPostData();
+				?>
+          <div class="comment-section">
+            <?php if(isLogin()) : ?>
+            <form method="POST" action="Post.php">
+              <legend>Ваши мысли об этом посте</legend>
+              <div class="form-group">
+                <label>Комментарий</label>
+                <textarea name="comment" placeholder="Текст вашего комментария" class="form-control" rows="10"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" name="submit" class="btn btn-primary" value="Отправить">
+              </div>
+              <input type="hidden" name="author" value="<?php echo $_SESSION['user_id']; ?>">
+              <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+            </form>
+            <?php endif; ?>
 
-        <ul class="pagination pagination-lg">
+          </div>
+          <div class="page-header">Комментарии</div>
           <?php
-            fillPages();
-					?>
-        </ul>
+					fillPostComments();
+				?>
+
         </div>
         <!--END OF COL-MD-8  -->
-        <div class="col-md-3 col-md-offset-1 post-side-menu">
+        <div class="col-md-3 post-side-menu col-md-offset-1">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Статьи</h2>
+              <h2 class="panel-title">Обо мне</h2>
             </div>
             <div>
-              <!-- <img class="img-responsive img-circle imageicon" src="Assets/Images/user-default.png"> -->
+              <img class="img-responsive img-circle imageicon" src="../js-scripts/Assets/Images/user-default.png">
             </div>
             <div class="panel-body">
-              Дополнительная информация
+              Подробнее
             </div>
           </div>
           <div class="panel panel-primary">
@@ -118,8 +120,8 @@
             </div>
             <div class="panel-body">
               <?php
-                fillBlogPostsReferences();
-              ?>
+							fillPostsReferences();
+						?>
             </div>
           </div>
         </div>

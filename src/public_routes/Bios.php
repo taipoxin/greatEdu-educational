@@ -2,7 +2,7 @@
 <?php require_once '../Include/commonFuncs.php'?>
 <?php require_once '../Include/dbFunctions.php'?>
 
-<?php require_once '../utils/blog_c.php'  ?>
+<?php require_once '../utils/bios_c.php'  ?>
 
 <!DOCTYPE html>
 <html>
@@ -33,9 +33,9 @@
         </div>
         <div class="collapse navbar-collapse" id="nav-header">
           <ul class="nav navbar-nav">
-            <li class="nav-item active"><a href="Blog.php">Статьи</a></li>
+            <li class="nav-item"><a href="Blog.php">Статьи</a></li>
             <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
-            <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
+            <li class="nav-item active"><a href="/Bios.php">Биографии</a></li>
           </ul>
           <div class="navbar-right" style="display: flex;">
               <form action="Blog.php" method="GET" class="navbar-form ">
