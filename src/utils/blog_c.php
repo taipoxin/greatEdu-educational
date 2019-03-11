@@ -3,8 +3,10 @@
 
 function fillBlog() {
   global $con2;
-  global $page;
-  $page = 1;
+  // global $page;
+  if (!isset($_GET['page'])) {
+    $page = 1;
+  }
   $query = "";
   if (isset($_GET['search'])) {
     if (empty($_GET['search'])) {
@@ -82,6 +84,12 @@ function fillBlog() {
 }
 
 function fillPages() {
+  if (!isset($_GET['page'])) {
+    $page = 1;
+  }
+  else {
+    $page = $_GET['page'];
+  }
   if ($page > 1) {
     ?>
     <li><a href="Blog.php?page=<?php echo $page - 1; ?>"><</a></li>
@@ -90,6 +98,7 @@ function fillPages() {
   $sql = "SELECT COUNT(*) FROM Статьи";
   $exec = doSQLQuery($sql);
   $rowCount = mysqli_fetch_array($exec);
+  if (!$rowCount) {return;}
   $totalRow = array_shift($rowCount);
   $postPerPage = ceil($totalRow / 5);
 
@@ -109,6 +118,7 @@ function fillPages() {
     <li><a href="Blog.php?page=<?php echo $page + 1; ?>">></a></li>
     <?php
   }
+  
 }
 
 

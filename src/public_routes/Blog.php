@@ -91,8 +91,13 @@
         <div class="col-md-8">
           <?php // заполнить все статьями
             fillBlog();
+            ?>
+
+        <ul class="pagination pagination-lg">
+          <?php
             fillPages();
 					?>
+        </ul>
         </div>
         <!--END OF COL-MD-8  -->
         <div class="col-md-3 col-md-offset-1 post-side-menu">
