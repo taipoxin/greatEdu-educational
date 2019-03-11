@@ -45,7 +45,7 @@
                 <div class="input-group" style="width:200px;">
                   <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
                   <span class="input-group-btn">
-                    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
+                    <button style="padding: 5.5px 12px;" class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
                   </span>
                 </div>
               </form>

@@ -1,8 +1,8 @@
 <?php
 
-function getLastArticleId()
+function getLastQuoteId()
 {
-  $sql = "SELECT MAX(id) as 'max_id' FROM Статьи";
+  $sql = "SELECT MAX(id) as 'max_id' FROM Цитаты";
   $exec = doSQLQuery($sql);
   if ($data = mysqli_fetch_assoc($exec)) {
     return $data['max_id'];

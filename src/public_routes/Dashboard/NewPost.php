@@ -67,9 +67,7 @@
               </div>
               <div class="form-group">
                 <p for="post-content">Текст (поддерживает HTML)</p>
-                <textarea rows="10" class="form-control" name="post-content" id="post-content">
-
-								</textarea>
+                <textarea rows="10" class="form-control" name="post-content" id="post-content"></textarea>
               </div>
               <div class="form-group">
                 <button name="post-submit" class="btn btn-primary form-control">Опубликовать</button>

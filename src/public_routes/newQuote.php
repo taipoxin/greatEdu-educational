@@ -19,72 +19,89 @@
 </head>
 
 <body>
-  <div class="heading">
-    <a href="">
-      <p>Панель управления</p>
-    </a>
-  </div>
-  <div class="container-fluid">
-    <div class="main">
-      <div class="row">
-        <div class="col-sm-2">
-          <ul id="side-menu" class="nav nav-pills nav-stacked">
-            <li class=""><a href="Dashboard.php">
-                <span class="glyphicon glyphicon-th"></span>
-                &nbsp;Статьи</a></li>
-            <li class=""><a href="Biographies.php">
-                <span class="glyphicon glyphicon-th"></span>
-                &nbsp;Биографии</a></li>
-            <li class="active"><a href="NewPost.php">
-                <span class="glyphicon glyphicon-list"></span>
-                &nbsp;Новая статья</a></li>
-            <li><a href="Admin.php">
-                <span class="glyphicon glyphicon-user"></span>
-                &nbsp;Администраторы</a></li>
-            <li><a href="/Blog.php">
-                <span class="glyphicon glyphicon-equalizer"></span>
-                &nbsp;На главную</a></li>
-            <li><a href="/Lagout.php">
-                <span class="glyphicon glyphicon-log-out"></span>
-                &nbsp;Выйти</a></li>
-          </ul>
-        </div>
-        <div class="col-xs-10" style="min-height: -webkit-fill-available;">
+  <div class="blog" style="min-height: -webkit-fill-available;">
+    <nav class="navbar navbar-inverse" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-header">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a href="Blog.php" class="navbar-brand">
+                Great Edu
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-header">
+              <ul class="nav navbar-nav">
+                <li class="nav-item"><a href="Blog.php">Статьи</a></li>
+                <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
+                <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
+              </ul>
+              <div class="navbar-right" style="display: flex;">
+                  <form action="Quotes.php" method="GET" class="navbar-form ">
+                    <div class="input-group" style="width:200px;">
+                      <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
+                      <span class="input-group-btn">
+                        <button style="padding: 5.5px 12px;" class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
+                      </span>
+                    </div>
+                  </form>
+                  <?php $isLogged = isLogin(); ?>
+
+                  <?php if($isLogged) : ?>
+                  <button type="button" class="nav-item btn">
+                    <a href="Lagout.php" style="color: grey;">Выйти</a>
+                  </button>
+                  <?php endif; ?>
+                  <?php if(!$isLogged) : ?>
+                  <button type="button" class="nav-item btn">
+                    <a href="Login.php" style="color: grey;">Войти</a>
+                  </button>
+                  <?php endif; ?>
+
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="container" style="min-height: -webkit-fill-available;">
           <div class="page-title">
-            <h1>Добавить новую статью</h1>
+            <h1>Добавить новую цитату</h1>
           </div>
           <?php echo Message(); ?>
           <?php echo SuccessMessage(); ?>
-          <form action="NewPost.php" method="POST" enctype="multipart/form-data">
+          <form action="newQuote.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <p for="post-title">Заголовок</p>
-                <input type="text" name="post-title" class="form-control" id="post-title">
+                <p for="quote-title">Заголовок</p>
+                <input type="text" name="quote-title" class="form-control" id="quote-title">
               </div>
               <div class="form-group">
-                <p for="post-image">Главное изображение</p>
-                <input type="File" name="post-image" class="form-control">
+                <p for="quote-author">Автор цитаты</p>
+                <input type="text" name="quote-author" class="form-control" id="quote-author">
               </div>
               <div class="form-group">
-                <p for="post-content">Текст (поддерживает HTML)</p>
-                <textarea rows="10" class="form-control" name="post-content" id="post-content">
-
-								</textarea>
+                <p for="quote-source">Источник</p>
+                <input type="text" name="quote-source" class="form-control" id="quote-source">
               </div>
               <div class="form-group">
-                <button name="post-submit" class="btn btn-primary form-control">Опубликовать</button>
+                <p for="quote-theme">Тема</p>
+                <input type="text" name="quote-theme" class="form-control" id="quote-theme">
+              </div>
+              <div class="form-group">
+                <p for="quote-content">Текст</p>
+                <textarea rows="10" class="form-control" name="quote-content" id="quote-content"></textarea>
+              </div>
+              <div class="form-group">
+                <button name="post-submit" class="btn btn-primary form-control">Опубликовать цитату</button>
               </div>
             </fieldset>
           </form>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" id="footer">
-    <div class="col-sm-12">
-      <hr>
+  <div class="row navbar-inverse" id="blog-footer">
+    <div class="footer-wrapper">
       <p>Все права защищены 2019 | Designed by: Dmitry Ermakovich</p>
-      <hr>
     </div>
   </div>
   </div>
