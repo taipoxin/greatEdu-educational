@@ -53,29 +53,5 @@ function handleNewQuote()
       $_SESSION['errorMessage'] = 'Error: sql wrong - '. $sql;
       // $_SESSION['errorMessage'] = 'Something wrong with insert to db';
     }
-
-    // if (!empty($image)) {
-    //   $imageDirectory = "Upload/Image/" . basename($_FILES['quote-image']['name']);
-    //   if (move_uploaded_file($_FILES['quote-image']['tmp_name'], $imageDirectory)) {
-    //     $sql = "INSERT INTO Статьи (id, темы, автор, теги,
-    //       дата_публикации, заголовок, файл_контент, изображение)
-    //       VALUES ($post_id, 1, $authorId, 2,
-    //       '$dateTime', '$title', '$filename', '$image')";
-    //     $exec = doSQLQuery($sql);
-    //     if ($exec) {
-    //       $_SESSION['successMessage'] = 'Post Added Successfully';
-    //     }
-    //     else {
-    //       $_SESSION['errorMessage'] = 'Something wrong with insert to db';
-    //     }
-
-    //   } else {
-    //     $_SESSION['errorMessage'] = 'Something Went Wrong With saving image Please Try Again Later';
-    //   }
-    // }
-    // else {
-    //   $_SESSION['errorMessage'] = 'You do not set image for article';
-    // }
-
   }
 }
