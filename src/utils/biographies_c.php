@@ -45,7 +45,7 @@ function fillBiographiesTable()
         <td><?php echo $spheres;?></td>
         <td><?php echo $period;?></td>
         <td>
-          <?php echo "<img class='img-responsive' src='../Upload/bios/$image' width='100px' height='150px'>"; ?>
+          <?php echo "<img class='img-responsive' src='../Upload/bios/$image?m=' width='100px' height='150px'>"; ?>
         </td>
         <td>
           <?php echo "<a href='editpost.php?post_id=$bio_id'>Изменить</a> | <a href='deletepost.php?delete_post_id=$bio_id'>Удалить</a>"; ?>

@@ -113,7 +113,10 @@
               <div style="display:flex">
                 <p>Изображение:  </p>
                 <!-- https://stackoverflow.com/a/22429796/7410224 -->
-                <img src="../../Upload/bios/<?php echo $bio_image . "?m=' . filemtime('$bio_image')" ?> " width='250' height='90'>
+                <?php
+                  $img = "/Upload/bios/$bio_image?m=";
+                ?>
+                <img src="<?php echo $img?>" width='250' height='90'>
               </div>
               <br>
               <div class="form-group">

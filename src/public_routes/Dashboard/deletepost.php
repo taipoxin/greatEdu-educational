@@ -64,7 +64,7 @@ global $post_title, $post_image, $post_content;
                 <input disabled type="text" name="post-title" class="form-control" id="post-title"
                   value="<?php echo $post_title ?>">
               </div>
-              <label>Изображение: <img src="../../Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
+              <label>Изображение: <img src="../../Upload/Image/<?php echo $post_image . '?m=';  ?>" width='250' height='90'>
               </label>
               <div class="form-group">
                 <p for="post-image">Изменить изображение</p>

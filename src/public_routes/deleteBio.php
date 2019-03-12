@@ -107,7 +107,10 @@
               </div>
               <div style="display:flex">
                 <p>Изображение:  </p>
-                <img src="../../Upload/bios/<?php echo $bio_image;  ?>" width='250' height='90'>
+                <?php
+                  $img = "/Upload/bios/$bio_image?m=";
+                ?>
+                <img src="<?php echo $img; ?>" width='250' height='90'>
               </div>
               <div class="form-group">
                 <p for="quote-content">Текст</p>

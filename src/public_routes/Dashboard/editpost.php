@@ -75,7 +75,7 @@
 
               </div>
               <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
-              <label>Изображение: <img src="../../Upload/Image/<?php echo $post_image;  ?>" width='250' height='90'>
+              <label>Изображение: <img src="../../Upload/Image/<?php echo $post_image  . '?m=';  ?>" width='250' height='90'>
               </label>
               <div class="form-group">
                 <p for="post-image">Изменить изображение</p>

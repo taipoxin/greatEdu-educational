@@ -44,7 +44,7 @@ function fillArticleTable()
       ?></td>
         <td><?php echo $author; ?></td>
         <td>
-          <?php echo "<img class='img-responsive' src='../Upload/Image/$image' width='100px' height='150px'>"; ?>
+          <?php echo "<img class='img-responsive' src='../Upload/Image/$image?m=' width='100px' height='150px'>"; ?>
         </td>
         <td>
           <?php echo "<a href='editpost.php?post_id=$post_id'>Изменить</a> | <a href='deletepost.php?delete_post_id=$post_id'>Удалить</a>"; ?>

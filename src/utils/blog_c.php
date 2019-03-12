@@ -54,7 +54,7 @@ function fillBlog() {
             <h1><?php echo htmlentities($post_title); ?></h1>
           </div>
           <div class="thumbnail">
-            <img class="img-responsive img-rounded" src="../Upload/Image/<?php echo $post_image; ?>">
+            <img class="img-responsive img-rounded" src="../Upload/Image/<?php echo $post_image  . '?m='; ?>">
           </div>
           <div class="post-info">
             <p class="lead">
