@@ -61,7 +61,6 @@ function fillEditingBio()
 function handleUpdateBio()
 {
   if (isset($_POST['bio-edit'])) {
-    // $sql = "DELETE FROM Авторы WHERE id = '$_POST[editID]' ";
     
     $update_bio_id = "$_POST[editID]";
     $update_bio_author_surname = $_POST['bio-author-surname'];
@@ -70,18 +69,9 @@ function handleUpdateBio()
     $update_bio_state = $_POST['bio-state'];
     $update_bio_sphere_as_is = $_POST['bio-sphere'];
     $update_bio_period_as_is = $_POST['bio-period'];
-    $update_bio_content = 'error';
-    $update_bio_image = 'error';
-
-
+    $update_bio_content = $_POST['bio-content'];
 
     $image = $_FILES['post-image']['name'];
-    $updatedImage = $image;
-    if (empty($image)) {
-      $updatedImage = $_POST['currentImage'];
-      $newImage = false;
-    }
-
 
 
     $_SESSION['errorMessage'] = 'post:' 
@@ -96,101 +86,44 @@ function handleUpdateBio()
       . $_POST['bio-content'] . ' <br>'
     ;
 
-    // Redirect_To('/Bios.php');
-    // return;
-    // TODO: test and edit
-
-
     if (!empty($image)) {
       $imgName = "bio$_POST[editID].jpg";
       $imageDirectory = "Upload/bios/" . $imgName;
       if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
         $_SESSION['successMessage'] = 'Updated Image';
       } else {
-        $_SESSION['errorMessage'] = 'Something Went Wrong With saving file Please Try Again Later';
+        $_SESSION['errorMessage'] = 'Something Went Wrong With saving image Please Try Again Later';
         return;
       }
     }
-    return;
+
+    $fileName = "bio$_POST[editID].txt";
+    $textPath = "Upload/bios/" . $fileName;
+    rewriteFileByPath($textPath, $update_bio_content);
+
+    $sphere_id = getSphereIdByNameOrInsert($update_bio_sphere_as_is);
+    $_SESSION['errorMessage'] = $_SESSION['errorMessage'] . " sphere: $sphere_id";
+
+    $period_id = getPeriodIdByNameOrInsert($update_bio_period_as_is);
+    $_SESSION['errorMessage'] = $_SESSION['errorMessage'] . " period: $period_id";
 
     $sql = "UPDATE Авторы SET 
       фамилия = '$update_bio_author_surname', 
       имя = '$update_bio_author_name', 
       отчество = '$update_bio_author_second_name', 
       страна_принадлежности = '$update_bio_state',
-      сферы_деятельности = '$update_bio_sphere',
-      период = '$update_bio_period'
+      сферы_деятельности = '$sphere_id',
+      период = '$period_id'
       WHERE id = '$_POST[editID]' ";
     $exec = doSQLQuery($sql);
     if ($exec) {
-      $_SESSION['successMessage'] += 'Post Edit Successfully:';
+      $_SESSION['errorMessage'] = null;
+      $_SESSION['successMessage'] = $_SESSION['successMessage'] . ' | Post Edit Successfully:';
+      Redirect_To('/Bios.php');
+    }
+    else {
+      $_SESSION['errorMessage'] = $_SESSION['errorMessage'] . ' | Something Went Wrong With db write.';
     }
 
-
-    // $sql = "UPDATE Авторы SET дата_публикации ='$dateTime', заголовок = '$title',
-	  //   изображение = '$updatedImage', файл_контент = '$filename' WHERE id = '$_POST[idFromUrl]' ";
-    // $exec = doSQLQuery($sql);
-    // if ($exec) {
-    //   if (!empty($image)) {
-    //     $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
-    //     if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
-    //       $_SESSION['successMessage'] = 'Post Edit Successfully: Updated Image';
-    //     } else {
-    //       $_SESSION['errorMessage'] = 'Something Went Wrong With saving file Please Try Again Later';
-    //     }
-    //   } else {
-    //     $_SESSION['successMessage'] = 'Post Edit Successfully: w/o edit image';
-    //   }
-    // } else {
-    //   $_SESSION['errorMessage'] = 'Something Went Wrong With db write. Please Try Again Later';
-    // }
-  
-
-
-
-  //   $title = $_POST['post-title'];
-  //   $content = $_POST['post-content'];
-  //   $image = $_FILES['post-image']['name'];
-  //   $updatedImage = $image;
-  //   if (empty($image)) {
-  //     $updatedImage = $_POST['currentImage'];
-  //     $newImage = false;
-  //   }
-  //   $validationResult = validatePost($title, $content, 'image');
-  //   if (!$validationResult) {
-  //     Redirect_To("editpost.php?post_id=$_POST[idFromUrl]");
-  //   }
-
-  //   $time = time();
-  //   $dateTime = strftime('%Y-%m-%d %T', $time);
-
-  //   $filename = "post_$_POST[idFromUrl].txt";
-  //   rewriteContentFile($filename, $content);
-
-  //   $sql = "UPDATE Статьи SET дата_публикации ='$dateTime', заголовок = '$title',
-	// изображение = '$updatedImage', файл_контент = '$filename' WHERE id = '$_POST[idFromUrl]' ";
-  //   $exec = doSQLQuery($sql);
-  //   if ($exec) {
-  //     if (!empty($image)) {
-  //       $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
-  //       if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
-  //         $_SESSION['successMessage'] = 'Post Edit Successfully: Updated Image';
-  //       } else {
-  //         $_SESSION['errorMessage'] = 'Something Went Wrong With saving file Please Try Again Later';
-  //       }
-  //     } else {
-  //       $_SESSION['successMessage'] = 'Post Edit Successfully: w/o edit image';
-  //     }
-  //   } else {
-  //     $_SESSION['errorMessage'] = 'Something Went Wrong With db write. Please Try Again Later';
-  //   }
-    
-    // $exec = doSQLQuery($sql);
-    // if ($exec) {
-    //   $_SESSION['successMessage'] = "$_POST[editID] Quote Edited Successfully";
-    //   Redirect_To('/Bios.php');
-    // } else {
-    //   $_SESSION['errorMessage'] = "Something Went Wrong, Quote Is Not Deleted. Please Try Again Later";
-    // }
   }
 }

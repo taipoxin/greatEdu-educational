@@ -101,6 +101,56 @@ function getShpereNameById($id) {
   return null;
 }
 
+function getSphereIdByName($name) {
+  $query = "SELECT id FROM Сферы_деятельности WHERE название = '$name'";
+  $exec = doSQLQuery($query);
+  if ($res = mysqli_fetch_assoc($exec)) {
+    return $res['id'];
+  }
+  return null;
+}
+
+function addSphereByName($name) {
+  $query = "INSERT INTO Сферы_деятельности (название) VALUES ('$name')";
+  $exec = doSQLQuery($query);
+  return true;
+}
+
+function getSphereIdByNameOrInsert($name) {
+  $res = getSphereIdByName($name);
+  if (is_null($res)) {
+    addSphereByName($name);
+    return getSphereIdByName($name);
+  }
+  return $res; 
+}
+
+
+function getPeriodIdByName($name) {
+  $query = "SELECT id FROM Периоды WHERE название = '$name'";
+  $exec = doSQLQuery($query);
+  if ($res = mysqli_fetch_assoc($exec)) {
+    return $res['id'];
+  }
+  return null;
+}
+
+function addPeriodByName($name) {
+  $query = "INSERT INTO Периоды (название) VALUES ('$name')";
+  $exec = doSQLQuery($query);
+  return true;
+}
+
+function getPeriodIdByNameOrInsert($name) {
+  $res = getPeriodIdByName($name);
+  if (is_null($res)) {
+    addPeriodByName($name);
+    return getPeriodIdByName($name);
+  }
+  return $res; 
+}
+
+
 // check by username
 function isUserExistsByUsername($username) {
   $query = "SELECT * FROM `Пользователи` WHERE `никнейм` = '$username'";

@@ -37,6 +37,13 @@ function rewriteContentFile($filename, $content)
   file_put_contents($filepath, $content);
 }
 
+function rewriteFileByPath($filepath, $content)
+{
+  file_put_contents($filepath, $content);
+}
+
+
+
 // TODO: fix strlen
 // require title, author, content
 function validateQuote($creatorId, $author, $content)
