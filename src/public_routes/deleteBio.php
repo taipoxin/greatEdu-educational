@@ -5,6 +5,17 @@
 <?php require_once '../utils/deleteBio_c.php'?>
 <?php adminRequired();?>
 
+<?php 
+global $bio_id,
+  $bio_author, 
+  $bio_state,
+  $bio_sphere,
+  $bio_date,
+  $bio_period,
+  $bio_content,
+  $bio_image;
+?>
+
 <?php handleDeleteBio();?>
 <?php fillDeletingBio();?>
 

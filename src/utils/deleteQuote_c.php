@@ -2,13 +2,6 @@
 
 function fillDeletingQuote()
 {
-  global $quote_id,
-  $quote_creator,
-  $quote_author, 
-  $quote_source,
-  $quote_theme,
-  $quote_text;
-
   $quote_id = 'error';
   $quote_creator = 'error';
   $quote_author = 'error'; 

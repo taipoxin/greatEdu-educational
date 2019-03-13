@@ -9,13 +9,12 @@
 <?php fillDeletingQuote();?>
 
 <?php 
-// $quote_id = 'kek';
-// $quote_creator = 'kek';
-// $quote_author = 'kek'; 
-// $quote_source = 'kek';
-// $quote_theme = 'kek';
-// $quote_text = 'kek';
-
+global $quote_id,
+  $quote_creator,
+  $quote_author, 
+  $quote_source,
+  $quote_theme,
+  $quote_text;
 ?>
 <!DOCTYPE html>
 <html>

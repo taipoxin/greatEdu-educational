@@ -2,25 +2,15 @@
 
 function fillDeletingBio()
 {
-  global $bio_id,
-  $bio_author, 
-  $bio_state,
-  $bio_sphere,
-  $bio_date,
-  $bio_period,
-  $bio_content,
-  $bio_image;
-
 
   $bio_id = 'error';
-  $bio_author = 'error'; 
+  $bio_author = 'error';
   $bio_state = 'error';
   $bio_sphere = 'error';
   $bio_date = 'error';
   $bio_period = 'error';
   $bio_content = 'error';
   $bio_image = 'error';
-
 
   if (isset($_GET['bio_id'])) {
     if (!empty($_GET['bio_id'])) {
@@ -33,16 +23,16 @@ function fillDeletingBio()
           $bio_author = "$bio[фамилия] $bio[имя] $bio[отчество]";
           $bio_state = $bio['страна_принадлежности'];
           $bio_date = $bio['дата_добавления'];
-          
+
           $bio_sphere_id = $bio['сферы_деятельности'];
           $bio_sphere = getShpereNameById($bio_sphere_id);
 
           $bio_period_id = $bio['период'];
           $bio_period = getPeriodNameById($bio_period_id);
-        
+
           $biography = $bio['биография'];
           $bio_image = $biography . '.jpg';
-          
+
           $bio_content_file = $biography . '.txt';
           $bio_content = LoadTextFromBioFile($bio_content_file);
         }

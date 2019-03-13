@@ -64,8 +64,8 @@ function fillBios() {
           </div>
           <div class="post-info">
           <p class="lead">
-              Опубликовано: <?php echo htmlentities($post_date); ?> | Период: <?php echo htmlentities($post_sphere); ?> |
-              Страна: <?php echo $post_state; ?> | Сферы деятельности: <?php echo $post_period; ?> 
+              Опубликовано: <?php echo htmlentities($post_date); ?> | Период: <?php echo htmlentities($post_period); ?> |
+              Страна: <?php echo $post_state; ?> | Сферы деятельности: <?php echo $post_sphere; ?> 
             </p>
           </div>
           <div class="post-content">
