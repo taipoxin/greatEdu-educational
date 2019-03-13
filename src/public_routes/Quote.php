@@ -55,6 +55,7 @@
                   </span>
                 </div>
               </form>
+              <?php global $isAdmined; $isAdmined = isAdmin(); ?>
               <?php $isLogged = isLogin(); ?>
 
               <?php if($isLogged) : ?>

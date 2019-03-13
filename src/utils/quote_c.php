@@ -40,11 +40,18 @@ function fillQuoteData() {
 
         ?>
         <div class="post" style="border: black solid 1px; border-radius: 5px; background-color: lightgrey;" >
+        <div style="display: flex; justify-content: space-between;">  
           <div class="post-info">
             <p class="lead" style="color: darkblue;">
               Автор цитаты: <?php echo htmlentities($post_quote_author); ?>
             </p>
           </div>
+          <?php global $isAdmined; if($isAdmined) : ?>
+            <a href="deleteQuote.php?quote_id=<?php echo $post_id; ?>">
+              <button style="width: 128px;" class="btn btn-danger btn-lg" id="read_more_btn">Удалить</button>
+            </a>
+          <?php endif; ?>
+      </div>
           <div class="post-content" style="color: black;">
             <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>
