@@ -91,7 +91,7 @@ global $post_title, $post_image, $post_content;
     </div>
   </div>
   </div>
-  <script type="text/javascript" src="../../js-scripts/jquery.js"></script>
+  
 </body>
 
 </html>

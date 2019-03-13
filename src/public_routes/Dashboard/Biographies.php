@@ -74,7 +74,7 @@
   </div>
   </div>
 
-  <script type="text/javascript" src="../../js-scripts/jquery.js"></script>
+  
 </body>
 
 </html>
