@@ -37,7 +37,7 @@ CREATE TABLE `Авторы` (
   KEY `fk_Авторы_1_idx1` (`период`),
   CONSTRAINT `fk_Авторы_1` FOREIGN KEY (`период`) REFERENCES `Периоды` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Авторы_fk2` FOREIGN KEY (`сферы_деятельности`) REFERENCES `Сферы_деятельности` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -527,4 +527,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-13  3:16:47
+-- Dump completed on 2019-03-13 22:30:51

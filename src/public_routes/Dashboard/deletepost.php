@@ -41,6 +41,9 @@ global $post_title, $post_image, $post_content;
             <li class=""><a href="Dashboard.php">
                 <span class="glyphicon glyphicon-th"></span>
                 &nbsp;Статьи</a></li>
+            <li class=""><a href="Biographies.php">
+                <span class="glyphicon glyphicon-th"></span>
+                &nbsp;Биографии</a></li>
             <li class=""><a href="NewPost.php">
                 <span class="glyphicon glyphicon-list"></span>
                 &nbsp;Новая статья</a></li>

@@ -76,8 +76,7 @@
     <div class="container">
       <div class="blog-title">
         <div class="row">
-        <?php global $isAdmined;
-        $isAdmined = isAdmin(); ?>
+        <?php global $isAdmined; $isAdmined = isAdmin(); ?>
 
         <?php if($isAdmined) : ?>
         <div class="text-warning">
