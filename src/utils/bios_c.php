@@ -72,6 +72,17 @@ function fillBios() {
             <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>
           <p>
+            <?php global $isAdmined; ?>
+            <?php if($isAdmined) : ?>
+
+            <a href="editBio.php?bio_id=<?php echo $post_id; ?>">
+              <button style="" class="btn btn-warning btn-lg">Изменить</button>
+            </a>
+            <a href="deleteBio.php?bio_id=<?php echo $post_id; ?>">
+              <button style="" class="btn btn-danger btn-lg">Удалить</button>
+            </a>
+            
+            <?php endif; ?>
             <a href="Bio.php?id=<?php echo $post_id; ?>">
               <button class="btn btn-info btn-lg" id="read_more_btn">Подробнее</button>
             </a>

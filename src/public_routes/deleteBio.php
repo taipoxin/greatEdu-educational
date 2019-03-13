@@ -35,7 +35,7 @@ global $bio_id,
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
   integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
   crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="/js-scripts/Assets/style.css">
+  <link rel="stylesheet" type="text/css" href="/js-scripts/Assets/styles.css">
 </head>
 
 <body>
@@ -136,7 +136,7 @@ global $bio_id,
                 id="quote-content"><?php echo htmlentities($bio_content); ?></textarea>
               </div>
               <div class="form-group">
-                <button name="bio-delete" class="btn btn-danger form-control">Удалить цитату</button>
+                <button name="bio-delete" class="btn btn-danger form-control">Удалить биографию</button>
               </div>
               <input type="hidden" name="deleteID" value="<?php echo $_GET['bio_id']; ?>">
             </fieldset>

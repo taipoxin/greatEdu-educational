@@ -20,7 +20,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
   integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
   crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="/js-scripts/Assets/style.css">
+  <link rel="stylesheet" type="text/css" href="/js-scripts/Assets/styles.css">
 </head>
 
 <body>
@@ -76,7 +76,8 @@
     <div class="container">
       <div class="blog-title">
         <div class="row">
-        <?php $isAdmined = isAdmin(); ?>
+        <?php global $isAdmined;
+        $isAdmined = isAdmin(); ?>
 
         <?php if($isAdmined) : ?>
         <div class="text-warning">
@@ -84,6 +85,10 @@
             <p>Перейти к панели управления</p>
           </a>
         </div>
+        <a href="newBio.php">
+          <button style="" class="btn btn-info btn-lg">Добавить биографию</button>
+        </a>
+        <p></p>
         <?php endif; ?>
         <?php echo SuccessMessage(); ?>
         <?php echo Message(); ?>
