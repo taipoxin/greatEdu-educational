@@ -1,4 +1,4 @@
-# /etc/nginx/sites-available/
+# /etc/nginx/sites-available/coursuch
 
 server {
 	listen 80;
