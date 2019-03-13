@@ -9,7 +9,10 @@
 
 <head>
   <title>Цитаты - GreatEdu</title>
-  <script src="../js-scripts/jquery-3.2.1.min.js"></script>
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="../js-scripts/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../js-scripts/Assets/style.css">
