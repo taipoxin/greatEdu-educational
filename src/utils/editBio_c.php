@@ -2,6 +2,18 @@
 
 function fillEditingBio()
 {
+  global $bio_id,
+    $biography,
+    $bio_author_surname,
+    $bio_author_name,
+    $bio_author_second_name,
+    $bio_state,
+    $bio_sphere,
+    $bio_date,
+    $bio_period,
+    $bio_content,
+    $bio_image;
+
   $bio_id = 'error';
   $bio_author_surname = 'фамилия';
   $bio_author_name = 'имя';

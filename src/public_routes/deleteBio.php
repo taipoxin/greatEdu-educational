@@ -2,9 +2,6 @@
 <?php require_once '../Include/commonFuncs.php'?>
 <?php require_once '../Include/dbFunctions.php'?>
 
-<?php require_once '../utils/deleteBio_c.php'?>
-<?php adminRequired();?>
-
 <?php 
 global $bio_id,
   $bio_author, 
@@ -15,6 +12,9 @@ global $bio_id,
   $bio_content,
   $bio_image;
 ?>
+<?php require_once '../utils/deleteBio_c.php'?>
+<?php adminRequired();?>
+
 
 <?php handleDeleteBio();?>
 <?php fillDeletingBio();?>

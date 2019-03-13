@@ -2,6 +2,14 @@
 
 function fillDeletingBio()
 {
+  global $bio_id,
+    $bio_author, 
+    $bio_state,
+    $bio_sphere,
+    $bio_date,
+    $bio_period,
+    $bio_content,
+    $bio_image;
 
   $bio_id = 'error';
   $bio_author = 'error';
