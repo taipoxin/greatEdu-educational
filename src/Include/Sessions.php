@@ -59,6 +59,6 @@ function loginRequired()
 
   if ($login === false) {
     $_SESSION['errorMessage'] = 'Login Required';
-    Redirect_To('Login.php');
+    Redirect_To('/Login.php');
   }
 }

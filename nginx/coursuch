@@ -33,8 +33,9 @@ server {
 	    try_files $uri $uri/ =404;
 	}
 
-	location ~* \.(css|jpe?g)$ {
-        #expires -1;
+	location ~* \.(css|jpeg|jpg)$ {
+        #expires 1s;
+		add_header Cache-Control no-cache;
     }
 
     location ~ \.php$ {

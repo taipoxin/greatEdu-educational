@@ -40,14 +40,13 @@ function fillBioData()
         $post_image = $biography . '.jpg';
         $post_file = $biography . '.txt';
         $post_content = LoadTextFromBioFile($post_file);
-
         ?>
         <div class="post">
           <div class="post-title">
             <h1><?php echo htmlentities($post_title); ?></h1>
           </div>
           <div class="thumbnail">
-            <img class="img-responsive img-rounded" style="max-height: 500px;" src="../Upload/bios/<?php echo $post_image . '?m='; ?>">
+            <img class="img-responsive img-rounded" style="max-height: 500px;" src="../Upload/bios/<?php echo $post_image . '?m=' . time(); ?>">
           </div>
           <div class="post-info">
             <p class="lead">

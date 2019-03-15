@@ -36,6 +36,7 @@ function fillBiographiesTable()
 
       $biography = $post['биография'];
       $image = $biography . '.jpg';
+      $t = time();
       ?>
       <tr>
         <td><?php echo $bio_id; ?></td>
@@ -45,7 +46,7 @@ function fillBiographiesTable()
         <td><?php echo $spheres;?></td>
         <td><?php echo $period;?></td>
         <td>
-          <?php echo "<img class='img-responsive' src='../Upload/bios/$image?m=' width='100px' height='150px'>"; ?>
+          <?php echo "<img class='img-responsive' src='../Upload/bios/$image?m=$t' width='100px' height='150px'>"; ?>
         </td>
         <td>
           <?php echo "<a href='/editBio.php?bio_id=$bio_id'>Изменить</a> | <a href='/deleteBio.php?bio_id=$bio_id'>Удалить</a>"; ?>

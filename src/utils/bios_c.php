@@ -60,7 +60,7 @@ function fillBios() {
             <h1><?php echo htmlentities($post_title); ?></h1>
           </div>
           <div class="thumbnail">
-            <img class="img-responsive img-rounded" src="../Upload/bios/<?php echo $post_image . '?m='; ?>">
+            <img class="img-responsive img-rounded" src="../Upload/bios/<?php echo $post_image . '?m='. time(); ?>">
           </div>
           <div class="post-info">
           <p class="lead">

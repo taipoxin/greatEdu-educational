@@ -70,7 +70,7 @@ function adminRequired()
   }
   if ($admin === false) {
     $_SESSION['errorMessage'] = 'Admin Required';
-    Redirect_To('Login.php');
+    Redirect_To('/Login.php');
   }
 }
 

@@ -128,7 +128,7 @@ global $bio_id,
                 <?php
                   $img = "/Upload/bios/$bio_image?m=";
                 ?>
-                <img src="<?php echo $img; ?>" width='250' height='90'>
+                <img src="<?php echo $img . time(); ?>" width='250' height='90'>
               </div>
               <div class="form-group">
                 <p for="quote-content">Текст</p>
