@@ -20,7 +20,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
   integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
   crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="/js-scripts/Assets/style.css">
+  <link rel="stylesheet" type="text/css" href="/Assets/style.css">
 </head>
 
 <body>
@@ -34,14 +34,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="Blog.php" class="navbar-brand">
+          <a href="/Blog.php" class="navbar-brand">
             Great Edu
           </a>
         </div>
         <div class="collapse navbar-collapse" id="nav-header">
           <ul class="nav navbar-nav">
-            <li class="nav-item active"><a href="Blog.php">Статьи</a></li>
-            <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
+            <li class="nav-item active"><a href="/Blog.php">Статьи</a></li>
+            <li class="nav-item"><a href="/Quotes.php">Цитаты</a></li>
             <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
           </ul>
           <div class="navbar-right" style="display: flex;">
@@ -77,7 +77,7 @@
       <div style="text-align: center;">
         <h1 style="font-size: 5em;">404 - Страница не найдена</h1>
         <div class="thumbnail" style="border: 0px;">
-          <img class="img-responsive img-rounded" style="max-height: 500px;" src="images/404_image.png">
+          <img class="img-responsive img-rounded" style="max-height: 500px;" src="/Assets/404_image.png">
         </div>
       </div>
     </div>

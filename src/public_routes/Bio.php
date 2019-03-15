@@ -23,7 +23,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
   integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
   crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="/js-scripts/Assets/style.css">
+  <link rel="stylesheet" type="text/css" href="/Assets/style.css">
 </head>
 
 <body>
@@ -93,7 +93,7 @@
               <h2 class="panel-title">Обо мне</h2>
             </div>
             <div>
-              <img class="img-responsive img-circle imageicon" src="../js-scripts/Assets/Images/user-default.png">
+              <img class="img-responsive img-circle imageicon" src="../Assets/Images/user-default.png">
             </div>
             <div class="panel-body">
               Подробнее

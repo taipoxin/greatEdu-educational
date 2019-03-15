@@ -90,7 +90,7 @@ function fillPostComments()
       <div class="comment-block" style="margin-bottom: 20px; ">
         <div class="row">
           <div class="col-sm-2" style="height: 70px;width: 100px; padding:0; margin:0;">
-            <img src="../js-scripts/Assets/Images/user-default.png">
+            <img src="../Assets/Images/user-default.png">
           </div>
           <div class="col-sm-10">
             <div><span class="lead text-info"><?php echo $c_email; ?></span></div>
