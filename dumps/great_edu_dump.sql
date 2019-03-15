@@ -399,7 +399,7 @@ CREATE TABLE `Статьи` (
   `автор` int(11) DEFAULT NULL,
   `теги` int(11) DEFAULT NULL,
   `дата_публикации` datetime DEFAULT NULL,
-  `заголовок` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `заголовок` varchar(350) COLLATE utf8_bin DEFAULT NULL,
   `файл_контент` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `изображение` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -409,7 +409,7 @@ CREATE TABLE `Статьи` (
   CONSTRAINT `fk_Статьи_1` FOREIGN KEY (`темы`) REFERENCES `Список_тем_статьи` (`id_списка`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Статьи_2` FOREIGN KEY (`теги`) REFERENCES `Список_тегов` (`id_списка`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Статьи_3` FOREIGN KEY (`автор`) REFERENCES `Пользователи` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -418,7 +418,7 @@ CREATE TABLE `Статьи` (
 
 LOCK TABLES `Статьи` WRITE;
 /*!40000 ALTER TABLE `Статьи` DISABLE KEYS */;
-INSERT INTO `Статьи` VALUES (1,1,1,1,'2019-03-01 18:25:31','Тестовый заголовок ','post_1.txt','Снимок экрана в 2018-08-27 14-49-20.png'),(2,2,1,2,'2019-03-07 12:46:23','Тест2 даааа','post_2.txt','Снимок экрана в 2018-08-27 14-49-20.png'),(3,3,1,3,'2019-03-15 18:26:53','Теория познания у Шопенгауэра','post_3.txt','shpopengoger.jpg'),(4,1,1,1,'2019-03-15 18:33:45','Иррационализм','post_4.txt','Снимок экрана в 2019-03-15 18-32-11.jpg'),(6,1,1,2,'2019-03-10 00:00:00','Тестовый заголовок новый тест 4 успех_должен','post_6.txt','image.png'),(7,1,23,2,'2019-03-15 18:25:27','Как любили древние греки','post_7.txt','f4aca8a59f25d8675f_800x489.jpg');
+INSERT INTO `Статьи` VALUES (1,1,1,1,'2019-03-15 19:08:14','Литературный анализ художественного произведения как один из способов развития мыслительной способности студентов','post_1.txt','25736083.jpg'),(2,2,1,2,'2019-03-15 19:04:18','Что такое материализм?','post_2.txt','atheism25.jpeg'),(3,3,1,3,'2019-03-15 18:26:53','Теория познания у Шопенгауэра','post_3.txt','shpopengoger.jpg'),(4,1,1,1,'2019-03-15 18:33:45','Иррационализм','post_4.txt','Снимок экрана в 2019-03-15 18-32-11.jpg'),(6,1,1,2,'2019-03-15 19:01:23','Идеализм (Новиков, 1987)','post_6.txt','slide-0.jpg'),(7,1,23,2,'2019-03-15 18:25:27','Как любили древние греки','post_7.txt','f4aca8a59f25d8675f_800x489.jpg'),(8,1,23,2,'2019-03-15 19:10:45','Платон: анализ диалога ','post_8.txt','platon.jpg');
 /*!40000 ALTER TABLE `Статьи` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -527,4 +527,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-15 18:34:13
+-- Dump completed on 2019-03-15 19:13:30

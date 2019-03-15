@@ -112,6 +112,10 @@ hr {
 	max-width: 150px;
 }
 
+.imagefull {
+	max-height: 500px;
+}
+
 .widget {
 	padding: 10px;
 }

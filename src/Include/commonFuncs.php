@@ -78,11 +78,11 @@ function validatePost($title, $content, $image)
   if (empty($title) || empty($content) || empty($image)) {
     $_SESSION['errorMessage'] = "All Fields Must Be Fill Out $title, $content, $image";
     return false;
-  } else if (strlen($title) > 100) {
+  } else if (strlen($title) > 300) {
     $len = strlen($title);
     $_SESSION['errorMessage'] = "Title Is Too Long: $len";
     return false;
-  } else if (strlen($content) > 4000) {
+  } else if (strlen($content) > 40000) {
     $_SESSION['errorMessage'] = 'Content Is Too Long';
     return false;
   } else {
