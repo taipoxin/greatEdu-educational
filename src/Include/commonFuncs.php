@@ -9,6 +9,17 @@ function Redirect_To($location)
   exit;
 }
 
+function LoadTextFromContentFileDashboard($file)
+{
+  $post_content = '';
+  if (is_null($file)) {
+    $post_content = 'error load';
+  } else {
+    $post_content = file_get_contents('../Upload/contents/' . $file);
+  }
+  return $post_content;
+}
+
 function LoadTextFromContentFile($file)
 {
   $post_content = '';
@@ -33,7 +44,7 @@ function LoadTextFromBioFile($file)
 // write to content file
 function rewriteContentFile($filename, $content)
 {
-  $filepath = "Upload/contents/$filename";
+  $filepath = "../Upload/contents/$filename";
   file_put_contents($filepath, $content);
 }
 

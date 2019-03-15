@@ -33,7 +33,7 @@ function handleUpdatePost()
     $exec = doSQLQuery($sql);
     if ($exec) {
       if (!empty($image)) {
-        $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
+        $imageDirectory = "../Upload/Image/" . basename($_FILES['post-image']['name']);
         if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
           $_SESSION['successMessage'] = 'Post Edit Successfully: Updated Image';
         } else {
@@ -67,7 +67,7 @@ function fillEditData()
       $post_author = $post['автор'];
       $post_image = $post['изображение'];
       $post_file = $post['файл_контент'];
-      $text = LoadTextFromContentFile($post_file);
+      $text = LoadTextFromContentFileDashboard($post_file);
       $post_content = $text;
     }
   } else {

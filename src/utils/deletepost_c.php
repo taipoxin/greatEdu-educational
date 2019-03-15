@@ -24,7 +24,7 @@ if (isset($_POST['post-delete'])) {
         $post_image = $post['изображение'];
 
         $post_file = $post['файл_контент'];
-        $text = LoadTextFromContentFile($post_file);
+        $text = LoadTextFromContentFileDashboard($post_file);
         $post_content = $text;
 
         $author_id = $post['автор'];

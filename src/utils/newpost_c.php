@@ -35,7 +35,7 @@ function handleNewPost()
     rewriteContentFile($filename, $content);
 
     if (!empty($image)) {
-      $imageDirectory = "Upload/Image/" . basename($_FILES['post-image']['name']);
+      $imageDirectory = "../Upload/Image/" . basename($_FILES['post-image']['name']);
       if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
         $sql = "INSERT INTO Статьи (id, темы, автор, теги,
           дата_публикации, заголовок, файл_контент, изображение)
