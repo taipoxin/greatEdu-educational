@@ -26,7 +26,8 @@ function fillQuoteData() {
       if ($post = mysqli_fetch_assoc($exec)) {
         $post_id = $post['id'];
         $post_date = $post['дата_публикации'];
-        $post_title = 'заголовок';
+        $post_source = getSourceById($post['источник']);
+        $post_theme = getThemeById($post['тема']);
         $quote_auth_id = $post['автор'] ;
         $authorObj = getQuoteAuthor($quote_auth_id);
         $post_quote_author = $authorObj['фамилия'];
@@ -55,6 +56,22 @@ function fillQuoteData() {
             </a>
           <?php endif; ?>
       </div>
+          <div class="post-info">
+            <p class="lead" style="color: darkblue;">
+              <?php 
+              if (!is_null($post_source)) {
+                echo 'Источник: ' . htmlentities($post_source); 
+              }
+              ?>
+            </p>
+            <p class="lead" style="color: darkblue;">
+              <?php 
+              if (!is_null($post_source)) {
+                echo 'Тема: ' . htmlentities($post_theme); 
+              }
+              ?>
+            </p>
+          </div>
           <div class="post-content" style="color: black;">
             <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>

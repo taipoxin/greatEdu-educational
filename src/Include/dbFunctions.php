@@ -150,6 +150,24 @@ function getPeriodIdByNameOrInsert($name) {
   return $res; 
 }
 
+function getSourceById($id) {
+  $query = "SELECT название FROM Произведения WHERE id = '$id'";
+  $exec = doSQLQuery($query);
+  if ($res = mysqli_fetch_assoc($exec)) {
+    return $res['название'];
+  }
+  return null;
+}
+
+function getThemeById($id) {
+  $query = "SELECT название FROM Темы_произведений WHERE id = '$id'";
+  $exec = doSQLQuery($query);
+  if ($res = mysqli_fetch_assoc($exec)) {
+    return $res['название'];
+  }
+  return null;
+}
+
 
 // check by username
 function isUserExistsByUsername($username) {
