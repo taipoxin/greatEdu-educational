@@ -150,6 +150,37 @@ function getPeriodIdByNameOrInsert($name) {
   return $res; 
 }
 
+function getThemeNameById($id) {
+  $query = "SELECT название FROM Темы_статей WHERE id = '$id'";
+  $exec = doSQLQuery($query);
+  if ($res = mysqli_fetch_assoc($exec)) {
+    return $res['название'];
+  }
+  return null;
+}
+
+function getThemesListById($id) {
+  $query = "SELECT id_элемента FROM Список_тем_статьи WHERE id_списка = '$id'";
+  $exec = doSQLQuery($query);
+  $list = [];
+  while ($res = mysqli_fetch_assoc($exec)) {
+    array_push($list, $res['id_элемента']);
+  }
+  return $list;
+}
+
+function getThemesNamesByListId($id) {
+  $res = getThemesListById($id);
+  $resultList = [];  
+  foreach($res as &$value) {
+    $item = getThemeNameById($value);
+    array_push($resultList, $item);
+  }
+  return $resultList;
+}
+
+
+
 function getSourceById($id) {
   $query = "SELECT название FROM Произведения WHERE id = '$id'";
   $exec = doSQLQuery($query);
