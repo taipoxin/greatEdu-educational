@@ -90,17 +90,6 @@
         <div class="col-md-3 post-side-menu col-md-offset-1">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Обо мне</h2>
-            </div>
-            <div>
-              <img class="img-responsive img-circle imageicon" src="../Assets/Images/user-default.png">
-            </div>
-            <div class="panel-body">
-              Подробнее
-            </div>
-          </div>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
               <h2 class="panel-title">Последние биографии</h2>
             </div>
             <div class="panel-body">
