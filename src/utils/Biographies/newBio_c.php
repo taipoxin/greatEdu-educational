@@ -48,7 +48,7 @@ function handleUpdateBio()
 
     if (!empty($image)) {
       $imgName = "$update_bio_biography.jpg";
-      $imageDirectory = "Upload/bios/" . $imgName;
+      $imageDirectory = "../Upload/bios/" . $imgName;
       if (move_uploaded_file($_FILES['post-image']['tmp_name'], $imageDirectory)) {
         $_SESSION['successMessage'] = 'Updated Image';
       } else {
@@ -61,7 +61,7 @@ function handleUpdateBio()
     }
 
     $fileName = "$update_bio_biography.txt";
-    $textPath = "Upload/bios/" . $fileName;
+    $textPath = "../Upload/bios/" . $fileName;
     rewriteFileByPath($textPath, $update_bio_content);
 
     $sphere_id = getSphereIdByNameOrInsert($update_bio_sphere_as_is);
@@ -94,7 +94,7 @@ function handleUpdateBio()
     if ($exec) {
       $_SESSION['errorMessage'] = null;
       $_SESSION['successMessage'] = $_SESSION['successMessage'] . " | Bio $update_bio_id Added Successfully:";
-      Redirect_To('/Bios.php');
+      Redirect_To('Bios.php');
     } else {
       $_SESSION['errorMessage'] = $_SESSION['errorMessage'] . ' | Something Went Wrong With db write.';
     }

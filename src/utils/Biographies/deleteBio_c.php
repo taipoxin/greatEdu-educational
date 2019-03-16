@@ -56,7 +56,7 @@ function handleDeleteBio()
     $exec = doSQLQuery($sql);
     if ($exec) {
       $_SESSION['successMessage'] = "$_POST[deleteID] Quote Deleted Successfully";
-      Redirect_To('/Bios.php');
+      Redirect_To('Bios.php');
     } else {
       $_SESSION['errorMessage'] = "Something Went Wrong, Quote Is Not Deleted. Please Try Again Later";
     }

@@ -63,7 +63,7 @@ function fillBioData()
 
     }
   } else {
-    Redirect_To('/Bios.php');
+    Redirect_To('Bios.php');
   }
 }
 
@@ -77,7 +77,7 @@ function fillBioReferences()
     ?>
     <nav>
       <ul>
-        <li><a href="/Bio.php?id=<?php echo $postID; ?>">
+        <li><a href="Bio.php?id=<?php echo $postID; ?>">
             <?php echo $linkText ?>
           </a></li>
       </ul>
