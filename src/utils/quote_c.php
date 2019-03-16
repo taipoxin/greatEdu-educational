@@ -43,7 +43,10 @@ function fillQuoteData() {
         <div style="display: flex; justify-content: space-between;">  
           <div class="post-info">
             <p class="lead" style="color: darkblue;">
-              Автор цитаты: <?php echo htmlentities($post_quote_author); ?>
+              Автор цитаты: 
+              <a href="/Bio.php?id=<?php echo $author_id?>">
+                <?php echo htmlentities($post_quote_author); ?>
+              </a>
             </p>
           </div>
           <?php global $isAdmined; if($isAdmined) : ?>
