@@ -114,17 +114,6 @@
         <div class="col-md-3 col-md-offset-1 post-side-menu">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Цитаты</h2>
-            </div>
-            <div>
-              <!-- <img class="img-responsive img-circle imageicon" src="Assets/Images/user-default.png"> -->
-            </div>
-            <div class="panel-body">
-              Дополнительная информация
-            </div>
-          </div>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
               <h2 class="panel-title">Последние цитаты</h2>
             </div>
             <div class="panel-body">

@@ -85,43 +85,10 @@
           <?php 
 					fillQuoteData();
 				?>
-          <div class="comment-section">
-            <!-- TODO: addInFuture -->
-            <?php if(isLogin()) : ?>
-            <!-- <form method="POST" action="comment.php">
-              <legend>Ваши мысли об этой цитате</legend>
-              <div class="form-group">
-                <label>Комментарий</label>
-                <textarea name="comment" placeholder="Текст вашего комментария" class="form-control" rows="10"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" name="submit" class="btn btn-primary" value="Отправить">
-              </div>
-              <input type="hidden" name="author" value="<?php echo $_SESSION['user_id']; ?>">
-              <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-            </form> -->
-            <?php endif; ?>
-
-          </div>
-          <!-- <div class="page-header">Комментарии</div> -->
-            <?php
-            // fillQuoteComments();
-            ?>
 
         </div>
         <!--END OF COL-MD-8  -->
         <div class="col-md-3 post-side-menu col-md-offset-1">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h2 class="panel-title">Обо мне</h2>
-            </div>
-            <div>
-              <img class="img-responsive img-circle imageicon" src="../Assets/Images/user-default.png">
-            </div>
-            <div class="panel-body">
-              Подробнее
-            </div>
-          </div>
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h2 class="panel-title">Последние цитаты</h2>
