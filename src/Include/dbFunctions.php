@@ -180,6 +180,36 @@ function getThemesNamesByListId($id) {
 }
 
 
+function getTagNameById($id) {
+  $query = "SELECT название FROM Теги WHERE id = '$id'";
+  $exec = doSQLQuery($query);
+  if ($res = mysqli_fetch_assoc($exec)) {
+    return $res['название'];
+  }
+  return null;
+}
+
+function getTagsListById($id) {
+  $query = "SELECT id_элемента FROM Список_тегов WHERE id_списка = '$id'";
+  $exec = doSQLQuery($query);
+  $list = [];
+  while ($res = mysqli_fetch_assoc($exec)) {
+    array_push($list, $res['id_элемента']);
+  }
+  return $list;
+}
+
+function getTagsNamesByListId($id) {
+  $res = getTagsListById($id);
+  $resultList = [];  
+  foreach($res as &$value) {
+    $item = getTagNameById($value);
+    array_push($resultList, $item);
+  }
+  return $resultList;
+}
+
+
 
 function getSourceById($id) {
   $query = "SELECT название FROM Произведения WHERE id = '$id'";

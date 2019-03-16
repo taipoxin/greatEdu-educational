@@ -26,6 +26,7 @@ function fillPostData()
         $post_date = $post['дата_публикации'];
         $post_title = $post['заголовок'];
         $post_themes = getThemesNamesByListId($post['темы']);
+        $post_tags = getTagsNamesByListId($post['теги']);
         $authorId = $post['автор'];
         $post_image = $post['изображение'];
 
@@ -52,6 +53,11 @@ function fillPostData()
             <p class="lead">
               <?php  
                 echo 'Темы: ' .  htmlentities(implode($post_themes, ', ')); 
+              ?>
+            </p>
+            <p class="lead">
+              <?php  
+                echo 'Теги: ' .  htmlentities(implode($post_tags, ', ')); 
               ?>
             </p>
           </div>
