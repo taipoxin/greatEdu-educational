@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
       if ($foundAccount['группа'] == '2') {
         Redirect_To('Dashboard');
       } else {
-        Redirect_To('Blog.php');
+        Redirect_To('/');
       }
     } else {
       $_SESSION['errorMessage'] = 'Username/Password Is Invalid';

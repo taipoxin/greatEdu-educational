@@ -1,11 +1,10 @@
-<?php require_once('../Include/Sessions.php'); ?>
-<?php require_once('../Include/commonFuncs.php') ?>
-<?php require_once('../Include/dbFunctions.php') ?>
+<?php require_once('../../Include/Sessions.php'); ?>
+<?php require_once('../../Include/commonFuncs.php') ?>
+<?php require_once('../../Include/dbFunctions.php') ?>
 
-<?php require_once('../utils/post_c.php') ?>
+<?php require_once('../../utils/Quotes/quote_c.php') ?>
 <?php 
-  global $title_title;
-	fillHeader();
+	$title_title = getQuotePageTitle();
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,18 +36,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="Blog.php" class="navbar-brand">
+          <a href="/" class="navbar-brand">
             Great Edu
           </a>
         </div>
         <div class="collapse navbar-collapse" id="nav-header">
           <ul class="nav navbar-nav">
-            <li class="nav-item"><a href="Blog.php">Статьи</a></li>
-            <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
-            <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
+            <li class="nav-item"><a href="/">Статьи</a></li>
+            <li class="nav-item"><a href="/Quotes/">Цитаты</a></li>
+            <li class="nav-item"><a href="/Biographies">Биографии</a></li>
           </ul>
           <div class="navbar-right" style="display: flex;">
-              <form action="Blog.php" method="GET" class="navbar-form ">
+              <form action="/" method="GET" class="navbar-form ">
                 <div class="input-group" style="width:200px;">
                   <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
                   <span class="input-group-btn">
@@ -56,16 +55,17 @@
                   </span>
                 </div>
               </form>
+              <?php global $isAdmined; $isAdmined = isAdmin(); ?>
               <?php $isLogged = isLogin(); ?>
 
               <?php if($isLogged) : ?>
               <button type="button" class="nav-item btn">
-                <a href="Lagout.php" style="color: grey;">Выйти</a>
+                <a href="/Logout.php" style="color: grey;">Выйти</a>
               </button>
               <?php endif; ?>
               <?php if(!$isLogged) : ?>
               <button type="button" class="nav-item btn">
-                <a href="Login.php" style="color: grey;">Войти</a>
+                <a href="/Login.php" style="color: grey;">Войти</a>
               </button>
               <?php endif; ?>
 
@@ -83,28 +83,7 @@
           <?php echo Message(); ?>
           <?php echo SESSION_INFO(); ?>
           <?php 
-					fillPostData();
-				?>
-          <div class="comment-section">
-            <?php if(isLogin()) : ?>
-            <form method="POST" action="Post.php">
-              <legend>Ваши мысли об этом посте</legend>
-              <div class="form-group">
-                <label>Комментарий</label>
-                <textarea name="comment" placeholder="Текст вашего комментария" class="form-control" rows="10"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" name="submit" class="btn btn-primary" value="Отправить">
-              </div>
-              <input type="hidden" name="author" value="<?php echo $_SESSION['user_id']; ?>">
-              <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-            </form>
-            <?php endif; ?>
-
-          </div>
-          <div class="page-header">Комментарии</div>
-          <?php
-					fillPostComments();
+					fillQuoteData();
 				?>
 
         </div>
@@ -112,23 +91,12 @@
         <div class="col-md-3 post-side-menu col-md-offset-1">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Обо мне</h2>
-            </div>
-            <div>
-              <img class="img-responsive img-circle imageicon" src="../Assets/Images/user-default.png">
-            </div>
-            <div class="panel-body">
-              Подробнее
-            </div>
-          </div>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h2 class="panel-title">Последние статьи</h2>
+              <h2 class="panel-title">Последние цитаты</h2>
             </div>
             <div class="panel-body">
               <?php
-							fillPostsReferences();
-						?>
+                fillQuoteReferences();
+						  ?>
             </div>
           </div>
         </div>

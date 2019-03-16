@@ -1,1 +1,1 @@
-<?php require_once('Blog.php') ?>
+<?php require_once('Articles.php') ?>

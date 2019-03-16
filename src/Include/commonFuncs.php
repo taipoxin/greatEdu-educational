@@ -53,9 +53,6 @@ function rewriteFileByPath($filepath, $content)
   file_put_contents($filepath, $content);
 }
 
-
-
-// TODO: fix strlen
 // require title, author, content
 function validateQuote($creatorId, $author, $content)
 {
@@ -68,9 +65,6 @@ function validateQuote($creatorId, $author, $content)
   } else {
     return true;
   }
-  // } else if (is_numeric($author)) {
-  //   $_SESSION['errorMessage'] = 'Author should be numeric';
-  //   return false;
 }
 
 function validatePost($title, $content, $image)

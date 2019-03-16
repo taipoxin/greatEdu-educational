@@ -64,7 +64,7 @@ function register()
       $_SESSION['user_id'] = $userObj['id'];
       $_SESSION['username'] = $userObj['никнейм'];
       // echo 'before success redirect <br>';
-      Redirect_To('Blog.php');
+      Redirect_To('/');
     } else {
       $_SESSION['errorMessage'] = 'Something Went Wrong Please Try Again Later';
       // echo 'before failure redirect <br>';

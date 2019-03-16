@@ -25,7 +25,8 @@ function fillPostData()
         $post_id = $post['id'];
         $post_date = $post['дата_публикации'];
         $post_title = $post['заголовок'];
-        $post_themes = $post['темы'];
+        $post_themes = getThemesNamesByListId($post['темы']);
+        $post_tags = getTagsNamesByListId($post['теги']);
         $authorId = $post['автор'];
         $post_image = $post['изображение'];
 
@@ -46,8 +47,18 @@ function fillPostData()
           </div>
           <div class="post-info">
             <p class="lead">
-              Опубликовано: <?php echo htmlentities($post_date); ?> | Темы: <?php echo htmlentities($post_themes); ?> |
+              Опубликовано: <?php echo htmlentities($post_date); ?> |
               Автор: <?php echo $post_author; ?>
+            </p>
+            <p class="lead">
+              <?php  
+                echo 'Темы: ' .  htmlentities(implode($post_themes, ', ')); 
+              ?>
+            </p>
+            <p class="lead">
+              <?php  
+                echo 'Теги: ' .  htmlentities(implode($post_tags, ', ')); 
+              ?>
             </p>
           </div>
           <div class="post-content">
@@ -59,7 +70,7 @@ function fillPostData()
 
     }
   } else {
-    Redirect_To('Blog.php');
+    Redirect_To('/');
   }
 }
 
@@ -108,7 +119,7 @@ function fillPostsReferences()
     ?>
     <nav>
       <ul>
-        <li><a href="Post.php?id=<?php echo $postID; ?>">
+        <li><a href="Article.php?id=<?php echo $postID; ?>">
             <?php echo $recentPost['заголовок'] ?>
           </a></li>
       </ul>
@@ -140,7 +151,7 @@ function handlePostAddComment()
     } else {
       $_SESSION['errorMessage'] = "Something Went Wrong Please Try Again Later";
     }
-    Redirect_To("Post.php?id=$postID");
+    Redirect_To("Article.php?id=$postID");
   }
 }
 
