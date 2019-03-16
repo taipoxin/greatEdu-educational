@@ -2,7 +2,7 @@
 <?php require_once('../../Include/commonFuncs.php') ?>
 <?php require_once('../../Include/dbFunctions.php') ?>
 
-<?php require_once('../../utils/deletepost_c.php') ?>
+<?php require_once('../../utils/Dashboard/deletepost_c.php') ?>
 <?php loginRequired(); ?>
 <?php 
 global $post_title, $post_image, $post_content;
@@ -38,7 +38,7 @@ global $post_title, $post_image, $post_content;
       <div class="row">
         <div class="col-sm-2">
           <ul id="side-menu" class="nav nav-pills nav-stacked">
-            <li class=""><a href="Dashboard.php">
+            <li class=""><a href="/Dashboard">
                 <span class="glyphicon glyphicon-th"></span>
                 &nbsp;Статьи</a></li>
             <li class=""><a href="Biographies.php">

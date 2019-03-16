@@ -2,7 +2,7 @@
 <?php require_once '../../Include/commonFuncs.php'?>
 <?php require_once '../../Include/dbFunctions.php'?>
 
-<?php require_once '../../utils/newQuote_c.php'?>
+<?php require_once '../../utils/Quotes/newQuote_c.php'?>
 <?php loginRequired();?>
 
 <?php handleNewQuote();?>
@@ -44,7 +44,7 @@
               <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="/">Статьи</a></li>
                 <li class="nav-item"><a href="/Quotes/">Цитаты</a></li>
-                <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
+                <li class="nav-item"><a href="/Biographies">Биографии</a></li>
               </ul>
               <div class="navbar-right" style="display: flex;">
                   <form action="/Quotes/" method="GET" class="navbar-form ">

@@ -3,7 +3,7 @@
 <?php require_once('../../Include/dbFunctions.php') ?>
 
 <?php adminRequired(); ?>
-<?php require_once('../../utils/biographies_c.php') ?>
+<?php require_once('../../utils/Dashboard/biographies_c.php') ?>
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@
       <div class="row">
         <div class="col-sm-2">
           <ul id="side-menu" class="nav nav-pills nav-stacked">
-            <li class=""><a href="Dashboard.php">
+            <li class=""><a href="/Dashboard">
                 <span class="glyphicon glyphicon-th"></span>
                 &nbsp;Статьи</a></li>
             <li class="active"><a href="Biographies.php">

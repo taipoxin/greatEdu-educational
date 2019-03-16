@@ -65,7 +65,7 @@ function fillBlog() {
             <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>
           <p>
-            <a href="Post.php?id=<?php echo $post_id; ?>">
+            <a href="Article.php?id=<?php echo $post_id; ?>">
               <button class="btn btn-info btn-lg" id="read_more_btn">Подробнее</button>
             </a>
             <div class="clearfix"></div>
@@ -128,7 +128,7 @@ function fillBlogPostsReferences()
     ?>
     <nav>
       <ul>
-        <li><a href="Post.php?id=<?php echo $postID; ?>">
+        <li><a href="Article.php?id=<?php echo $postID; ?>">
             <?php echo $recentPost['заголовок'] ?>
           </a></li>
       </ul>

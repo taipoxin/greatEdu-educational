@@ -1,8 +1,8 @@
-<?php require_once '../Include/Sessions.php';?>
-<?php require_once '../Include/commonFuncs.php'?>
-<?php require_once '../Include/dbFunctions.php'?>
+<?php require_once '../../Include/Sessions.php';?>
+<?php require_once '../../Include/commonFuncs.php'?>
+<?php require_once '../../Include/dbFunctions.php'?>
 
-<?php require_once '../utils/bios_c.php'  ?>
+<?php require_once '../../utils/Biographies/bios_c.php'  ?>
 
 <!DOCTYPE html>
 <html>
@@ -42,7 +42,7 @@
           <ul class="nav navbar-nav">
             <li class="nav-item"><a href="/">Статьи</a></li>
             <li class="nav-item"><a href="/Quotes/">Цитаты</a></li>
-            <li class="nav-item active"><a href="/Bios.php">Биографии</a></li>
+            <li class="nav-item active"><a href="/Biographies">Биографии</a></li>
           </ul>
           <div class="navbar-right" style="display: flex;">
               <form action="/" method="GET" class="navbar-form ">

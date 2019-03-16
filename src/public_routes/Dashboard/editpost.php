@@ -2,7 +2,7 @@
 <?php require_once('../../Include/commonFuncs.php') ?>
 <?php require_once('../../Include/dbFunctions.php') ?>
 
-<?php require_once('../../utils/editpost_c.php') ?>
+<?php require_once('../../utils/Dashboard/editpost_c.php') ?>
 <?php adminRequired(); ?>
 <?php 
 
@@ -48,7 +48,7 @@
       <div class="row">
         <div class="col-sm-2">
           <ul id="side-menu" class="nav nav-pills nav-stacked">
-            <li class=""><a href="Dashboard.php">
+            <li class=""><a href="/Dashboard">
                 <span class="glyphicon glyphicon-th"></span>
                 &nbsp;Статьи</a></li>
             <li class=""><a href="Biographies.php">

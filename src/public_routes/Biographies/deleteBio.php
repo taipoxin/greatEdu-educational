@@ -1,16 +1,10 @@
-<?php require_once '../Include/Sessions.php';?>
-<?php require_once '../Include/commonFuncs.php'?>
-<?php require_once '../Include/dbFunctions.php'?>
+<?php require_once '../../Include/Sessions.php';?>
+<?php require_once '../../Include/commonFuncs.php'?>
+<?php require_once '../../Include/dbFunctions.php'?>
 
-<?php require_once '../utils/editBio_c.php'?>
-<?php adminRequired();?>
-
-<?php
+<?php 
 global $bio_id,
-  $biography,
-  $bio_author_surname,
-  $bio_author_name,
-  $bio_author_second_name,
+  $bio_author, 
   $bio_state,
   $bio_sphere,
   $bio_date,
@@ -18,15 +12,18 @@ global $bio_id,
   $bio_content,
   $bio_image;
 ?>
+<?php require_once '../../utils/Biographies/deleteBio_c.php'?>
+<?php adminRequired();?>
 
-<?php handleUpdateBio();?>
-<?php fillEditingBio();?>
+
+<?php handleDeleteBio();?>
+<?php fillDeletingBio();?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Изменить биографию - GreatEdu</title>
+  <title>Удалить биографию - GreatEdu</title>
   <script
   src="http://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -60,7 +57,7 @@ global $bio_id,
               <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="/">Статьи</a></li>
                 <li class="nav-item"><a href="/Quotes/">Цитаты</a></li>
-                <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
+                <li class="nav-item"><a href="/Biographies">Биографии</a></li>
               </ul>
               <div class="navbar-right" style="display: flex;">
                   <form action="/Quotes/" method="GET" class="navbar-form ">
@@ -90,11 +87,11 @@ global $bio_id,
         </nav>
         <div class="container" style="min-height: -webkit-fill-available;">
           <div class="page-title">
-            <h1>Изменить биографию</h1>
+            <h1>Удалить биографию</h1>
           </div>
           <?php echo Message(); ?>
           <?php echo SuccessMessage(); ?>
-          <form action="editBio.php?bio_id=<?php echo $_GET['bio_id'] ?>" method="POST" enctype="multipart/form-data">
+          <form action="deleteBio.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
                 <p for="quote-author">Номер биографии</p>
@@ -102,58 +99,46 @@ global $bio_id,
                 value="<?php echo $bio_id ?>">
               </div>
               <div class="form-group">
-                <p for="quote-author">Фамилия Автора</p>
-                <input type="text" name="bio-author-surname" class="form-control" id="quote-author"
-                value="<?php echo $bio_author_surname ?>">
-              </div>
-              <div class="form-group">
-                <p for="quote-author">Имя Автора</p>
-                <input type="text" name="bio-author-name" class="form-control" id="quote-author"
-                value="<?php echo $bio_author_name ?>">
-              </div>
-              <div class="form-group">
-                <p for="quote-author">Отчество Автора</p>
-                <input type="text" name="bio-author-second-name" class="form-control" id="quote-author"
-                value="<?php echo $bio_author_second_name ?>">
+                <p for="quote-author">ФИО Автора</p>
+                <input disabled type="text" name="bio-author" class="form-control" id="quote-author"
+                value="<?php echo $bio_author ?>">
               </div>
               <div class="form-group">
                 <p for="quote-author">Страна принадлежности</p>
-                <input type="text" name="bio-state" class="form-control" id="quote-author"
+                <input disabled type="text" name="bio-state" class="form-control" id="quote-author"
                 value="<?php echo $bio_state ?>">
               </div>
               <div class="form-group">
                 <p for="quote-source">Сферы деятельности</p>
-                <input type="text" name="bio-sphere" class="form-control" id="quote-source"
+                <input disabled type="text" name="bio-sphere" class="form-control" id="quote-source"
                 value="<?php echo $bio_sphere ?>">
               </div>
               <div class="form-group">
                 <p for="quote-theme">Период</p>
-                <input type="text" name="bio-period" class="form-control" id="quote-theme"
+                <input disabled type="text" name="bio-period" class="form-control" id="quote-theme"
                 value="<?php echo $bio_period ?>">
+              </div>
+              <div class="form-group">
+                <p for="quote-theme">Дата добавления</p>
+                <input disabled type="text" name="bio-date" class="form-control" id="quote-theme"
+                value="<?php echo $bio_date ?>">
               </div>
               <div style="display:flex">
                 <p>Изображение:  </p>
-                <!-- https://stackoverflow.com/a/22429796/7410224 -->
                 <?php
                   $img = "/Upload/bios/$bio_image?m=";
                 ?>
-                <img src="<?php echo $img . time()?>" width='250' height='90'>
-              </div>
-              <br>
-              <div class="form-group">
-                <p for="post-image">Изменить изображение</p>
-                <input type="File" name="post-image" class="form-control">
+                <img src="<?php echo $img . time(); ?>" width='250' height='90'>
               </div>
               <div class="form-group">
                 <p for="quote-content">Текст</p>
-                <textarea rows="10" class="form-control" name="bio-content" 
-                id="bio-content"><?php echo htmlentities($bio_content); ?></textarea>
+                <textarea disabled rows="10" class="form-control" name="quote-content" 
+                id="quote-content"><?php echo htmlentities($bio_content); ?></textarea>
               </div>
               <div class="form-group">
-                <button name="bio-edit" class="btn btn-primary form-control">Изменить биографию</button>
+                <button name="bio-delete" class="btn btn-danger form-control">Удалить биографию</button>
               </div>
-              <input type="hidden" name="currentImage" value="<?php echo $bio_image; ?>">
-              <input type="hidden" name="editID" value="<?php echo $_GET['bio_id']; ?>">
+              <input type="hidden" name="deleteID" value="<?php echo $_GET['bio_id']; ?>">
             </fieldset>
           </form>
         </div>
