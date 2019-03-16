@@ -41,7 +41,7 @@ function SESSION_INFO()
   }
 }
 
-function IsLogin()
+function IsLogin()  // boolean
 {
   $login = false;
   if (isset($_SESSION['user_id'])) {
@@ -50,13 +50,12 @@ function IsLogin()
   return $login;
 }
 
-function loginRequired()
+function loginRequired() // null / Redirect
 {
   $login = false;
   if (isset($_SESSION['user_id'])) {
     $login = true;
   }
-
   if ($login === false) {
     $_SESSION['errorMessage'] = 'Login Required';
     Redirect_To('/Login.php');
