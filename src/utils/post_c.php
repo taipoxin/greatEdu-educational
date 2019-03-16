@@ -70,7 +70,7 @@ function fillPostData()
 
     }
   } else {
-    Redirect_To('Blog.php');
+    Redirect_To('/');
   }
 }
 

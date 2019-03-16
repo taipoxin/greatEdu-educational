@@ -50,7 +50,7 @@ global $post_title, $post_image, $post_content;
             <li><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Администраторы</a></li>
-            <li><a href="/Blog.php">
+            <li><a href="/">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;На главную</a></li>
             <li><a href="/Lagout.php">

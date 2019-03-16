@@ -69,8 +69,8 @@ require_once '../utils/register_c.php';
           </div>
           <div class="form-group" style="display: flex; 
           flex-flow: wrap; justify-content: space-between;">
-            <a href="Login.php" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >На страницу входа</a>
-            <a href="Blog.php" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >На главную</a>
+            <a href="/Login.php" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >На страницу входа</a>
+            <a href="/" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >На главную</a>
           </div>
         </form>
       </div>

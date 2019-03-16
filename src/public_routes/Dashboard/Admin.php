@@ -47,7 +47,7 @@
             <li class="active"><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Администраторы</a></li>
-            <li><a href="/Blog.php">
+            <li><a href="/">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;На главную</a></li>
             <li><a href="/Lagout.php">

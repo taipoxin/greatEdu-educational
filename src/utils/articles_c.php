@@ -10,7 +10,7 @@ function fillBlog() {
   $query = "";
   if (isset($_GET['search'])) {
     if (empty($_GET['search'])) {
-      Redirect_To('Blog.php');
+      Redirect_To('/');
     } else {
       // TODO: reformat search
       // $search = $_GET['search'];
@@ -89,7 +89,7 @@ function fillPages() {
   }
   if ($page > 1) {
     ?>
-    <li><a href="Blog.php?page=<?php echo $page - 1; ?>"><</a></li>
+    <li><a href="/?page=<?php echo $page - 1; ?>"><</a></li>
     <?php
   }
   $sql = "SELECT COUNT(*) FROM Статьи";
@@ -102,17 +102,17 @@ function fillPages() {
   for ($count = 1; $count <= $postPerPage; $count++){
     if ($page == $count) {
       ?>
-      <li class="active"><a href="Blog.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <li class="active"><a href="/?page=<?php echo $count ?>"><?php echo $count ?></a></li>
       <?php
     }else {
       ?>
-      <li><a href="Blog.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <li><a href="/?page=<?php echo $count ?>"><?php echo $count ?></a></li>
       <?php
     }
   }
   if($page < $postPerPage) {
     ?>
-    <li><a href="Blog.php?page=<?php echo $page + 1; ?>">></a></li>
+    <li><a href="/?page=<?php echo $page + 1; ?>">></a></li>
     <?php
   }
   
