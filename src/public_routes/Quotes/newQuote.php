@@ -1,26 +1,16 @@
-<?php require_once '../Include/Sessions.php';?>
-<?php require_once '../Include/commonFuncs.php'?>
-<?php require_once '../Include/dbFunctions.php'?>
+<?php require_once '../../Include/Sessions.php';?>
+<?php require_once '../../Include/commonFuncs.php'?>
+<?php require_once '../../Include/dbFunctions.php'?>
 
-<?php require_once '../utils/deleteQuote_c.php'?>
-<?php adminRequired();?>
+<?php require_once '../../utils/Quotes/newQuote_c.php'?>
+<?php loginRequired();?>
 
-<?php handleDeleteQuote();?>
-<?php fillDeletingQuote();?>
-
-<?php 
-global $quote_id,
-  $quote_creator,
-  $quote_author, 
-  $quote_source,
-  $quote_theme,
-  $quote_text;
-?>
+<?php handleNewQuote();?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Удалить цитату - GreatEdu</title>
+  <title>Новая цитата - GreatEdu</title>
   <script
   src="http://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -46,18 +36,18 @@ global $quote_id,
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a href="Blog.php" class="navbar-brand">
+              <a href="/" class="navbar-brand">
                 Great Edu
               </a>
             </div>
             <div class="collapse navbar-collapse" id="nav-header">
               <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="Blog.php">Статьи</a></li>
-                <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
-                <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
+                <li class="nav-item"><a href="/">Статьи</a></li>
+                <li class="nav-item"><a href="/Quotes/">Цитаты</a></li>
+                <li class="nav-item"><a href="/Biographies">Биографии</a></li>
               </ul>
               <div class="navbar-right" style="display: flex;">
-                  <form action="Quotes.php" method="GET" class="navbar-form ">
+                  <form action="/Quotes/" method="GET" class="navbar-form ">
                     <div class="input-group" style="width:200px;">
                       <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
                       <span class="input-group-btn">
@@ -69,12 +59,12 @@ global $quote_id,
 
                   <?php if($isLogged) : ?>
                   <button type="button" class="nav-item btn">
-                    <a href="Lagout.php" style="color: grey;">Выйти</a>
+                    <a href="/Logout.php" style="color: grey;">Выйти</a>
                   </button>
                   <?php endif; ?>
                   <?php if(!$isLogged) : ?>
                   <button type="button" class="nav-item btn">
-                    <a href="Login.php" style="color: grey;">Войти</a>
+                    <a href="/Login.php" style="color: grey;">Войти</a>
                   </button>
                   <?php endif; ?>
 
@@ -84,46 +74,31 @@ global $quote_id,
         </nav>
         <div class="container" style="min-height: -webkit-fill-available;">
           <div class="page-title">
-            <h1>Удалить цитату</h1>
+            <h1>Добавить новую цитату</h1>
           </div>
           <?php echo Message(); ?>
           <?php echo SuccessMessage(); ?>
-          <form action="deleteQuote.php" method="POST" enctype="multipart/form-data">
+          <form action="newQuote.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <p for="quote-author">Номер цитаты</p>
-                <input disabled type="text" name="quote-id" class="form-control" id="quote-id"
-                value="<?php echo $quote_id ?>">
-              </div>
-              <div class="form-group">
                 <p for="quote-author">Автор цитаты</p>
-                <input disabled type="text" name="quote-author" class="form-control" id="quote-author"
-                value="<?php echo $quote_author ?>">
-              </div>
-              <div class="form-group">
-                <p for="quote-author">Автор публикации</p>
-                <input disabled type="text" name="quote-creator" class="form-control" id="quote-author"
-                value="<?php echo $quote_creator ?>">
+                <input type="text" name="quote-author" class="form-control" id="quote-author">
               </div>
               <div class="form-group">
                 <p for="quote-source">Источник</p>
-                <input disabled type="text" name="quote-source" class="form-control" id="quote-source"
-                value="<?php echo $quote_source ?>">
+                <input type="text" name="quote-source" class="form-control" id="quote-source">
               </div>
               <div class="form-group">
                 <p for="quote-theme">Тема</p>
-                <input disabled type="text" name="quote-theme" class="form-control" id="quote-theme"
-                value="<?php echo $quote_theme ?>">
+                <input type="text" name="quote-theme" class="form-control" id="quote-theme">
               </div>
               <div class="form-group">
                 <p for="quote-content">Текст</p>
-                <textarea disabled rows="10" class="form-control" name="quote-content" 
-                id="quote-content"><?php echo $quote_text ?></textarea>
+                <textarea rows="10" class="form-control" name="quote-content" id="quote-content"></textarea>
               </div>
               <div class="form-group">
-                <button name="quote-delete" class="btn btn-danger form-control">Удалить цитату</button>
+                <button name="quote-submit" class="btn btn-primary form-control">Опубликовать цитату</button>
               </div>
-              <input type="hidden" name="deleteID" value="<?php echo $_GET['quote_id']; ?>">
             </fieldset>
           </form>
         </div>

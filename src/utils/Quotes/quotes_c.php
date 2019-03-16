@@ -20,7 +20,7 @@ function fillQuotes() {
   $query = "";
   if (isset($_GET['search'])) {
     if (empty($_GET['search'])) {
-      Redirect_To('Blog.php');
+      Redirect_To('/');
     } else {
       // TODO: reformat search
       // $search = $_GET['search'];

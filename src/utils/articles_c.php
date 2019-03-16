@@ -10,7 +10,7 @@ function fillBlog() {
   $query = "";
   if (isset($_GET['search'])) {
     if (empty($_GET['search'])) {
-      Redirect_To('Blog.php');
+      Redirect_To('/');
     } else {
       // TODO: reformat search
       // $search = $_GET['search'];
@@ -65,7 +65,7 @@ function fillBlog() {
             <p class="lead"><?php echo nl2br($post_content); ?></p>
           </div>
           <p>
-            <a href="Post.php?id=<?php echo $post_id; ?>">
+            <a href="Article.php?id=<?php echo $post_id; ?>">
               <button class="btn btn-info btn-lg" id="read_more_btn">Подробнее</button>
             </a>
             <div class="clearfix"></div>
@@ -89,7 +89,7 @@ function fillPages() {
   }
   if ($page > 1) {
     ?>
-    <li><a href="Blog.php?page=<?php echo $page - 1; ?>"><</a></li>
+    <li><a href="/?page=<?php echo $page - 1; ?>"><</a></li>
     <?php
   }
   $sql = "SELECT COUNT(*) FROM Статьи";
@@ -102,17 +102,17 @@ function fillPages() {
   for ($count = 1; $count <= $postPerPage; $count++){
     if ($page == $count) {
       ?>
-      <li class="active"><a href="Blog.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <li class="active"><a href="/?page=<?php echo $count ?>"><?php echo $count ?></a></li>
       <?php
     }else {
       ?>
-      <li><a href="Blog.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <li><a href="/?page=<?php echo $count ?>"><?php echo $count ?></a></li>
       <?php
     }
   }
   if($page < $postPerPage) {
     ?>
-    <li><a href="Blog.php?page=<?php echo $page + 1; ?>">></a></li>
+    <li><a href="/?page=<?php echo $page + 1; ?>">></a></li>
     <?php
   }
   
@@ -128,7 +128,7 @@ function fillBlogPostsReferences()
     ?>
     <nav>
       <ul>
-        <li><a href="Post.php?id=<?php echo $postID; ?>">
+        <li><a href="Article.php?id=<?php echo $postID; ?>">
             <?php echo $recentPost['заголовок'] ?>
           </a></li>
       </ul>

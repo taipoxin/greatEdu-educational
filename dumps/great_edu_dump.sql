@@ -74,7 +74,7 @@ CREATE TABLE `Цитаты` (
   CONSTRAINT `fk_Цитаты_2` FOREIGN KEY (`автор_публикации`) REFERENCES `Пользователи` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Цитаты_fk0` FOREIGN KEY (`автор`) REFERENCES `Авторы` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Цитаты_fk2` FOREIGN KEY (`источник`) REFERENCES `Произведения` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -527,4 +527,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-16 15:48:33
+-- Dump completed on 2019-03-16 19:20:25

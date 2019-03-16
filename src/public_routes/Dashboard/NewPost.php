@@ -2,7 +2,7 @@
 <?php require_once '../../Include/commonFuncs.php'?>
 <?php require_once '../../Include/dbFunctions.php'?>
 
-<?php require_once '../../utils/newpost_c.php'?>
+<?php require_once '../../utils/Dashboard/newpost_c.php'?>
 <?php adminRequired();?>
 
 <?php handleNewPost();?>
@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-sm-2">
           <ul id="side-menu" class="nav nav-pills nav-stacked">
-            <li class=""><a href="Dashboard.php">
+            <li class=""><a href="/Dashboard">
                 <span class="glyphicon glyphicon-th"></span>
                 &nbsp;Статьи</a></li>
             <li class=""><a href="Biographies.php">
@@ -48,7 +48,7 @@
             <li><a href="Admin.php">
                 <span class="glyphicon glyphicon-user"></span>
                 &nbsp;Администраторы</a></li>
-            <li><a href="/Blog.php">
+            <li><a href="/">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;На главную</a></li>
             <li><a href="/Lagout.php">

@@ -1,29 +1,26 @@
-<?php require_once '../Include/Sessions.php';?>
-<?php require_once '../Include/commonFuncs.php'?>
-<?php require_once '../Include/dbFunctions.php'?>
+<?php require_once '../../Include/Sessions.php';?>
+<?php require_once '../../Include/commonFuncs.php'?>
+<?php require_once '../../Include/dbFunctions.php'?>
 
-<?php 
-global $bio_id,
-  $bio_author, 
-  $bio_state,
-  $bio_sphere,
-  $bio_date,
-  $bio_period,
-  $bio_content,
-  $bio_image;
-?>
-<?php require_once '../utils/deleteBio_c.php'?>
+<?php require_once '../../utils/Quotes/deleteQuote_c.php'?>
 <?php adminRequired();?>
 
+<?php handleDeleteQuote();?>
+<?php fillDeletingQuote();?>
 
-<?php handleDeleteBio();?>
-<?php fillDeletingBio();?>
-
+<?php 
+global $quote_id,
+  $quote_creator,
+  $quote_author, 
+  $quote_source,
+  $quote_theme,
+  $quote_text;
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Удалить биографию - GreatEdu</title>
+  <title>Удалить цитату - GreatEdu</title>
   <script
   src="http://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -49,18 +46,18 @@ global $bio_id,
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a href="Blog.php" class="navbar-brand">
+              <a href="/" class="navbar-brand">
                 Great Edu
               </a>
             </div>
             <div class="collapse navbar-collapse" id="nav-header">
               <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="Blog.php">Статьи</a></li>
-                <li class="nav-item"><a href="Quotes.php">Цитаты</a></li>
-                <li class="nav-item"><a href="/Bios.php">Биографии</a></li>
+                <li class="nav-item"><a href="/">Статьи</a></li>
+                <li class="nav-item"><a href="/Quotes/">Цитаты</a></li>
+                <li class="nav-item"><a href="/Biographies">Биографии</a></li>
               </ul>
               <div class="navbar-right" style="display: flex;">
-                  <form action="Quotes.php" method="GET" class="navbar-form ">
+                  <form action="/Quotes/" method="GET" class="navbar-form ">
                     <div class="input-group" style="width:200px;">
                       <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
                       <span class="input-group-btn">
@@ -72,12 +69,12 @@ global $bio_id,
 
                   <?php if($isLogged) : ?>
                   <button type="button" class="nav-item btn">
-                    <a href="Lagout.php" style="color: grey;">Выйти</a>
+                    <a href="/Logout.php" style="color: grey;">Выйти</a>
                   </button>
                   <?php endif; ?>
                   <?php if(!$isLogged) : ?>
                   <button type="button" class="nav-item btn">
-                    <a href="Login.php" style="color: grey;">Войти</a>
+                    <a href="/Login.php" style="color: grey;">Войти</a>
                   </button>
                   <?php endif; ?>
 
@@ -87,58 +84,46 @@ global $bio_id,
         </nav>
         <div class="container" style="min-height: -webkit-fill-available;">
           <div class="page-title">
-            <h1>Удалить биографию</h1>
+            <h1>Удалить цитату</h1>
           </div>
           <?php echo Message(); ?>
           <?php echo SuccessMessage(); ?>
-          <form action="deleteBio.php" method="POST" enctype="multipart/form-data">
+          <form action="deleteQuote.php" method="POST" enctype="multipart/form-data">
             <fieldset>
               <div class="form-group">
-                <p for="quote-author">Номер биографии</p>
-                <input disabled type="text" name="bio-id" class="form-control" id="quote-id"
-                value="<?php echo $bio_id ?>">
+                <p for="quote-author">Номер цитаты</p>
+                <input disabled type="text" name="quote-id" class="form-control" id="quote-id"
+                value="<?php echo $quote_id ?>">
               </div>
               <div class="form-group">
-                <p for="quote-author">ФИО Автора</p>
-                <input disabled type="text" name="bio-author" class="form-control" id="quote-author"
-                value="<?php echo $bio_author ?>">
+                <p for="quote-author">Автор цитаты</p>
+                <input disabled type="text" name="quote-author" class="form-control" id="quote-author"
+                value="<?php echo $quote_author ?>">
               </div>
               <div class="form-group">
-                <p for="quote-author">Страна принадлежности</p>
-                <input disabled type="text" name="bio-state" class="form-control" id="quote-author"
-                value="<?php echo $bio_state ?>">
+                <p for="quote-author">Автор публикации</p>
+                <input disabled type="text" name="quote-creator" class="form-control" id="quote-author"
+                value="<?php echo $quote_creator ?>">
               </div>
               <div class="form-group">
-                <p for="quote-source">Сферы деятельности</p>
-                <input disabled type="text" name="bio-sphere" class="form-control" id="quote-source"
-                value="<?php echo $bio_sphere ?>">
+                <p for="quote-source">Источник</p>
+                <input disabled type="text" name="quote-source" class="form-control" id="quote-source"
+                value="<?php echo $quote_source ?>">
               </div>
               <div class="form-group">
-                <p for="quote-theme">Период</p>
-                <input disabled type="text" name="bio-period" class="form-control" id="quote-theme"
-                value="<?php echo $bio_period ?>">
-              </div>
-              <div class="form-group">
-                <p for="quote-theme">Дата добавления</p>
-                <input disabled type="text" name="bio-date" class="form-control" id="quote-theme"
-                value="<?php echo $bio_date ?>">
-              </div>
-              <div style="display:flex">
-                <p>Изображение:  </p>
-                <?php
-                  $img = "/Upload/bios/$bio_image?m=";
-                ?>
-                <img src="<?php echo $img . time(); ?>" width='250' height='90'>
+                <p for="quote-theme">Тема</p>
+                <input disabled type="text" name="quote-theme" class="form-control" id="quote-theme"
+                value="<?php echo $quote_theme ?>">
               </div>
               <div class="form-group">
                 <p for="quote-content">Текст</p>
                 <textarea disabled rows="10" class="form-control" name="quote-content" 
-                id="quote-content"><?php echo htmlentities($bio_content); ?></textarea>
+                id="quote-content"><?php echo $quote_text ?></textarea>
               </div>
               <div class="form-group">
-                <button name="bio-delete" class="btn btn-danger form-control">Удалить биографию</button>
+                <button name="quote-delete" class="btn btn-danger form-control">Удалить цитату</button>
               </div>
-              <input type="hidden" name="deleteID" value="<?php echo $_GET['bio_id']; ?>">
+              <input type="hidden" name="deleteID" value="<?php echo $_GET['quote_id']; ?>">
             </fieldset>
           </form>
         </div>

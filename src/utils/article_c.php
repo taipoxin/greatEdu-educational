@@ -70,7 +70,7 @@ function fillPostData()
 
     }
   } else {
-    Redirect_To('Blog.php');
+    Redirect_To('/');
   }
 }
 
@@ -119,7 +119,7 @@ function fillPostsReferences()
     ?>
     <nav>
       <ul>
-        <li><a href="Post.php?id=<?php echo $postID; ?>">
+        <li><a href="Article.php?id=<?php echo $postID; ?>">
             <?php echo $recentPost['заголовок'] ?>
           </a></li>
       </ul>
@@ -151,7 +151,7 @@ function handlePostAddComment()
     } else {
       $_SESSION['errorMessage'] = "Something Went Wrong Please Try Again Later";
     }
-    Redirect_To("Post.php?id=$postID");
+    Redirect_To("Article.php?id=$postID");
   }
 }
 

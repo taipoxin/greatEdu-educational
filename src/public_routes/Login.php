@@ -31,7 +31,7 @@ include '../utils/login_c.php';
       <?php echo SESSION_INFO(); ?>
       <h1>Вход в аккаунт на GreatEdu</h1>
       <div class="">
-        <form method="POST" action="Login.php">
+        <form method="POST" action="/Login.php">
           <legend class="lead">
             <h4>Войдите со своим никнеймом и паролем</h4>
           </legend>
@@ -55,7 +55,7 @@ include '../utils/login_c.php';
           <div class="form-group" style="display: flex; 
           flex-flow: wrap; justify-content: space-between;">
             <a href="Register.php" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >Зарегистрироваться</a>
-            <a href="Blog.php" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >На главную</a>
+            <a href="/" style="background-color: grey; width: 45%;" class="form-control btn btn-info" >На главную</a>
           </div>
         </form>
       </div>
