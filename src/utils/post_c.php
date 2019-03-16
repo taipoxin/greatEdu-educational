@@ -26,7 +26,6 @@ function fillPostData()
         $post_date = $post['дата_публикации'];
         $post_title = $post['заголовок'];
         $post_themes = getThemesNamesByListId($post['темы']);
-        // $post_themes = 
         $authorId = $post['автор'];
         $post_image = $post['изображение'];
 
@@ -51,7 +50,9 @@ function fillPostData()
               Автор: <?php echo $post_author; ?>
             </p>
             <p class="lead">
-              Темы: <?php echo htmlentities(implode($post_themes, ', ')); ?>
+              <?php  
+                echo 'Темы: ' .  htmlentities(implode($post_themes, ', ')); 
+              ?>
             </p>
           </div>
           <div class="post-content">
