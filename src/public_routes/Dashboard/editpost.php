@@ -63,7 +63,7 @@
             <li><a href="/">
                 <span class="glyphicon glyphicon-equalizer"></span>
                 &nbsp;На главную</a></li>
-            <li><a href="/Lagout.php">
+            <li><a href="/Logout.php">
                 <span class="glyphicon glyphicon-log-out"></span>
                 &nbsp;Выйти</a></li>
           </ul>
