@@ -37,7 +37,7 @@ function LoadTextFromBioFile($file)
   if (is_null($file)) {
     $post_content = 'error load';
   } else {
-    $post_content = file_get_contents('Upload/bios/' . $file);
+    $post_content = file_get_contents('../Upload/bios/' . $file);
   }
   return $post_content;
 }

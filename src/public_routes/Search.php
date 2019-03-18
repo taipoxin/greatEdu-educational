@@ -1,17 +1,18 @@
-<?php require_once('../Include/Sessions.php'); ?>
-<?php require_once('../Include/commonFuncs.php') ?>
-<?php require_once('../Include/dbFunctions.php') ?>
-
-<?php require_once('../utils/article_c.php') ?>
-<?php 
-  global $title_title;
-	fillHeader();
+<?php
+// Search.php?search=платон
 ?>
+
+<?php require_once '../Include/Sessions.php';?>
+<?php require_once '../Include/commonFuncs.php'?>
+<?php require_once '../Include/dbFunctions.php'?>
+
+<?php require_once '../utils/search_c.php'  ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title><?php echo $title_title . ' - GreatEdu'; ?></title>
+  <title>Поиск - GreatEdu</title>
   <script
   src="http://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -26,7 +27,7 @@
   <link rel="stylesheet" type="text/css" href="/Assets/style.css">
 </head>
 
-<body>
+<body >
   <div class="blog" style="min-height: -webkit-fill-available;">
   <nav class="navbar navbar-inverse" role="navigation">
       <div class="container">
@@ -76,50 +77,54 @@
     <!--END OF NAVBAR  -->
     <div class="container">
       <div class="blog-title">
+        <div class="row">
+        <?php global $isAdmined; $isAdmined = isAdmin(); ?>
+
+        <?php if($isAdmined) : ?>
+        <div class="text-warning">
+          <a href="/Dashboard">
+            <p>Перейти к панели управления</p>
+          </a>
+        </div>
+        <?php endif; ?>
+
+        <?php echo SuccessMessage(); ?>
+        <?php echo Message(); ?>
+        <?php echo SESSION_INFO(); ?>
+          <div class="col-md-8 ">
+            <h1 class="text-warning">
+            <?php
+            echo "Результаты поиска по запросу \"$_GET[search]\"";
+            ?>
+            </h1>
+            <p class="lead"></p>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-8">
-          <?php echo SuccessMessage(); ?>
-          <?php echo Message(); ?>
-          <?php echo SESSION_INFO(); ?>
-          <?php 
-					fillPostData();
-				?>
-          <div class="comment-section">
-            <?php if(isLogin()) : ?>
-            <form method="POST" action="Article.php">
-              <legend>Ваши мысли об этом посте</legend>
-              <div class="form-group">
-                <label>Комментарий</label>
-                <textarea name="comment" placeholder="Текст вашего комментария" class="form-control" rows="10"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" name="submit" class="btn btn-primary" value="Отправить">
-              </div>
-              <input type="hidden" name="author" value="<?php echo $_SESSION['user_id']; ?>">
-              <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-            </form>
-            <?php endif; ?>
-
-          </div>
-          <div class="page-header">Комментарии</div>
-          <?php
-					fillPostComments();
-				?>
-
+          <?php // заполнить все статьями
+            fillSearch()
+            ?>
+          <!-- <ul class="pagination pagination-lg">
+            <?php
+              // fillPagesQuotes();
+            ?>
+          </ul> -->
         </div>
         <!--END OF COL-MD-8  -->
-        <div class="col-md-3 post-side-menu col-md-offset-1">
-          <div class="panel panel-primary">
+        <div class="col-md-3 col-md-offset-1 post-side-menu">
+          <!-- <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title">Последние статьи</h2>
+              <h2 class="panel-title">Последние цитаты</h2>
             </div>
             <div class="panel-body">
               <?php
-							fillPostsReferences();
-						?>
+                // fillQuotesReferences();
+              ?>
             </div>
-          </div>
+          </div> -->
+
         </div>
         <!--END OF COL-MD-4  -->
       </div>

@@ -30,15 +30,15 @@ function SuccessMessage()
 // retrieve info from session
 function SESSION_INFO()
 {
-  if (isset($_SESSION["user_id"])) {
-    $ouput = "
-			<div class='alert alert-success'>" . ' User_id: ' .
-    htmlentities($_SESSION["user_id"]) . ' <br>Username: ' .
-    htmlentities($_SESSION["username"]) .
-      "</div>
-		";
-    return $ouput;
-  }
+  // if (isset($_SESSION["user_id"])) {
+  //   $ouput = "
+	// 		<div class='alert alert-success'>" . ' User_id: ' .
+  //   htmlentities($_SESSION["user_id"]) . ' <br>Username: ' .
+  //   htmlentities($_SESSION["username"]) .
+  //     "</div>
+	// 	";
+  //   return $ouput;
+  // }
 }
 
 function IsLogin()  // boolean

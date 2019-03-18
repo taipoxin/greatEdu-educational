@@ -107,7 +107,7 @@ function fillPages() {
   }
   if ($page > 1) {
     ?>
-    <li><a href="/Bios.php?page=<?php echo $page - 1; ?>"><</a></li>
+    <li><a href="Bios.php?page=<?php echo $page - 1; ?>"><</a></li>
     <?php
   }
   $sql = "SELECT COUNT(*) FROM Авторы";
@@ -120,17 +120,17 @@ function fillPages() {
   for ($count = 1; $count <= $postPerPage; $count++){
     if ($page == $count) {
       ?>
-      <li class="active"><a href="/Bios.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <li class="active"><a href="Bios.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
       <?php
     }else {
       ?>
-      <li><a href="/Bios.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
+      <li><a href="Bios.php?page=<?php echo $count ?>"><?php echo $count ?></a></li>
       <?php
     }
   }
   if($page < $postPerPage) {
     ?>
-    <li><a href="/Bios.php?page=<?php echo $page + 1; ?>">></a></li>
+    <li><a href="Bios.php?page=<?php echo $page + 1; ?>">></a></li>
     <?php
   }
   
@@ -148,7 +148,7 @@ function fillBiosReferences()
     ?>
     <nav>
       <ul>
-        <li><a href="/Bio.php?id=<?php echo $postID; ?>">
+        <li><a href="Bio.php?id=<?php echo $postID; ?>">
             <?php echo $linkText ?>
           </a></li>
       </ul>

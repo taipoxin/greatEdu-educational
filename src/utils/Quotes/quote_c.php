@@ -45,7 +45,7 @@ function fillQuoteData() {
           <div class="post-info">
             <p class="lead" style="color: darkblue;">
               Автор цитаты: 
-              <a href="/Bio.php?id=<?php echo $author_id?>">
+              <a href="/Biographies/Bio.php?id=<?php echo $author_id?>">
                 <?php echo htmlentities($post_quote_author); ?>
               </a>
             </p>

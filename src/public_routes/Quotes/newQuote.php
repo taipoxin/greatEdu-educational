@@ -47,7 +47,7 @@
                 <li class="nav-item"><a href="/Biographies">Биографии</a></li>
               </ul>
               <div class="navbar-right" style="display: flex;">
-                  <form action="/Quotes/" method="GET" class="navbar-form ">
+                  <form action="/Search.php" method="GET" class="navbar-form ">
                     <div class="input-group" style="width:200px;">
                       <input type="text" name="search" class="form-control" placeholder="Поиск по сайту">
                       <span class="input-group-btn">
