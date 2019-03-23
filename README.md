@@ -1,4 +1,4 @@
-# GreatEdu
+# GreatEdu - educational resource about authors of world literature
 
 Blog about great people on PHP, MySQL, bootstrap
 
