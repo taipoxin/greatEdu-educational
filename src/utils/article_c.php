@@ -51,13 +51,13 @@ function fillPostData()
               Автор: <?php echo $post_author; ?>
             </p>
             <p class="lead">
-              <?php  
-                echo 'Темы: ' .  htmlentities(implode($post_themes, ', ')); 
+              <?php
+                echo 'Темы: ' .  htmlentities(implode(', ', $post_themes));
               ?>
             </p>
             <p class="lead">
-              <?php  
-                echo 'Теги: ' .  htmlentities(implode($post_tags, ', ')); 
+              <?php
+                echo 'Теги: ' .  htmlentities(implode(', ', $post_tags));
               ?>
             </p>
           </div>

@@ -2,6 +2,7 @@ version: '3'
 
 services:
     great_edu_web:
+        container_name: great_edu_web
         image: nginx:latest
         ports:
             - "8080:80"
@@ -15,6 +16,7 @@ services:
 
 
     great_edu_php:
+        container_name: great_edu_php
         # image: php:fpm
         build:
             context: src

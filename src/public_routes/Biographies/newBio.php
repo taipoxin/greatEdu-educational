@@ -17,11 +17,11 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
-  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
   crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
   crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="/Assets/style.css">
 </head>
@@ -45,7 +45,7 @@
               <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="/">Статьи</a></li>
                 <li class="nav-item"><a href="/Quotes/">Цитаты</a></li>
-                <li class="nav-item"><a href="/Biographies">Биографии</a></li>
+                <li class="nav-item"><a href="/Biographies/">Биографии</a></li>
               </ul>
               <div class="navbar-right" style="display: flex;">
                   <form action="/Search.php" method="GET" class="navbar-form ">
@@ -111,7 +111,7 @@
               </div>
               <div class="form-group">
                 <p for="quote-content">Текст</p>
-                <textarea rows="10" class="form-control" name="bio-content" 
+                <textarea rows="10" class="form-control" name="bio-content"
                 id="bio-content"></textarea>
               </div>
               <div class="form-group">
