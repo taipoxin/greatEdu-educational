@@ -1,1 +1,5 @@
-<?php require_once('Articles.php') ?>
+<?php 
+
+require_once('Articles.php')
+// phpinfo();
+?>

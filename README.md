@@ -1,5 +1,7 @@
 # GreatEdu - educational resource about authors of world literature
 
+UPD 02.25: make docker-compose setup
+
 Blog about great people on PHP, MySQL, bootstrap
 
 https://github.com/phpstan/phpstan
