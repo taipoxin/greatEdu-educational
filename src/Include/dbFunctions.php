@@ -7,6 +7,7 @@ function doSQLQuery($query)
   global $con2;
   try {
     $exec = mysqli_query($con2, $query) or die(mysqli_error($con2));
+    while($con2->next_result()) $con2->store_result();
     if ($exec) {
       return $exec;
     }
@@ -38,7 +39,8 @@ function IsAdmin()
   $admin = false;
   if (isset($_SESSION['user_id'])) {
     $username = $_SESSION['username'];
-    $query = "SELECT группа FROM `Пользователи` WHERE `никнейм` = '$username'";
+    // $query = "SELECT группа FROM `Пользователи` WHERE `никнейм` = '$username'";
+    $query = "CALL usp_get_user_group('$username')";
     $exec = doSQLQuery($query);
     if ($group = mysqli_fetch_assoc($exec)) {
       if ($group['группа'] === '2') {
@@ -122,7 +124,7 @@ function getSphereIdByNameOrInsert($name) {
     addSphereByName($name);
     return getSphereIdByName($name);
   }
-  return $res; 
+  return $res;
 }
 
 
@@ -147,7 +149,7 @@ function getPeriodIdByNameOrInsert($name) {
     addPeriodByName($name);
     return getPeriodIdByName($name);
   }
-  return $res; 
+  return $res;
 }
 
 function getThemeNameById($id) {
@@ -171,7 +173,7 @@ function getThemesListById($id) {
 
 function getThemesNamesByListId($id) {
   $res = getThemesListById($id);
-  $resultList = [];  
+  $resultList = [];
   foreach($res as &$value) {
     $item = getThemeNameById($value);
     array_push($resultList, $item);
@@ -201,7 +203,7 @@ function getTagsListById($id) {
 
 function getTagsNamesByListId($id) {
   $res = getTagsListById($id);
-  $resultList = [];  
+  $resultList = [];
   foreach($res as &$value) {
     $item = getTagNameById($value);
     array_push($resultList, $item);

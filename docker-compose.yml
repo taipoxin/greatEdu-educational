@@ -5,7 +5,7 @@ services:
         container_name: great_edu_web
         image: nginx:latest
         ports:
-            - "8080:80"
+            - "80:80"
         volumes:
             - ./src:/src
             - ./nginx/site.conf:/etc/nginx/conf.d/default.conf

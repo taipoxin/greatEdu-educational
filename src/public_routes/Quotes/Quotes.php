@@ -131,7 +131,7 @@
   </div>
   <div class="row navbar-inverse" id="blog-footer">
     <div class="footer-wrapper">
-      <p>Все права защищены 2019 | Designed by: Dmitry Ermakovich</p>
+      <p>Все права защищены 2021 | Designed by: Dmitry Ermakovich</p>
     </div>
   </div>
 </body>

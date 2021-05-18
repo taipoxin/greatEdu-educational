@@ -5,8 +5,12 @@ require_once 'DatabaseLoad.php';
 
 function Redirect_To($location)
 {
-  header('location:' . $location);
-  exit;
+  try {
+    header('location:' . $location);
+    exit;
+  } catch (Exception $e) {
+    // echo 'Caught exception: ',  $e->getMessage(), "\n";
+  }
 }
 
 function LoadTextFromContentFileDashboard($file)
@@ -83,3 +87,4 @@ function validatePost($title, $content, $image)
     return true;
   }
 }
+?>
