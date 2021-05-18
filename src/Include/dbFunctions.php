@@ -79,14 +79,16 @@ function adminRequired()
 // return user by id provided
 function getUserById($id)
 {
-  $query = "SELECT * FROM Пользователи WHERE id = $id";
+  // $query = "SELECT * FROM Пользователи WHERE id = $id";
+  $query = "CALL usp_get_user_by_id('$id')";
   $resultArray = execQueryToArray($query);
   $author = $resultArray[0];
   return $author;
 }
 
 function getPeriodNameById($id) {
-  $query = "SELECT название FROM Периоды WHERE id = $id";
+  // $query = "SELECT название FROM Периоды WHERE id = $id";
+  $query = "CALL usp_get_period_name_by_id('$id')";
   $exec = doSQLQuery($query);
   if ($res = mysqli_fetch_assoc($exec)) {
     return $res['название'];
@@ -95,7 +97,8 @@ function getPeriodNameById($id) {
 }
 
 function getShpereNameById($id) {
-  $query = "SELECT название FROM Сферы_деятельности WHERE id = $id";
+  // $query = "SELECT название FROM Сферы_деятельности WHERE id = $id";
+  $query = "CALL usp_get_sphere_name_by_id('$id')";
   $exec = doSQLQuery($query);
   if ($res = mysqli_fetch_assoc($exec)) {
     return $res['название'];
@@ -104,7 +107,8 @@ function getShpereNameById($id) {
 }
 
 function getSphereIdByName($name) {
-  $query = "SELECT id FROM Сферы_деятельности WHERE название = '$name'";
+  // $query = "SELECT id FROM Сферы_деятельности WHERE название = '$name'";
+  $query = "CALL usp_get_sphere_id_by_name('$name')";
   $exec = doSQLQuery($query);
   if ($res = mysqli_fetch_assoc($exec)) {
     return $res['id'];
@@ -113,7 +117,8 @@ function getSphereIdByName($name) {
 }
 
 function addSphereByName($name) {
-  $query = "INSERT INTO Сферы_деятельности (название) VALUES ('$name')";
+  // $query = "INSERT INTO Сферы_деятельности (название) VALUES ('$name')";
+  $query = "CALL usp_add_sphere_by_name('$name')";
   $exec = doSQLQuery($query);
   return true;
 }

@@ -4,18 +4,18 @@ function fillDeletingQuote()
 {
   global $quote_id,
     $quote_creator,
-    $quote_author, 
+    $quote_author,
     $quote_source,
     $quote_theme,
     $quote_text;
 
   $quote_id = 'error';
   $quote_creator = 'error';
-  $quote_author = 'error'; 
+  $quote_author = 'error';
   $quote_source = 'error';
   $quote_theme = 'error';
   $quote_text = 'error';
-  
+
   if (isset($_GET['quote_id'])) {
     if (!empty($_GET['quote_id'])) {
       $sql = "SELECT * FROM Цитаты WHERE id = '$_GET[quote_id]'";
@@ -39,7 +39,8 @@ function fillDeletingQuote()
 function handleDeleteQuote()
 {
   if (isset($_POST['quote-delete'])) {
-    $sql = "DELETE FROM Цитаты WHERE id = '$_POST[deleteID]' ";
+    // $sql = "DELETE FROM Цитаты WHERE id = '$_POST[deleteID]' ";
+    $sql = "CALL usp_delete_quote('$_POST[deleteID]')";
     $exec = doSQLQuery($sql);
     if ($exec) {
       $_SESSION['successMessage'] = "$_POST[deleteID] Quote Deleted Successfully";
